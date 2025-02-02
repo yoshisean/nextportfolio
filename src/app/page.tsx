@@ -1,11 +1,8 @@
 import Scene from "@/components/3D Elements/Scene";
-import {Bacasime_Antique, Inter, Libre_Caslon_Display, Questrial} from "next/font/google";
+import {Bacasime_Antique, Libre_Caslon_Display} from "next/font/google";
 import Link from "next/link";
 import ScrollDown from "@/components/ui/scrollDown";
-const inter = Inter({
-    subsets: ['latin'],
-    variable: '--font-inter',
-})
+
 const libre = Libre_Caslon_Display({
     subsets: ['latin'],
     variable: '--font-libre',
@@ -45,22 +42,17 @@ export default function Home() {
               </div>
           </nav>
 
-          <ScrollDown/>
-
-          <section className="relative h-screen flex flex-col justify-center items-center px-4">
+          <section className="relative h-screen flex flex-col justify-center items-center px-4 w-full">
+              <Scene/>
               <div className="text-center space-y-8">
-                  <h2 className="font-light text-2xl tracking-[0.2em] uppercase">Designer&nbsp;×&nbsp;Developer</h2>
-                  <h1 className={` text-7xl sm:text-8xl md:text-9xl tracking-tight ${bantique.className}`}>
+              <h2 className="font-light text-2xl tracking-[0.2em]">Designer × Developer</h2>
+                  <h1 className={`text-7xl sm:text-8xl md:text-9xl tracking-tight ${bantique.className}`}>
                       Sean Yoshihara
                   </h1>
               </div>
-
-              <div className="absolute -top-20 -left-20 w-40 h-40 rounded-full border border-white"></div>
-              <Scene/>
+              <ScrollDown/>
           </section>
-          {/*<div className="relative flex flex-col items-start justify-center animate-bounce">*/}
-          {/*    <ArrowDown className={'h-10 w-10 rounded-full border border-white'}/>*/}
-          {/*</div>*/}
+
           <section className={'h-screen'}>
           </section>
       </div>

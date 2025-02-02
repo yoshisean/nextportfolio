@@ -9,7 +9,7 @@ const ScrollDownElement: React.FC = () => {
     useEffect(() => {
         const handleScroll = () => {
             const scrollY = window.scrollY
-            const newRotation = (scrollY % 360) * 0.1 // Adjust the multiplier to control rotation speed
+            const newRotation = (scrollY) * 0.2 // Adjust the multiplier to control rotation speed
             setRotation(newRotation)
         }
 
@@ -18,7 +18,8 @@ const ScrollDownElement: React.FC = () => {
     }, [])
 
     return (
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 w-24 h-24 flex items-center justify-center">
+        <div
+            className="relative lg:absolute lg:right-0 lg:mr-8 w-24 h-24 flex items-center">
             <svg className="w-full h-full" viewBox="0 0 100 100" style={{transform: `rotate(${rotation}deg)`}}>
                 <path id="curve" d="M50,90 A40,40 0 1,1 50,10 A40,40 0 1,1 50,90" fill="none" stroke="none"/>
                 <text className="text-primary fill-current text-[10px]">
