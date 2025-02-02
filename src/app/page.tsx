@@ -13,10 +13,9 @@ const bantique = Bacasime_Antique({
     weight: '400'
 })
 export default function Home() {
-
     return (
         <div className="min-h-screen relative overflow-y-auto custom-scrollbar-hidden">
-            <section className="relative h-screen flex flex-col justify-center items-center px-4 w-full">
+            <section className="relative h-[95vh] flex flex-col justify-center items-center px-4 w-full">
                 <Scene/>
                 <div className="text-center space-y-8">
                     <h2 className="font-light text-2xl tracking-[0.2em]">Designer × Developer</h2>
@@ -27,8 +26,10 @@ export default function Home() {
                 <ScrollDown/>
             </section>
 
-            <section className={'h-screen'}>
-
+            <section className={'h-screen flex flex-col items-center px-4 w-full'}>
+                <h1 className={`text-4xl sm:text-5xl md:text-6xl font-light`}>
+                    Some test text here
+                </h1>
             </section>
         </div>
     );
