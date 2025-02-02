@@ -1,53 +1,60 @@
 'use client'
 import {
-    Environment, MeshTransmissionMaterial,
-    SoftShadows, RoundedBox
+    Environment, MeshTransmissionMaterial, RoundedBox, Lightformer, Text, PerformanceMonitor
 } from "@react-three/drei";
-import {Canvas} from "@react-three/fiber";
+import {Canvas, useThree,} from "@react-three/fiber";
 import {FishModel} from "../../../public/Fish";
-
+import {Bacasime_Antique} from "next/font/google";
+import {Color} from "three";
+import {useState} from "react";
+import round from 'lodash/round'
 const Scene = () => {
+    const color = new Color().setHex(0xFBF7ED)
+    const [dpr, setDpr] = useState(1.5)
     return (
-        <Canvas camera={{position: [0, 0, 40]}}
-                style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}>
+        <Canvas camera={{position: [0, 0, 30]}}
+                performance={{ min: 0.5 }}
+                dpr={dpr}
+                style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}
+        >
+            <PerformanceMonitor onChange={({ factor }) => setDpr(round(0.5 + 1.5 * factor, 1))}/>
             <rectAreaLight intensity={Math.PI / 2} position={[0, 0, 10]} width={30}/>
-            <Environment preset="forest" background={false} blur={0.5}/>
+            <Environment resolution={1024}>
+                <group rotation={[-Math.PI / 3, 0, 0]}>
+                    <Lightformer rotation-x={Math.PI / 2} position={[0, 5, -9]} scale={[10, 10, 1]}
+                                 color={color} intensity={50}/>
+                </group>
+            </Environment>
             <FishModel/>
+            <NameText/>
             <BoxWithTransmissionMaterial/>
-            <SoftShadows/>
         </Canvas>
+
     )
 }
-//
-// const Fish = () => {
-//     // Type-safe ref for Mesh component
-//     const group = useRef();
-//
-//     const {scene, animations, materials} = useGLTF("fish.glb");
-//     const {actions} = useAnimations(animations, group);
-//     useEffect(() => {
-//         actions.KeyAction!.play();
-//     }, [actions]);
-//     useMemo(() => {
-//         materials["Material.001"].transparent = true
-//         materials["Material.001"].opacity = 0.9
-//         materials["fin.001"].transparent = true
-//         materials["fin.001"].opacity = 0.9
-//     }, [materials])
-//
-//     return (
-//         <group ref={group}>
-//             <mesh>
-//                 <primitive object={scene} scale={1.8} rotation={[0, Math.PI, 0]}/>
-//             </mesh>
-//         </group>
-//     );
-// };
-// useGLTF.preload("fish.glb");
-function BoxWithTransmissionMaterial(props) {
+
+function NameText() {
+    const {width: w} = useThree((state) => state.viewport);
+    const shared = {
+        text: 'Designer × Developer\nSean Yoshihara',
+        font: '/Bacasime_Antique/BacasimeAntique-Regular.ttf',
+        letterSpacing: -0.025,
+        color: 'black',
+        fontSize: w*0.055-1,
+        lineHeight: 1.2,
+        textAlign: 'center'
+    }
     return (
-        <RoundedBox props={props} scale={[0.61 * 6, 0.8 * 6, 6]} args={[10, 5, 2]} radius={0.3}>
+        <Text {...shared} anchorX="center" anchorY="middle"/>
+    )
+}
+
+function BoxWithTransmissionMaterial() {
+    const {width: w} = useThree((state) => state.viewport);
+    return (
+        <RoundedBox scale={[0.055 * w, 0.8 * 6, 6]} args={[10, 5, 2]} radius={0.3}>
             <MeshTransmissionMaterial
+                // background={new Color().setHex( 0xFF0000 )}
                 backside
                 samples={4}
                 thickness={3}
@@ -61,12 +68,6 @@ function BoxWithTransmissionMaterial(props) {
                 iridescenceThicknessRange={[0, 1400]}
             />
         </RoundedBox>
-        // <mesh {...props} castShadow={true} scale={[0.61 * 6, 0.8 * 6, 6]}>
-        //     {/* Box Geometry */}
-        //     <boxGeometry args={[10, 5, 2]} />  {/* Adjust the size of the box as needed */}
-        //
-        //     {/* Transmission Material applied to the box */}
-        // </mesh>
     )
 }
 
