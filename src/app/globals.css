@@ -91,3 +91,12 @@ body {
 .hover\:underline-animation:hover::after {
   width: 100%; /* Underline expands to 100% width on hover */
 }
+
+.custom-scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.custom-scrollbar-hidden {
+  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+  scrollbar-width: none;     /* For Firefox */
+}
