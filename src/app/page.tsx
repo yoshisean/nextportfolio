@@ -29,7 +29,7 @@ export default function Home() {
 
             <section className={'h-screen flex flex-col items-center px-4 w-full'}>
                 <h1 className={`text-4xl sm:text-5xl md:text-6xl font-light`}>
-                    Some test text here
+                    Designing and coding all sorts of things
                 </h1>
             </section>
         </div>

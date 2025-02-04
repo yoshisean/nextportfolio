@@ -8,7 +8,7 @@ import {useGLTF, useAnimations} from '@react-three/drei'
 
 export function FishModel(props) {
     const group = React.useRef()
-    const {nodes, materials, animations} = useGLTF('/fish.glb')
+    const {nodes, materials, animations} = useGLTF('/fish.glb', false,true)
     const {actions, mixer} = useAnimations(animations, group)
 
     useEffect(() => {
