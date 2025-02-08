@@ -2,6 +2,7 @@ import Scene from "@/components/3D Elements/Scene";
 import {Bacasime_Antique} from "next/font/google";
 import ScrollDown from "@/components/ui/scrollDown";
 import ScrollingWorks from "@/components/ui/ScrollingWorks";
+import LazyScene from "@/components/3D Elements/DynamicScene";
 
 // const libre = Libre_Caslon_Display({
 //     subsets: ['latin'],
@@ -22,7 +23,7 @@ export default function Home() {
                         Sean Yoshihara
                     </h1>
                 </div>
-                <Scene/>
+                <LazyScene/>
                 <ScrollDown/>
             </section>
 

@@ -1,10 +1,16 @@
 'use client'
 import {
-    Environment, MeshTransmissionMaterial, RoundedBox, Text, AdaptiveDpr, Float
+    Environment,
+    MeshTransmissionMaterial,
+    RoundedBox,
+    Text,
+    AdaptiveDpr,
+    Float,
+    BakeShadows, Bvh, Preload
 } from "@react-three/drei";
 import {Canvas, useThree,} from "@react-three/fiber";
 import {FishOptModel} from "../../../public/FishOptimized";
-import {useEffect, useState} from "react";
+import {Suspense, useEffect, useState} from "react";
 
 const Scene = () => {
     const [isLgScreen, setIsLgScreen] = useState(false);
@@ -28,13 +34,22 @@ const Scene = () => {
             {
                 isLgScreen &&
                 <Canvas camera={{position: [0, 0, 30]}}
-                        performance={{min: 0.5}}
-                        style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}>
-                    <AdaptiveDpr pixelated/>
-                    <Environment resolution={512} files={'overcast_soil_puresky_1k.hdr'}/>
-                    <FishOptModel/>
-                    <NameText/>
-                    <BoxWithTransmissionMaterial/>
+                        performance={{min: 1}}
+                        style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}
+                        fallback={<div>Sorry no WebGL supported!</div>}
+                >
+                    <Suspense fallback={null}>
+                        <AdaptiveDpr pixelated/>
+                        <BakeShadows/>
+                        <Environment resolution={512} files={'overcast_soil_puresky_1k.hdr'}/>
+                        <Bvh firstHitOnly>
+                            <FishOptModel/>
+                            <NameText/>
+                            <BoxWithTransmissionMaterial/>
+                        </Bvh>
+                        <Preload all/>
+
+                    </Suspense>
                 </Canvas>
             }
         </>
@@ -64,7 +79,7 @@ function BoxWithTransmissionMaterial() {
     return (
         <RoundedBox scale={[0.055 * w, 4.8, 8]} args={[10, 5, 2]} radius={0.3}>
             <MeshTransmissionMaterial
-                backside
+                backside={true}
                 samples={4}
                 thickness={2.5}
                 chromaticAberration={0.025}
