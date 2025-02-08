@@ -3,7 +3,7 @@ import {
     Environment, MeshTransmissionMaterial, RoundedBox, Text, AdaptiveDpr, Float
 } from "@react-three/drei";
 import {Canvas, useThree,} from "@react-three/fiber";
-import {FishModel} from "../../../public/Fish";
+import {FishOptModel} from "../../../public/FishOptimized";
 
 const Scene = () => {
 
@@ -12,8 +12,8 @@ const Scene = () => {
                 performance={{min: 0.5}}
                 style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}>
             <AdaptiveDpr pixelated/>
-            <Environment resolution={1024} files={'overcast_soil_puresky_1k.hdr'}/>
-            <FishModel/>
+            <Environment resolution={512} files={'overcast_soil_puresky_1k.hdr'}/>
+            <FishOptModel/>
             <NameText/>
             <BoxWithTransmissionMaterial/>
         </Canvas>
@@ -42,7 +42,7 @@ function NameText() {
 function BoxWithTransmissionMaterial() {
     const {width: w} = useThree((state) => state.viewport);
     return (
-        <RoundedBox scale={[0.055 * w, 0.8 * 6, 6]} args={[10, 5, 2]} radius={0.3}>
+        <RoundedBox scale={[0.055 * w, 4.8, 8]} args={[10, 5, 2]} radius={0.3}>
             <MeshTransmissionMaterial
                 backside
                 samples={4}
