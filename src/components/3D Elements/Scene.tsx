@@ -4,20 +4,40 @@ import {
 } from "@react-three/drei";
 import {Canvas, useThree,} from "@react-three/fiber";
 import {FishOptModel} from "../../../public/FishOptimized";
+import {useEffect, useState} from "react";
 
 const Scene = () => {
+    const [isLgScreen, setIsLgScreen] = useState(false);
 
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsLgScreen(window.innerWidth >= 1024);
+        };
+
+        // Initial check
+        checkScreenSize();
+
+        // Event listener for window resize
+        window.addEventListener('resize', checkScreenSize);
+
+        // Cleanup the event listener
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, []);
     return (
-        <Canvas camera={{position: [0, 0, 30]}}
-                performance={{min: 0.5}}
-                style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}>
-            <AdaptiveDpr pixelated/>
-            <Environment resolution={512} files={'overcast_soil_puresky_1k.hdr'}/>
-            <FishOptModel/>
-            <NameText/>
-            <BoxWithTransmissionMaterial/>
-        </Canvas>
-
+        <>
+            {
+                isLgScreen &&
+                <Canvas camera={{position: [0, 0, 30]}}
+                        performance={{min: 0.5}}
+                        style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}>
+                    <AdaptiveDpr pixelated/>
+                    <Environment resolution={512} files={'overcast_soil_puresky_1k.hdr'}/>
+                    <FishOptModel/>
+                    <NameText/>
+                    <BoxWithTransmissionMaterial/>
+                </Canvas>
+            }
+        </>
     )
 }
 

@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
   	extend: {
+		animation: {
+			'infinite-scroll': 'infinite-scroll 25s linear infinite',
+		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

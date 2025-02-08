@@ -92,11 +92,12 @@ body {
   width: 100%; /* Underline expands to 100% width on hover */
 }
 
-.custom-scrollbar-hidden::-webkit-scrollbar {
-  display: none; /* For Chrome, Safari, and Opera */
-}
 
-.custom-scrollbar-hidden {
-  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
-  scrollbar-width: none;     /* For Firefox */
+@keyframes infinite-scroll {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
 }
