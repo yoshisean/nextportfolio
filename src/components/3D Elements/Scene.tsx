@@ -1,7 +1,6 @@
 'use client'
 import {
     Environment,
-    MeshTransmissionMaterial,
     RoundedBox,
     Text,
     AdaptiveDpr,
@@ -11,8 +10,12 @@ import {
 import {Canvas, useThree,} from "@react-three/fiber";
 import {FishOptModel} from "../../../public/FishOptimized";
 import {Suspense, useEffect, useState} from "react";
+import {JSX} from "react/jsx-runtime";
 
-const Scene = () => {
+interface Props {
+    material: JSX.Element
+}
+const Scene:React.FC<Props> = ({material}) => {
     const [isLgScreen, setIsLgScreen] = useState(false);
 
     useEffect(() => {
@@ -29,6 +32,7 @@ const Scene = () => {
         // Cleanup the event listener
         return () => window.removeEventListener('resize', checkScreenSize);
     }, []);
+
     return (
         <>
             {
@@ -45,7 +49,7 @@ const Scene = () => {
                         <Bvh firstHitOnly>
                             <FishOptModel/>
                             <NameText/>
-                            <BoxWithTransmissionMaterial/>
+                            <BoxWithTransmissionMaterial material={material}/>
                         </Bvh>
                         <Preload all/>
 
@@ -74,23 +78,24 @@ function NameText() {
     )
 }
 
-function BoxWithTransmissionMaterial() {
+function BoxWithTransmissionMaterial({material}:Props) {
     const {width: w} = useThree((state) => state.viewport);
     return (
         <RoundedBox scale={[0.055 * w, 4.8, 8]} args={[10, 5, 2]} radius={0.3}>
-            <MeshTransmissionMaterial
-                backside={true}
-                samples={4}
-                thickness={2.5}
-                chromaticAberration={0.025}
-                anisotropy={0.1}
-                distortion={0.15}
-                distortionScale={0.1}
-                temporalDistortion={0.2}
-                iridescence={1}
-                iridescenceIOR={1}
-                iridescenceThicknessRange={[0, 1400]}
-            />
+            {material}
+            {/*<MeshTransmissionMaterial*/}
+            {/*    backside={true}*/}
+            {/*    samples={4}*/}
+            {/*    thickness={2.5}*/}
+            {/*    chromaticAberration={0.025}*/}
+            {/*    anisotropy={0.1}*/}
+            {/*    distortion={0.15}*/}
+            {/*    distortionScale={0.1}*/}
+            {/*    temporalDistortion={0.2}*/}
+            {/*    // iridescence={1}*/}
+            {/*    // iridescenceIOR={1}*/}
+            {/*    // iridescenceThicknessRange={[0, 1400]}*/}
+            {/*/>*/}
         </RoundedBox>
     )
 }

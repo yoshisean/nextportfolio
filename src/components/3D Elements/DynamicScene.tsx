@@ -1,6 +1,6 @@
 'use client'
 import dynamic from "next/dynamic";
-import {Suspense} from "react";
+import {Suspense,} from "react";
 
 const DynamicScene = dynamic(() => import("./Scene"), {
     ssr: false,
@@ -8,6 +8,7 @@ const DynamicScene = dynamic(() => import("./Scene"), {
 })
 
 const LazyScene = () => {
+
     return (
         <Suspense fallback={<div>Loading Scene...</div>}>
             <DynamicScene/>
