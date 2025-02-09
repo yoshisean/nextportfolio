@@ -46,14 +46,7 @@ export default function Home() {
                         Sean Yoshihara
                     </h1>
                 </div>
-                <motion.div
-                    initial={{opacity: 0}}
-                    animate={{opacity: 1}}
-                    exit={{opacity: 0}}
-                    transition={{duration: 0.5}}
-                >
-                    <Scene material={transmissionMaterial}/>
-                </motion.div>
+                <Scene material={transmissionMaterial}/>
                 <ScrollDown/>
             </motion.section>
             <motion.section
