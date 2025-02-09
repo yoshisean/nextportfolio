@@ -68,7 +68,7 @@ const Scene: React.FC<Props> = ({material}) => {
 
 
     return (
-        <div ref={canvasRef} className={'h-full'}>
+        <div ref={canvasRef} className={'h-fit'}>
             {
                 isVisible ?
                     (
@@ -122,25 +122,6 @@ function BoxWithTransmissionMaterial({material}: Props) {
         <RoundedBox scale={[0.055 * w, 4.8, 8]} args={[10, 5, 2]} radius={0.3}>
             {material}
         </RoundedBox>
-    )
-}
-
-function Pointer() {
-    const { viewport } = useThree()
-    const ref = useRef<Mesh>(null)
-
-
-    useFrame(({ pointer }) => {
-        const x = (pointer.x * viewport.width) / 2
-        const y = (pointer.y * viewport.height) / 2
-        ref.current!.position.set(x, y, -5)
-    })
-
-    return (
-        <mesh ref={ref} scale={1}>
-            <sphereGeometry />
-            <meshStandardMaterial color={[4, 4, 4]} toneMapped={false} emissive={'hotpink'} emissiveIntensity={5}/>
-        </mesh>
     )
 }
 export default Scene;

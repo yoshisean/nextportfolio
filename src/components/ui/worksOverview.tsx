@@ -1,67 +1,29 @@
-'use client'
-import {Button} from "@/components/ui/button";
-import Image from 'next/image'
-import {Separator} from "@/components/ui/separator";
+import CaseStudyCard from "@/components/ui/CaseStudyCard";
 
-const worksList = [
-    {
-        title: "test",
-        description: "description",
-        alt: "some image description",
-    }
-]
+export default function WorksOverview() {
+    const caseStudies = [
+        {
+            number: "01",
+            title: "Surfline",
+            description:
+                "I led the redesign of a popular surf forecast product, enhancing user experience and engagement through innovative design solutions",
+            imageAlt: "Aerial view of waves crashing",
+        },
+        {
+            number: "02",
+            title: "Wavelength",
+            description:
+                "Developing an AI-powered analytics platform for ocean conditions, helping surfers make better decisions about when and where to surf",
+            imageAlt: "Beach sunset with waves",
+        },
+    ]
 
-const WorksOverview = () => {
     return (
-        <>
-            {
-                worksList.map((work,index)=>{
-                    return(
-                        worksComponent(index,work.title,work.description,work.alt,index==worksList.length-1)
-                    )
-                })
-            }
-        </>
-    )
-}
-
-interface CaseStudyCardProps {
-    number: string
-    title: string
-    description: string
-    imageAlt: string
-    isLast?: boolean
-}
-function worksComponent({ number, title, description, imageAlt, isLast = false }: CaseStudyCardProps) {
-    return (
-        <div className="space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="space-y-6 p-6 md:p-8">
-                    <div className="space-y-6">
-                        <p className="text-sm font-medium tracking-wider text-neutral-900">CASE STUDY {number}</p>
-                        <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900">{title}</h2>
-                        <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">{description}</p>
-                    </div>
-                    <Button
-                        variant="outline"
-                        className="rounded-full border-neutral-400 hover:border-neutral-900 hover:bg-neutral-900 hover:text-white transition-all duration-300"
-                    >
-                        VIEW CASE STUDY
-                    </Button>
-                </div>
-                <div className="relative aspect-[4/3] md:aspect-auto md:h-[600px] overflow-hidden group">
-                    <Image
-                        src="/placeholder.svg?height=800&width=600"
-                        alt={imageAlt}
-                        fill
-                        className="object-cover transition-all duration-500 ease-in-out group-hover:rounded-3xl"
-                        priority
-                    />
-                </div>
-            </div>
-            {!isLast && <Separator className="my-16" />}
+        <div className="mx-auto container space-y-8 pt-16">
+            {caseStudies.map((study, index) => (
+                <CaseStudyCard key={study.number} {...study} isLast={index === caseStudies.length - 1} />
+            ))}
         </div>
     )
 }
 
-export default WorksOverview

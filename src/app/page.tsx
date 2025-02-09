@@ -36,9 +36,9 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="min-h-screen flex flex-col overflow-x-hidden space-y-8 scroll-smooth">
+        <div className="min-h-screen flex flex-col overflow-x-hidden space-y-8 scroll-smooth w-screen">
             <section
-                className="relative h-[90vh] flex flex-col justify-center items-center w-full px-8"
+                className="relative h-[90vh] flex flex-col justify-center items-center w-full"
             >
                 <div className="text-center lg:hidden">
                     <h2 className="font-light text-2xl tracking-[0.2em]">Designer × Developer</h2>
@@ -51,7 +51,7 @@ export default function Home() {
             </section>
             <section
                 id={'worksSection'}
-                className={'h-screen flex flex-col items-center w-full'}
+                className={'h-fit flex flex-col items-center w-full'}
             >
                 <div className="md:w-1/3 md:ml-auto flex justify-center w-full px-8">
                     <h1 className={`text-sm sm:text-md md:text-lg font-light`}>
@@ -61,9 +61,9 @@ export default function Home() {
                     </h1>
                 </div>
                 <ScrollingWorks/>
-                <div className={'pt-16 w-full'}>
-                    <WorksOverview/>
-                </div>
+            </section>
+            <section className={'relative w-full flex flex-col'}>
+                <WorksOverview/>
             </section>
         </div>
     );
