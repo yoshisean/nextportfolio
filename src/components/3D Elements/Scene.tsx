@@ -7,10 +7,11 @@ import {
     Float,
     BakeShadows, Bvh, Preload
 } from "@react-three/drei";
-import {Canvas, useThree,} from "@react-three/fiber";
+import {Canvas, useFrame, useThree,} from "@react-three/fiber";
 import {FishOptModel} from "../../../public/FishOptimized";
 import {Suspense, useEffect, useRef, useState} from "react";
 import {JSX} from "react/jsx-runtime";
+import {Mesh} from "three";
 
 interface Props {
     material: JSX.Element
@@ -81,13 +82,13 @@ const Scene: React.FC<Props> = ({material}) => {
                                 <AdaptiveDpr pixelated/>
                                 <BakeShadows/>
                                 <Environment resolution={512} files={'overcast_soil_puresky_1k.hdr'}/>
+                                {/*<Pointer/>*/}
                                 <Bvh firstHitOnly>
                                     <FishOptModel/>
                                     <NameText/>
                                     <BoxWithTransmissionMaterial material={material}/>
                                 </Bvh>
                                 <Preload all/>
-
                             </Suspense>
                         </Canvas>
                     )
@@ -120,21 +121,26 @@ function BoxWithTransmissionMaterial({material}: Props) {
     return (
         <RoundedBox scale={[0.055 * w, 4.8, 8]} args={[10, 5, 2]} radius={0.3}>
             {material}
-            {/*<MeshTransmissionMaterial*/}
-            {/*    backside={true}*/}
-            {/*    samples={4}*/}
-            {/*    thickness={2.5}*/}
-            {/*    chromaticAberration={0.025}*/}
-            {/*    anisotropy={0.1}*/}
-            {/*    distortion={0.15}*/}
-            {/*    distortionScale={0.1}*/}
-            {/*    temporalDistortion={0.2}*/}
-            {/*    // iridescence={1}*/}
-            {/*    // iridescenceIOR={1}*/}
-            {/*    // iridescenceThicknessRange={[0, 1400]}*/}
-            {/*/>*/}
         </RoundedBox>
     )
 }
 
+function Pointer() {
+    const { viewport } = useThree()
+    const ref = useRef<Mesh>(null)
+
+
+    useFrame(({ pointer }) => {
+        const x = (pointer.x * viewport.width) / 2
+        const y = (pointer.y * viewport.height) / 2
+        ref.current!.position.set(x, y, -5)
+    })
+
+    return (
+        <mesh ref={ref} scale={1}>
+            <sphereGeometry />
+            <meshStandardMaterial color={[4, 4, 4]} toneMapped={false} emissive={'hotpink'} emissiveIntensity={5}/>
+        </mesh>
+    )
+}
 export default Scene;
