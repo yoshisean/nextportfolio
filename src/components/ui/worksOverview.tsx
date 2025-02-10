@@ -1,19 +1,29 @@
 import CaseStudyCard from "@/components/ui/CaseStudyCard";
 
 export default function WorksOverview() {
-    const caseStudies = [
+    interface caseStudyProps {
+        number: string
+        title: string
+        description: string
+        imageUrl?: string
+        imageAlt: string
+    }
+    const caseStudies: caseStudyProps[] = [
         {
             number: "01",
-            title: "Surfline",
+            title: "Untitled Startup",
             description:
-                "I led the redesign of a popular surf forecast product, enhancing user experience and engagement through innovative design solutions",
+                "Fullstack solo developer of a SaaS service that converts data into presentation ready visuals out of the box, " +
+                "dramatically reducing reporting time for clients.",
             imageAlt: "Aerial view of waves crashing",
         },
         {
             number: "02",
-            title: "Wavelength",
+            title: "Chunio",
             description:
-                "Developing an AI-powered analytics platform for ocean conditions, helping surfers make better decisions about when and where to surf",
+                "I was the primary Frontend Engineer for a personalized laptop recommendation service boasting a " +
+                "collection of over 5000 laptops.",
+            imageUrl: '/Chunio.png',
             imageAlt: "Beach sunset with waves",
         },
     ]

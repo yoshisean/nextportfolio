@@ -2,10 +2,11 @@
 import {Bacasime_Antique} from "next/font/google";
 import ScrollDown from "@/components/ui/scrollDown";
 import ScrollingWorks from "@/components/ui/ScrollingWorks";
-import {useMemo} from "react";
+import {useEffect, useMemo} from "react";
 import {MeshTransmissionMaterial} from "@react-three/drei";
 import Scene from "@/components/3D Elements/Scene";
 import WorksOverview from "@/components/ui/worksOverview";
+import Lenis from "lenis";
 
 // const libre = Libre_Caslon_Display({
 //     subsets: ['latin'],
@@ -35,8 +36,18 @@ export default function Home() {
         );
     }, []);
 
+    useEffect(()=>{
+        const lenis = new Lenis()
+        function raf(time: number) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf);
+    }, [])
+
     return (
-        <div className="min-h-screen flex flex-col overflow-x-hidden space-y-8 scroll-smooth w-screen">
+        <div className="flex flex-col space-y-8 scroll-smooth w-screen">
             <section
                 className="relative h-[90vh] flex flex-col justify-center items-center w-full"
             >
@@ -53,8 +64,8 @@ export default function Home() {
                 id={'worksSection'}
                 className={'h-fit flex flex-col items-center w-full'}
             >
-                <div className="md:w-1/3 md:ml-auto flex justify-center w-full px-8">
-                    <h1 className={`text-sm sm:text-md md:text-lg font-light`}>
+                <div className="md:w-1/3 md:ml-auto flex justify-center w-full">
+                    <h1 className={`text-sm sm:text-md md:text-lg font-light md:mr-8`}>
                         I&apos;m a software engineer with an interest in interactive design.
                         My computer science degree concentrations are in AI/ML model development processes and
                         mathematical theory.

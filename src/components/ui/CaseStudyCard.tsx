@@ -1,19 +1,27 @@
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
+import {Button} from "@/components/ui/button"
+import {Separator} from "@/components/ui/separator"
 
 interface CaseStudyCardProps {
     number: string
     title: string
     description: string
+    imageUrl?: string
     imageAlt: string
     isLast?: boolean
 }
 
-export default function CaseStudyCard({ number, title, description, imageAlt, isLast = false }: CaseStudyCardProps) {
+export default function CaseStudyCard({
+                                          number,
+                                          title,
+                                          description,
+                                          imageUrl,
+                                          imageAlt,
+                                          isLast = false
+                                      }: CaseStudyCardProps) {
     return (
         <div className="space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-[1fr,1px,1fr] gap-8 items-center">
                 <div className="space-y-6 p-6 md:p-8">
                     <div className="space-y-6">
                         <p className="text-sm font-medium tracking-wider text-neutral-900">CASE STUDY {number}</p>
@@ -27,9 +35,10 @@ export default function CaseStudyCard({ number, title, description, imageAlt, is
                         VIEW CASE STUDY
                     </Button>
                 </div>
-                <div className="relative aspect-[4/3] md:aspect-auto md:h-[600px] overflow-hidden group">
+                <Separator orientation="vertical" className="hidden md:block h-full"/>
+                <div className="relative aspect-[4/3] overflow-hidden group">
                     <Image
-                        src="/placeholder.svg?height=800&width=600"
+                        src={imageUrl || "/placeholder.svg?height=800&width=600"}
                         alt={imageAlt}
                         fill
                         className="object-cover transition-all duration-500 ease-in-out group-hover:rounded-[3rem]"
@@ -37,7 +46,7 @@ export default function CaseStudyCard({ number, title, description, imageAlt, is
                     />
                 </div>
             </div>
-            {!isLast && <Separator className="my-16" />}
+            {!isLast && <Separator className="my-16"/>}
         </div>
     )
 }

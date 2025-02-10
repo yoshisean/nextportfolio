@@ -7,11 +7,10 @@ import {
     Float,
     BakeShadows, Bvh, Preload
 } from "@react-three/drei";
-import {Canvas, useFrame, useThree,} from "@react-three/fiber";
+import {Canvas, useThree,} from "@react-three/fiber";
 import {FishOptModel} from "../../../public/FishOptimized";
 import {Suspense, useEffect, useRef, useState} from "react";
 import {JSX} from "react/jsx-runtime";
-import {Mesh} from "three";
 
 interface Props {
     material: JSX.Element
@@ -68,7 +67,7 @@ const Scene: React.FC<Props> = ({material}) => {
 
 
     return (
-        <div ref={canvasRef} className={'h-fit'}>
+        <div ref={canvasRef} className={'h-fit lg:h-full'}>
             {
                 isVisible ?
                     (
@@ -92,7 +91,7 @@ const Scene: React.FC<Props> = ({material}) => {
                             </Suspense>
                         </Canvas>
                     )
-                    : <p>The 3D Scene is off-screen and has been unmounted.</p>
+                    : <></>
             }
         </div>
     )
@@ -124,4 +123,5 @@ function BoxWithTransmissionMaterial({material}: Props) {
         </RoundedBox>
     )
 }
+
 export default Scene;
