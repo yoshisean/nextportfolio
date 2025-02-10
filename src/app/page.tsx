@@ -2,18 +2,15 @@
 import {Bacasime_Antique} from "next/font/google";
 import ScrollDown from "@/components/ui/scrollDown";
 import ScrollingWorks from "@/components/ui/ScrollingWorks";
-import {useEffect, useMemo} from "react";
+import {useEffect, useMemo, useRef} from "react";
 import {MeshTransmissionMaterial} from "@react-three/drei";
 import Scene from "@/components/3D Elements/Scene";
 import WorksOverview from "@/components/ui/worksOverview";
 import Lenis from "lenis";
 import Footer from "@/components/ui/Footer";
+import {useScroll} from "framer-motion";
 
-// const libre = Libre_Caslon_Display({
-//     subsets: ['latin'],
-//     variable: '--font-libre',
-//     weight: '400'
-// })
+
 const bantique = Bacasime_Antique({
     variable: '--font-bantique',
     weight: '400'
@@ -47,6 +44,16 @@ export default function Home() {
         requestAnimationFrame(raf);
     }, [])
 
+
+    const container = useRef(null);
+    const { scrollYProgress } = useScroll({
+
+        target: container,
+
+        offset: ['start start', 'end end']
+
+    })
+
     return (
         <div className="flex flex-col space-y-8 scroll-smooth w-screen">
             <section
@@ -62,19 +69,20 @@ export default function Home() {
                 <ScrollDown/>
             </section>
             <section
-                id={'worksSection'}
                 className={'h-fit flex flex-col items-center w-full'}
             >
                 <div className="md:w-1/3 md:ml-auto flex justify-center w-full">
-                    <h1 className={`text-sm sm:text-md md:text-lg font-light md:mr-8`}>
+                    <h1 className={`text-sm sm:text-md md:text-lg font-light mx-8`}>
                         I&apos;m a software engineer with an interest in interactive design.
                         My computer science degree concentrations are in AI/ML model development processes and
                         mathematical theory.
                     </h1>
                 </div>
-                <ScrollingWorks/>
             </section>
-            <section className={'relative w-full flex flex-col'}>
+            <section className={'relative w-full flex flex-col'}
+                     id={'worksSection'}
+            >
+                <ScrollingWorks/>
                 <WorksOverview/>
             </section>
             <Footer/>

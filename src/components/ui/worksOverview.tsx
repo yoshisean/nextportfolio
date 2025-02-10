@@ -1,4 +1,5 @@
 import CaseStudyCard from "@/components/ui/CaseStudyCard";
+import ParallaxCard from "@/components/ui/ParallaxCard";
 
 export default function WorksOverview() {
     interface caseStudyProps {
@@ -7,10 +8,11 @@ export default function WorksOverview() {
         role: string
         description: string
         siteUrl?: string
-        imageUrl?: string
+        imageUrl: string
         imageAlt: string
         year: number
         tech: string[]
+        color: string
     }
     const caseStudies: caseStudyProps[] = [
         {
@@ -19,11 +21,12 @@ export default function WorksOverview() {
             role: 'Fullstack Development, Web Design',
             year: 2025,
             description:
-                "Fullstack solo developer of a SaaS service that converts data into presentation ready visuals out of the box, " +
+                "Fullstack solo developer of a SaaS product that converts data into presentation ready visuals out of the box, " +
                 "dramatically reducing reporting time for clients.",
             imageUrl: '/Datafront.png',
             imageAlt: "Image of data visualization website",
-            tech: ['NextJS','Supabase','SQL','HTML','TypeScript','TailwindCSS']
+            tech: ['NextJS','Supabase','TypeScript','SQL','TailwindCSS'],
+            color: "#f0e3d3"
         },
         {
             number: "002",
@@ -36,7 +39,8 @@ export default function WorksOverview() {
             siteUrl: "https://chunio.net/",
             imageUrl: '/Chunio.png',
             imageAlt: "Laptop recommendation site",
-            tech: ['NextJS','HTML','TypeScript','TailwindCSS']
+            tech: ['NextJS','TypeScript','TailwindCSS'],
+            color: "#e0e2ce"
         },
         {
             number: "003",
@@ -49,15 +53,22 @@ export default function WorksOverview() {
             siteUrl: "https://pointdrift.com/",
             imageUrl: '/PointDrift.png',
             imageAlt: "AI codebase startup",
-            tech: ['React','HTML','CSS','Javascript']
+            tech: ['React','Javascript','CSS'],
+            color: "#ead7c3"
         },
     ]
 
     return (
         <div className="mx-auto container space-y-8 pt-16">
-            {caseStudies.map((study, index) => (
-                <CaseStudyCard key={study.number} {...study} isLast={index === caseStudies.length - 1} />
+            {caseStudies.map((work, index) => (
+                <CaseStudyCard key={work.number} index={index} {...work} isLast={index === caseStudies.length - 1} />
             ))}
+            {/*{caseStudies.map((work, index) => (*/}
+            {/*    <ParallaxCard key={index} src={work.imageUrl}*/}
+            {/*                  title={work.title} description={work.description} url={work.siteUrl || "/"}*/}
+            {/*                  alt={work.imageAlt} color={work.color} i={index}*/}
+            {/*    />*/}
+            {/*))}*/}
         </div>
     )
 }

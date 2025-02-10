@@ -77,11 +77,10 @@ const Scene: React.FC<Props> = ({material}) => {
                                 style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}
                                 fallback={<div>Sorry no WebGL supported!</div>}
                         >
-                            <Suspense fallback={<FallbackMarkdown isCanvas={true}/>}>
+                            <Suspense fallback={<FallbackMarkdown/>}>
                                 <AdaptiveDpr pixelated/>
                                 <BakeShadows/>
                                 <Environment resolution={512} files={'overcast_soil_puresky_1k.hdr'}/>
-                                {/*<Pointer/>*/}
                                 <Bvh firstHitOnly>
                                     <FishOptModel/>
                                     <NameText/>
@@ -91,7 +90,7 @@ const Scene: React.FC<Props> = ({material}) => {
                             </Suspense>
                         </Canvas>
                     )
-                    : <FallbackMarkdown isCanvas={false}/>
+                    : <></>
             }
         </div>
     )
