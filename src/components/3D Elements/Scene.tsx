@@ -11,6 +11,7 @@ import {Canvas, useThree,} from "@react-three/fiber";
 import {FishOptModel} from "../../../public/FishOptimized";
 import {Suspense, useEffect, useRef, useState} from "react";
 import {JSX} from "react/jsx-runtime";
+import FallbackMarkdown from "@/components/3D Elements/Fallback";
 
 interface Props {
     material: JSX.Element
@@ -18,6 +19,8 @@ interface Props {
 
 const Scene: React.FC<Props> = ({material}) => {
     const [isLgScreen, setIsLgScreen] = useState(false);
+    const canvasRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
         const checkScreenSize = () => {
@@ -34,15 +37,13 @@ const Scene: React.FC<Props> = ({material}) => {
         return () => window.removeEventListener('resize', checkScreenSize);
     }, []);
 
-    const canvasRef = useRef(null);
-    const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        setIsVisible(true);  // Canvas is visible
+                        setIsVisible(true);
                     } else {
                         setIsVisible(false); // Canvas is not visible
                     }
@@ -65,7 +66,6 @@ const Scene: React.FC<Props> = ({material}) => {
         };
     }, []);
 
-
     return (
         <div ref={canvasRef} className={'h-fit lg:h-full'}>
             {
@@ -77,7 +77,7 @@ const Scene: React.FC<Props> = ({material}) => {
                                 style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}
                                 fallback={<div>Sorry no WebGL supported!</div>}
                         >
-                            <Suspense fallback={null}>
+                            <Suspense fallback={<FallbackMarkdown isCanvas={true}/>}>
                                 <AdaptiveDpr pixelated/>
                                 <BakeShadows/>
                                 <Environment resolution={512} files={'overcast_soil_puresky_1k.hdr'}/>
@@ -91,7 +91,7 @@ const Scene: React.FC<Props> = ({material}) => {
                             </Suspense>
                         </Canvas>
                     )
-                    : <></>
+                    : <FallbackMarkdown isCanvas={false}/>
             }
         </div>
     )

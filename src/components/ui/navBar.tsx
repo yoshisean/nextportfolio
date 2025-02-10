@@ -1,6 +1,5 @@
 'use client'
 import Link from "next/link";
-
 const NavBar = () => {
     const scrollToSection = (id:string) => {
         const element = document.getElementById(id);
@@ -14,7 +13,9 @@ const NavBar = () => {
             <div className="container mx-auto">
                 <div className="flex items-center justify-between h-16">
                     <Link href={"/"}>
-                        <span className={`text-xl font-bold tracking-tight`}>SY</span>
+                        <span className={`text-xl font-bold tracking-tight items-center`}>
+                            <img src={'/logo.svg'} width={32} height={32} alt={'site logo'}/>
+                        </span>
                     </Link>
                     <div className={`flex space-x-4 md:space-x-8 mx-auto border rounded-full 
                       pr-4 pl-4 pt-2 pb-2 backdrop-blur`}>
