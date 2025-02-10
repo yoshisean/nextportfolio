@@ -7,6 +7,7 @@ import {MeshTransmissionMaterial} from "@react-three/drei";
 import Scene from "@/components/3D Elements/Scene";
 import WorksOverview from "@/components/ui/worksOverview";
 import Lenis from "lenis";
+import Footer from "@/components/ui/Footer";
 
 // const libre = Libre_Caslon_Display({
 //     subsets: ['latin'],
@@ -76,6 +77,7 @@ export default function Home() {
             <section className={'relative w-full flex flex-col'}>
                 <WorksOverview/>
             </section>
+            <Footer/>
         </div>
     );
 }

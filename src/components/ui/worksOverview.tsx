@@ -4,6 +4,7 @@ export default function WorksOverview() {
     interface caseStudyProps {
         number: string
         title: string
+        role: string
         description: string
         siteUrl?: string
         imageUrl?: string
@@ -13,19 +14,21 @@ export default function WorksOverview() {
     }
     const caseStudies: caseStudyProps[] = [
         {
-            number: "01",
+            number: "001",
             title: "DATAFRONT",
+            role: 'Fullstack Development, Web Design',
             year: 2025,
             description:
                 "Fullstack solo developer of a SaaS service that converts data into presentation ready visuals out of the box, " +
                 "dramatically reducing reporting time for clients.",
             imageUrl: '/Datafront.png',
             imageAlt: "Image of data visualization website",
-            tech: ['NextJS','Supabase','PostgreSQL','Stripe','HTML','TailwindCSS']
+            tech: ['NextJS','Supabase','SQL','HTML','TypeScript','TailwindCSS']
         },
         {
-            number: "02",
+            number: "002",
             title: "CHUNIO",
+            role: 'Frontend Development',
             year: 2024,
             description:
                 "I was the primary Frontend Engineer for a personalized laptop recommendation service boasting a " +
@@ -33,11 +36,12 @@ export default function WorksOverview() {
             siteUrl: "https://chunio.net/",
             imageUrl: '/Chunio.png',
             imageAlt: "Laptop recommendation site",
-            tech: ['NextJS','HTML','TailwindCSS','Javascript']
+            tech: ['NextJS','HTML','TypeScript','TailwindCSS']
         },
         {
-            number: "03",
+            number: "003",
             title: "POINT DRIFT",
+            role: 'Frontend Development',
             year: 2023,
             description:
                 "As part of a small startup team exploring AI assistants in Enterprise codebases, I built a " +
