@@ -1,6 +1,6 @@
 import Image from "next/image"
-import {Button} from "@/components/ui/button"
-import {Separator} from "@/components/ui/separator"
+import { Button } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 
 interface CaseStudyCardProps {
     number: string
@@ -17,7 +17,7 @@ export default function CaseStudyCard({
                                           description,
                                           imageUrl,
                                           imageAlt,
-                                          isLast = false
+                                          isLast = false,
                                       }: CaseStudyCardProps) {
     return (
         <div className="space-y-8">
@@ -36,15 +36,16 @@ export default function CaseStudyCard({
                     </Button>
                 </div>
                 <Separator orientation="vertical" className="hidden md:block h-full"/>
-                <div className="relative aspect-[4/3] overflow-hidden group">
+                <div className="relative aspect-[4/3] overflow-hidden group transition-all duration-500 ease-in-out hover:rounded-[3rem]">
                     <Image
                         src={imageUrl || "/placeholder.svg?height=800&width=600"}
                         alt={imageAlt}
                         fill
-                        className="object-cover transition-all duration-500 ease-in-out group-hover:rounded-[3rem]"
+                        className="object-cover transition-all duration-500 ease-in-out group-hover:scale-110"
                         priority
                     />
                 </div>
+
             </div>
             {!isLast && <Separator className="my-16"/>}
         </div>

@@ -7,10 +7,10 @@ const ScrollingText = () => {
         font-light text-7xl md:text-8xl lg:text-9xl mt-32 -rotate-2`}
         >
             <span className={'animate-infinite-scroll'}>
-                SELECTED WORKS SELECTED WORKS&nbsp;
+                RECENT WORK RECENT WORK&nbsp;
             </span>
             <span className={'animate-infinite-scroll'} aria-hidden="true">
-                SELECTED WORKS SELECTED WORKS&nbsp;
+                RECENT WORK RECENT WORK&nbsp;
             </span>
         </div>
     );

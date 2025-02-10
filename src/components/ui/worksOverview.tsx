@@ -15,6 +15,7 @@ export default function WorksOverview() {
             description:
                 "Fullstack solo developer of a SaaS service that converts data into presentation ready visuals out of the box, " +
                 "dramatically reducing reporting time for clients.",
+            imageUrl: '/Datafront.png',
             imageAlt: "Aerial view of waves crashing",
         },
         {
