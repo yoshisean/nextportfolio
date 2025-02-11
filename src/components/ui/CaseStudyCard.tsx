@@ -35,18 +35,16 @@ export default function CaseStudyCard(
                 <div className="grid grid-cols-1 md:grid-cols-[1fr,1px,1fr] gap-8 items-center p-4">
                     <div className="space-y-6 p-6 md:p-8">
                         <div className="space-y-6">
-                            <p className="text-sm font-medium tracking-wider text-neutral-900">ITEM {number}</p>
-                            <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900">{title}</h2>
+                            <p className="text-sm font-medium tracking-wider text-neutral-950">ITEM {number}</p>
+                            <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-950">{title}</h2>
                             <h2 className="text-2xl md:text-3xl font-normal tracking-normal text-neutral-700">{role}</h2>
                             <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">{description}</p>
                         </div>
-                        <div className={'flex flex-row space-x-4'}>
-                            <div className={'rounded-3xl w-fit h-fit border-neutral-400 text-neutral-400 border ' +
-                                'py-1 px-3'}>
+                        <div className={'flex flex-row space-x-4 text-neutral-600'}>
+                            <div className={'rounded-3xl w-fit h-fit border-neutral-600 border py-1 px-3'}>
                                 {year}
                             </div>
-                            <div className={'rounded-3xl w-fit h-fit border-neutral-400 text-neutral-400 border ' +
-                                'py-1 px-3'}>
+                            <div className={'rounded-3xl w-fit h-fit border-neutral-600 border py-1 px-3'}>
                                 {tech.join(', ')}
                             </div>
                         </div>

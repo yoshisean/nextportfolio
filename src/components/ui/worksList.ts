@@ -22,7 +22,7 @@ export const caseStudies: caseStudyProps[] = [
         imageUrl: '/Datafront.png',
         imageAlt: "Image of data visualization website",
         tech: ['NextJS','Supabase','TypeScript','SQL','TailwindCSS'],
-        color: "#f0e3d3"
+        color: "#d6ccc2"
     },
     {
         number: "002",
@@ -36,7 +36,7 @@ export const caseStudies: caseStudyProps[] = [
         imageUrl: '/Chunio.png',
         imageAlt: "Laptop recommendation site",
         tech: ['NextJS','TypeScript','TailwindCSS'],
-        color: "#e0e2ce"
+        color: "#e3d5ca"
     },
     {
         number: "003",
@@ -45,11 +45,11 @@ export const caseStudies: caseStudyProps[] = [
         year: 2023,
         description:
             "As part of a small startup team exploring AI assistants in Enterprise codebases, I built a " +
-            "dynamic landing page with Basic interactions.",
+            "dynamic landing page with basic interactions and page routing.",
         siteUrl: "https://pointdrift.com/",
         imageUrl: '/PointDrift.png',
         imageAlt: "AI codebase startup",
         tech: ['React','Javascript','CSS'],
-        color: "#ead7c3"
+        color: "#d5bdaf"
     },
 ]

@@ -53,12 +53,6 @@ export default function Home() {
         offset: ['start start', 'end end']
     })
 
-    useEffect(() => {
-        scrollYProgress.on("change", e=>console.log(scrollYProgress.get()))
-    }, []);
-    // useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // })
-
     return (
         <div className="flex flex-col space-y-8 scroll-smooth w-screen">
             <section
