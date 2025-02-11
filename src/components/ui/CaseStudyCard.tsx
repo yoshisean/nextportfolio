@@ -13,11 +13,11 @@ interface CaseStudyCardProps {
     number: string
     title: string
     description: string
-    year: number
+    year: string
     role: string
     tech: string[]
     siteUrl?: string
-    imageUrl?: string
+    imageUrl: string
     imageAlt: string
 }
 
@@ -58,7 +58,7 @@ export default function CaseStudyCard(
                               tabIndex={!siteUrl ? -1 : undefined}
                         >
                             <Image
-                                src={imageUrl || "/placeholder.svg?height=800&width=600"}
+                                src={imageUrl}
                                 alt={imageAlt}
                                 fill
                                 className="object-cover transition-all duration-500 ease-in-out group-hover:scale-110"

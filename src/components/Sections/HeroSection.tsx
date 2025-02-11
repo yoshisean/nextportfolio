@@ -22,7 +22,7 @@ const HeroSection:React.FC<HeroProps> = ({scrollYProgress}) => {
                 thickness={2.5}
                 chromaticAberration={0.025}
                 anisotropy={0.1}
-                distortion={0.15}
+                distortion={0.25}
                 distortionScale={0.1}
                 temporalDistortion={0.2}
                 iridescence={1}
@@ -36,7 +36,8 @@ const HeroSection:React.FC<HeroProps> = ({scrollYProgress}) => {
 
     return (
         <motion.section
-            className="sticky top-0 h-[100vh] flex flex-col justify-center items-center w-full pb-[10vh] -z-10"
+            className="sticky top-0 h-[100vh] flex flex-col justify-center items-center w-full
+             pb-[10vh] -z-10 bg-[#edede9]"
             style={{scale, rotate}}
         >
             <div className="text-center lg:hidden">

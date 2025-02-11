@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function FooterContent() {
     return (
-        <div className='bg-[#032329] text-white py-8 px-12 h-full w-full flex flex-col justify-between'>
+        <div className='bg-[#132a13] text-white py-8 px-12 h-full w-full flex flex-col justify-between'>
             <Section1 />
             <Section2 />
         </div>

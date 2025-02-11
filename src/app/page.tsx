@@ -8,6 +8,7 @@ import CaseStudyCard from "@/components/ui/CaseStudyCard";
 import {caseStudies} from "@/components/ui/worksList";
 import HeroSection from "@/components/Sections/HeroSection";
 import SkillsSection from "@/components/Sections/SkillsSection";
+import AboutSection from "@/components/Sections/AboutSection";
 
 export default function Home() {
 
@@ -33,17 +34,16 @@ export default function Home() {
     const { scrollYProgress: mainYProgress } = useScroll({
         target: mainContainer,
         offset: ["start start", "end end"]
-
     })
 
     return (
-        <div className="flex flex-col space-y-8 scroll-smooth w-screen">
+        <div className="flex flex-col scroll-smooth w-screen">
             <main className={'relative h-[200vh]'} ref={mainContainer}>
                 <HeroSection scrollYProgress={mainYProgress}/>
                 <SkillsSection scrollYProgress={mainYProgress}/>
             </main>
 
-            <section className={'relative w-full flex flex-col'}
+            <section className={'relative w-full flex flex-col bg-[#FBF7ED]'}
                      id={'worksSection'}
             >
                 <ScrollingWorks/>
@@ -60,10 +60,7 @@ export default function Home() {
                     }
                 </div>
             </section>
-
-            <section className={'h-screen flex flex-col items-center w-full'} id={'aboutSection'}>
-
-            </section>
+            <AboutSection/>
             <Footer/>
         </div>
     );
