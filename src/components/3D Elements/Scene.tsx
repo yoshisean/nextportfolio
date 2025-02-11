@@ -66,14 +66,14 @@ const Scene: React.FC<Props> = ({material}) => {
     }, []);
 
     return (
-        <div ref={canvasRef} className={'h-fit lg:h-full'}>
+        <div ref={canvasRef} className={'h-fit lg:h-[100vh]'}>
             {
                 isVisible ?
                     (
                         isLgScreen &&
                         <Canvas camera={{position: [0, 0, 30]}}
                                 performance={{min: 1}}
-                                style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}
+                                style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -10}}
                                 fallback={<div>Sorry no WebGL supported!</div>}
                         >
                             <Suspense fallback={null}>
