@@ -15,10 +15,15 @@ const AboutSection = () => {
                 />
             </div>
             <div className="md:w-1/2 m-4">
-                <h1 className={'text-2xl space-y-8'}>
-                    Developer, Designer, Cellist.
+                <h1 className={'text-2xl font-semibold space-y-8'}>
+                    Developer, designer, debugger,
+                    cellist at the Georgia Tech Symphony Orchestra and Emory University Symphony Orchestra
                     <br/>
-                    Coding and designing for 7+ years
+                    <br/>
+                    Coding and designing for 7+ years. Startup and solo project enthusiast at Create-X I2P.
+                    <br/>
+                    <br/>
+                    Cooking and outdoor enjoyer, climber.
                 </h1>
             </div>
         </section>
