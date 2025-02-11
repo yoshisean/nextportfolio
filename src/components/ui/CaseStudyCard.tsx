@@ -1,38 +1,36 @@
 import Image from "next/image"
 import {Separator} from "@/components/ui/separator"
 import Link from "next/link";
-import {useRef} from "react";
-import {useScroll} from "framer-motion";
+import {MotionValue, useTransform, motion} from "framer-motion";
 
 interface CaseStudyCardProps {
+    color: string
+    index: number
+    progress: MotionValue<number>
+    range: number[]
+    targetScale: number
+
     number: string
     title: string
-    role: string
     description: string
     year: number
+    role: string
+    tech: string[]
     siteUrl?: string
     imageUrl?: string
     imageAlt: string
-    isLast?: boolean
-    tech: string[]
-    color: string
-    index: number
 }
 
 export default function CaseStudyCard(
-    {number, title, role, description, year, tech, siteUrl, imageUrl, imageAlt, isLast = false,color, index}
+    {number, title, description, year, role, tech, siteUrl, imageUrl, imageAlt,color, index, progress, range, targetScale}
         : CaseStudyCardProps) {
 
-    const container = useRef(null);
-    const {scrollYProgress} = useScroll({
-        target: container,
-        offset: ['start end', 'start start']
-    })
+    const scale = useTransform(progress, range, [1, targetScale]);
 
     return (
-        <div className="flex items-center justify-center h-screen sticky top-0" ref={container}>
-            <div className="space-y-8 rounded-xl"
-                 style={{backgroundColor: color, top: `calc(-5vh + ${index * 25}px)`}}
+        <div className="flex items-center justify-center h-screen sticky top-0">
+            <motion.div className="space-y-8 rounded-xl relative"
+                 style={{backgroundColor: color, scale: scale, top: `calc(-5vh + ${index * 25}px)`}}
             >
                 <div className="grid grid-cols-1 md:grid-cols-[1fr,1px,1fr] gap-8 items-center p-4">
                     <div className="space-y-6 p-6 md:p-8">
@@ -71,7 +69,7 @@ export default function CaseStudyCard(
                         </Link>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 }

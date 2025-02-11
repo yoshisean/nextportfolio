@@ -5,10 +5,11 @@ import ScrollingWorks from "@/components/ui/ScrollingWorks";
 import {useEffect, useMemo, useRef} from "react";
 import {MeshTransmissionMaterial} from "@react-three/drei";
 import Scene from "@/components/3D Elements/Scene";
-import WorksOverview from "@/components/ui/worksOverview";
 import Lenis from "lenis";
 import Footer from "@/components/ui/Footer";
 import {useScroll} from "framer-motion";
+import CaseStudyCard from "@/components/ui/CaseStudyCard";
+import {caseStudies} from "@/components/ui/worksList";
 
 
 const bantique = Bacasime_Antique({
@@ -34,8 +35,9 @@ export default function Home() {
         );
     }, []);
 
-    useEffect(()=>{
+    useEffect(() => {
         const lenis = new Lenis()
+
         function raf(time: number) {
             lenis.raf(time)
             requestAnimationFrame(raf)
@@ -46,13 +48,16 @@ export default function Home() {
 
 
     const container = useRef(null);
-    const { scrollYProgress } = useScroll({
-
+    const {scrollYProgress} = useScroll({
         target: container,
-
         offset: ['start start', 'end end']
-
     })
+
+    useEffect(() => {
+        scrollYProgress.on("change", e=>console.log(scrollYProgress.get()))
+    }, []);
+    // useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    // })
 
     return (
         <div className="flex flex-col space-y-8 scroll-smooth w-screen">
@@ -83,7 +88,17 @@ export default function Home() {
                      id={'worksSection'}
             >
                 <ScrollingWorks/>
-                <WorksOverview/>
+                <div className="mx-auto container space-y-8 mt-32 md:mt-0" ref={container}>
+                    {caseStudies.map((work, index) => {
+                        const targetScale = 1 - ((caseStudies.length - index) * 0.05);
+                        return (
+                            <CaseStudyCard key={work.number} index={index} {...work}
+                                           progress={scrollYProgress} range={[index/caseStudies.length, 1]} targetScale={targetScale}
+                            />
+                        )
+                    })
+                    }
+                </div>
             </section>
             <Footer/>
         </div>
