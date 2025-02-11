@@ -32,7 +32,7 @@ const Section2 = () => {
 
 const Nav = () => {
     return (
-        <div className='flex shrink-0 gap-20'>
+        <div className='flex shrink-0 gap-20 items-center'>
             <div className='flex flex-col gap-2'>
                 <h3 className='mb-2 uppercase text-[#ffffff80]'>Socials</h3>
                 <a href='https://www.linkedin.com/in/yoshisean/' className={'w-fit hover:underline-animation'}>
@@ -43,11 +43,9 @@ const Nav = () => {
                 </a>
             </div>
             <div className='flex flex-col gap-2'>
-                <h3 className='mb-2 uppercase text-[#ffffff80]'>Education</h3>
-                <p>News</p>
-                <p>Learn</p>
-                <p>Certification</p>
-                <p>Publications</p>
+                <h1 className='mb-2 uppercase text-gray-300 text-[3vw] tracking-wide'>
+                    Based in Chicago and Atlanta
+                </h1>
             </div>
         </div>
     )

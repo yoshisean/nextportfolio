@@ -11,7 +11,6 @@ import {Canvas, useThree,} from "@react-three/fiber";
 import {FishOptModel} from "../../../public/FishOptimized";
 import {Suspense, useEffect, useRef, useState} from "react";
 import {JSX} from "react/jsx-runtime";
-import FallbackMarkdown from "@/components/3D Elements/Fallback";
 
 interface Props {
     material: JSX.Element

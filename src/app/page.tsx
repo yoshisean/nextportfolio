@@ -94,6 +94,9 @@ export default function Home() {
                     }
                 </div>
             </section>
+            <section className={'h-screen flex flex-col items-center w-full'} id={'aboutSection'}>
+
+            </section>
             <Footer/>
         </div>
     );

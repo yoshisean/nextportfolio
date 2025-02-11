@@ -25,12 +25,11 @@ const NavBar = () => {
                         >
                             /WORKS
                         </h1>
-                        {/*</Link>*/}
-                        <Link href="/about">
-                            <h1 className="font-light tracking-wide hover:underline-animation underline-offset-4">
-                                /ABOUT
-                            </h1>
-                        </Link>
+                        <h1 className="font-light tracking-wide hover:underline-animation underline-offset-4"
+                            onClick={() => scrollToSection('aboutSection')}
+                        >
+                            /ABOUT
+                        </h1>
                         <h1 className="font-light tracking-wide hover:underline-animation underline-offset-4"
                             onClick={() => scrollToSection('contactFooter')}
                         >
