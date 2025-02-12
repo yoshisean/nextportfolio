@@ -1,30 +1,40 @@
+'use client'
 import Image from "next/image";
+import {useRef} from "react";
+import {useScroll, useTransform, motion} from "framer-motion";
 
 const AboutSection = () => {
+    const container = useRef(null);
+
+    const {scrollYProgress} = useScroll({
+        target: container,
+        offset: ['start start', 'end start']
+    })
+
+    const y = useTransform(scrollYProgress, [0, 1], ["-10vh", "10vh"]);
+
     return (
-        <section className={'relative h-screen flex flex-col md:flex-row items-center w-full bg-[#FBF7ED] p-8'}
-                 id={'aboutSection'}>
-            <div className="md:w-1/2 relative border border-gray-200 shadow-xl overflow-hidden rounded-xl m-4">
-                <Image
-                    src={'/SeanView.jpg'}
-                    alt={'Watching the sea at Sassnitz, GER'}
-                    layout="responsive"
-                    width={5472}
-                    height={3080}
-                    objectFit="cover"
-                />
+        <section ref={container}
+                 className={'relative flex items-center justify-center h-screen overflow-hidden bg-black'}
+                 style={{clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)"}}
+                 id={'aboutSection'}
+        >
+            <div className='relative flex justify-center my-40 z-10'>
+                <p className='text-[4vw] uppercase text-center max-w-[80vw] leading-none text-white'>
+                    Developer, designer, and cellist.
+                    Coding for 7+ years.
+                    Startup and solo project enthusiast.
+                </p>
             </div>
-            <div className="md:w-1/2 m-4">
-                <h1 className={'text-2xl font-semibold space-y-8'}>
-                    Developer, designer, debugger,
-                    cellist at the Georgia Tech Symphony Orchestra and Emory University Symphony Orchestra
-                    <br/>
-                    <br/>
-                    Coding and designing for 7+ years. Startup and solo project enthusiast at Create-X I2P.
-                    <br/>
-                    <br/>
-                    Cooking and outdoor enjoyer, climber.
-                </h1>
+            <div className={'fixed top-[-10vh] left-0 h-[120vh] w-full'}>
+                <motion.div className="relative h-full w-full" style={{y}}>
+                    <Image
+                        src={'/SeanViewBW.jpg'}
+                        alt={'Watching the sea at Sassnitz, GER'}
+                        fill
+                        objectFit="cover"
+                    />
+                </motion.div>
             </div>
         </section>
 

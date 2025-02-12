@@ -32,13 +32,13 @@ const HeroSection:React.FC<HeroProps> = ({scrollYProgress}) => {
         );
     }, []);
     const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
-    const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
+    // const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
 
     return (
         <motion.section
             className="sticky top-0 h-[100vh] flex flex-col justify-center items-center w-full
              pb-[10vh] -z-10 bg-[#edede9]"
-            style={{scale, rotate}}
+            style={{scale}}
         >
             <div className="text-center lg:hidden">
                 <h2 className="font-light text-2xl tracking-[0.2em]">Designer × Developer</h2>

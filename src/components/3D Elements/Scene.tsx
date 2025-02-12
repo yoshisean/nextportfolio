@@ -97,12 +97,13 @@ const Scene: React.FC<Props> = ({material}) => {
 
 function NameText() {
     const {width: w} = useThree((state) => state.viewport);
+    // Designer × Developer
     const shared = {
-        text: 'Designer × Developer\nSean Yoshihara',
-        font: '/Bacasime_Antique/BacasimeAntique-Regular.ttf',
-        letterSpacing: -0.025,
+        text: 'Sean Yoshihara',
+        font: '/Inter/Inter-VariableFont_opsz,wght.ttf',
+        letterSpacing: 0,
         color: 'black',
-        fontSize: w * 0.055 - 1,
+        fontSize: w * 0.055 - 1.5,
         lineHeight: 1.2,
         textAlign: 'center'
     }
