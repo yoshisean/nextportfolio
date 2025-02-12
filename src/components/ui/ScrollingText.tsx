@@ -14,16 +14,16 @@ const ScrollingText = () => {
                 </span>
             </div>
 
-            <div className={`w-full inline-flex flex-nowrap whitespace-nowrap overflow-hidden 
-            font-light text-7xl md:text-8xl lg:text-9xl`}
-            >
-                <span className={'animate-infinite-scroll-reverse'}>
-                    RECENT WORK RECENT WORK&nbsp;
-                </span>
-                <span className={'animate-infinite-scroll-reverse'} aria-hidden="true">
-                    RECENT WORK RECENT WORK&nbsp;
-                </span>
-            </div>
+            {/*<div className={`w-full inline-flex flex-nowrap whitespace-nowrap overflow-hidden */}
+            {/*font-light text-7xl md:text-8xl lg:text-9xl`}*/}
+            {/*>*/}
+            {/*    <span className={'animate-infinite-scroll-reverse'}>*/}
+            {/*        RECENT WORK RECENT WORK&nbsp;*/}
+            {/*    </span>*/}
+            {/*    <span className={'animate-infinite-scroll-reverse'} aria-hidden="true">*/}
+            {/*        RECENT WORK RECENT WORK&nbsp;*/}
+            {/*    </span>*/}
+            {/*</div>*/}
         </div>
     )
 };
