@@ -1,11 +1,5 @@
 'use client'
-import {MotionValue, useTransform, motion} from "framer-motion";
-import {Bacasime_Antique} from "next/font/google";
-
-const bantique = Bacasime_Antique({
-    variable: '--font-bantique',
-    weight: '400'
-})
+import {MotionValue, useTransform, motion} from "motion/react";
 
 interface SkillProps {
     scrollYProgress: MotionValue<number>

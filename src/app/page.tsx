@@ -3,7 +3,7 @@ import ScrollingWorks from "@/components/ui/ScrollingWorks";
 import {useEffect, useRef} from "react";
 import Lenis from "lenis";
 import Footer from "@/components/ui/Footer";
-import {useScroll} from "framer-motion";
+import {useScroll} from "motion/react";
 import CaseStudyCard from "@/components/ui/CaseStudyCard";
 import {caseStudies} from "@/components/ui/worksList";
 import HeroSection from "@/components/Sections/HeroSection";

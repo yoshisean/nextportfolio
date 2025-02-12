@@ -1,14 +1,9 @@
 'use client'
-import {useTransform, motion, MotionValue} from "framer-motion";
+import { motion, MotionValue,useTransform } from "motion/react"
 import Scene from "@/components/3D Elements/Scene";
 import ScrollDown from "@/components/ui/scrollDown";
-import {Bacasime_Antique} from "next/font/google";
 import {useMemo} from "react";
 import {MeshTransmissionMaterial} from "@react-three/drei";
-const bantique = Bacasime_Antique({
-    variable: '--font-bantique',
-    weight: '400'
-})
 
 interface HeroProps {
     scrollYProgress: MotionValue<number>
@@ -38,15 +33,16 @@ const HeroSection:React.FC<HeroProps> = ({scrollYProgress}) => {
         <motion.section
             className="sticky top-0 h-[100vh] flex flex-col justify-center items-center w-full
              pb-[10vh] -z-10 bg-[#edede9]"
-            style={{scale}}
+            style={{ scale }} // Control scaling origin
+            id={'heroSection'}
         >
             <div className="text-center lg:hidden">
-                <h2 className="font-light text-2xl tracking-[0.2em]">Designer × Developer</h2>
-                <h1 className={`text-7xl sm:text-8xl md:text-9xl tracking-tight ${bantique.className}`}>
+                {/*<h2 className="font-light text-2xl tracking-[0.2em]">Designer × Developer</h2>*/}
+                <h1 className={`text-7xl sm:text-8xl md:text-9xl tracking-tight`}>
                     Sean Yoshihara
                 </h1>
             </div>
-            <Scene material={transmissionMaterial}/>
+            <Scene material={transmissionMaterial} scale={scale}/>
             <ScrollDown/>
         </motion.section>
     )
