@@ -63,7 +63,10 @@ const Scene: React.FC<Props> = ({material , scale}) => {
     }, []);
 
     return (
-        <motion.div ref={canvasRef} className={'h-fit lg:h-full w-full p-0 m-0'}>
+        <motion.div ref={canvasRef}
+                    className={'h-fit lg:h-full w-full p-0 m-0'}
+                    style={{transition: 'all 200ms ease-in-out'}}
+        >
             {
                 isVisible && isLgScreen ?
                     <Canvas camera={{position: [0, 0, 30]}}
@@ -78,7 +81,6 @@ const Scene: React.FC<Props> = ({material , scale}) => {
                     >
                         <Suspense fallback={null}>
                             <AdaptiveDpr pixelated/>
-                            <BakeShadows/>
                             <Environment resolution={512} files={'overcast_soil_puresky_1k.hdr'}/>
                             <Bvh firstHitOnly>
                                 <FishOptModel/>
@@ -118,9 +120,9 @@ interface boxMat {
     material: JSX.Element
 }
 function BoxWithTransmissionMaterial({material}: boxMat) {
-    const {width: w} = useThree((state) => state.viewport);
+    const width = useThree((state) => state.viewport.getCurrentViewport().width);
     return (
-        <RoundedBox scale={[0.055 * w, 4.8, 8]} args={[10, 5, 2]} radius={0.3}>
+        <RoundedBox scale={[0.055 * width, 4.8, 8]} args={[10, 5, 2]} radius={0.3}>
             {material}
         </RoundedBox>
     )
