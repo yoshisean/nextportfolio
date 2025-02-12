@@ -1,5 +1,5 @@
 'use client'
-import ScrollingWorks from "@/components/ui/ScrollingWorks";
+import ScrollingWorks from "@/components/ui/ScrollingText";
 import {useEffect, useRef} from "react";
 import Lenis from "lenis";
 import Footer from "@/components/ui/Footer";
@@ -9,6 +9,7 @@ import {caseStudies} from "@/components/ui/worksList";
 import HeroSection from "@/components/Sections/HeroSection";
 import SkillsSection from "@/components/Sections/SkillsSection";
 import AboutSection from "@/components/Sections/AboutSection";
+import InteractiveInfiniteScroll from "@/components/ui/InteractiveInfiniteScroll";
 
 export default function Home() {
 
@@ -47,6 +48,7 @@ export default function Home() {
                      id={'worksSection'}
             >
                 <ScrollingWorks/>
+                {/*<InteractiveInfiniteScroll/>*/}
                 <div className="mx-auto container space-y-8 mt-32 md:mt-0 mb-16" ref={container}>
                     {caseStudies.map((work, index) => {
                         const targetScale = 1 - ((caseStudies.length - index) * 0.05);

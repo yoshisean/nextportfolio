@@ -42,7 +42,7 @@ const HeroSection:React.FC<HeroProps> = ({scrollYProgress}) => {
                     Sean Yoshihara
                 </h1>
             </div>
-            <Scene material={transmissionMaterial} scale={scale}/>
+            <Scene material={transmissionMaterial}/>
             <ScrollDown/>
         </motion.section>
     )

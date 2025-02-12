@@ -29,7 +29,7 @@ const AboutSection = () => {
             <div className={'fixed top-[-10vh] left-0 h-[120vh] w-full'}>
                 <motion.div className="relative h-full w-full" style={{y}}>
                     <Image
-                        src={'/SeanViewBW.jpg'}
+                        src={'/SeanViewCompressed.jpg'}
                         alt={'Watching the sea at Sassnitz, GER'}
                         fill
                         objectFit="cover"
