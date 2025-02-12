@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 export default function FooterContent() {
     return (
@@ -18,11 +18,52 @@ const Section1 = () => {
 }
 
 const Section2 = () => {
+    const [shuffledText, setShuffledText] = useState('Get in touch');
+    const originalText = 'Get in touch';
+    const velocity = 75;
+
+    const shuffle = (arr: string[]) => {
+        let j, x, i = arr.length;
+        while (i) {
+            j = Math.floor(Math.random() * i);
+            x = arr[--i];
+            arr[i] = arr[j];
+            arr[j] = x;
+        }
+        return arr;
+    };
+
+    const shuffleText = (element: string) => {
+        const elementTextArray = element.split('');
+        let randomText = [];
+
+        const repeatShuffle = (times: number, index: number) => {
+            if (index === times) {
+                setShuffledText(originalText);
+                return;
+            }
+
+            setTimeout(() => {
+                randomText = shuffle([...elementTextArray]);
+                for (let i = 0; i < index; i++) {
+                    randomText[i] = originalText[i];
+                }
+                setShuffledText(randomText.join(''));
+                index++;
+                repeatShuffle(times, index);
+            }, velocity);
+        };
+
+        repeatShuffle(element.length, 0);
+    };
+
     return (
         <div className='flex justify-between items-end'>
             <a href="mailto:vcsean3@gmail.com">
-                <h1 className='text-[14vw] leading-[0.8] mt-10 hover:underline-animation'>
-                    Get in touch
+                <h1 className='text-[10vw] leading-[0.8] mt-10'
+                    onMouseEnter={()=>shuffleText(originalText)}
+                >
+                    {shuffledText}
                 </h1>
             </a>
             <p>©Sean Yoshihara 2025</p>

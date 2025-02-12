@@ -17,11 +17,11 @@ const SkillsSection: React.FC<SkillProps> = ({scrollYProgress}) => {
 
     return (
         <motion.section className="h-[100vh] flex flex-col justify-center items-center w-full
-                space-y-8 mx-auto md:p-8 z-10 bg-[#FBF7ED]"
+                space-y-8 md:space-y-16 lg:space-y-32 mx-auto md:p-8 z-10 bg-[#FBF7ED]"
                         style={{scale}}
         >
-            <h1 className={`${bantique.className} font-light text-6xl md:text-7xl lg:text-8xl mx-8`}>
-                Software engineer with a strong theoretical background
+            <h1 className={`font-light text-6xl md:text-7xl lg:text-8xl mx-8 md:[word-spacing:25px] text-center`}>
+                Professional Skillset
             </h1>
             <div className="flex flex-col md:flex-row">
                 <div className="flex-1 text-3xl md:text-4xl lg:text-5xl mx-8 space-y-4">

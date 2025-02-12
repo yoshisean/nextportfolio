@@ -47,7 +47,7 @@ export default function Home() {
                      id={'worksSection'}
             >
                 <ScrollingWorks/>
-                <div className="mx-auto container space-y-8 mt-32 md:mt-0" ref={container}>
+                <div className="mx-auto container space-y-8 mt-32 md:mt-0 mb-16" ref={container}>
                     {caseStudies.map((work, index) => {
                         const targetScale = 1 - ((caseStudies.length - index) * 0.05);
                         return (
