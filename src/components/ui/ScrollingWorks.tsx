@@ -4,7 +4,7 @@ import React from 'react';
 const ScrollingText = () => {
     return (
         <div className={`w-full inline-flex flex-nowrap whitespace-nowrap overflow-hidden
-        font-light text-7xl md:text-8xl lg:text-9xl -rotate-2`}
+        font-light text-7xl md:text-8xl lg:text-9xl`}
         >
             <span className={'animate-infinite-scroll'}>
                 RECENT WORK RECENT WORK&nbsp;
