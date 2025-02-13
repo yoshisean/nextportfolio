@@ -9,7 +9,6 @@ import {caseStudies} from "@/components/ui/worksList";
 import HeroSection from "@/components/Sections/HeroSection";
 import SkillsSection from "@/components/Sections/SkillsSection";
 import AboutSection from "@/components/Sections/AboutSection";
-import InteractiveInfiniteScroll from "@/components/ui/InteractiveInfiniteScroll";
 
 export default function Home() {
 

@@ -13,6 +13,8 @@ body {
 canvas{
   display: block;
   margin: 0 auto;
+  min-width: 1024px;
+  min-height: 768px;
 }
 
 section {

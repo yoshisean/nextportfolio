@@ -8,7 +8,7 @@ import {
     BakeShadows, Bvh, Preload
 } from "@react-three/drei";
 
-import {Canvas} from "@react-three/fiber";
+import {Canvas, useThree} from "@react-three/fiber";
 import {FishOptModel} from "../../../public/FishOptimized";
 import {Suspense, useEffect, useRef, useState} from "react";
 import {JSX} from "react/jsx-runtime";
@@ -61,10 +61,18 @@ const Scene: React.FC<Props> = ({material}) => {
     }, []);
 
     return (
-        <div ref={canvasRef} className={'h-fit lg:h-full w-full p-0 m-0'} style={{transition: 'all 200ms ease-in-out'}}>
+        <div ref={canvasRef} className={'h-fit lg:h-full w-full p-0 m-0'}>
             {isVisible && isLgScreen ? (
                 <Canvas camera={{position: [0, 0, 30]}} performance={{min: 1}}
-                        fallback={<div>Sorry no WebGL supported!</div>}>
+                        fallback={<div>Sorry no WebGL supported!</div>}
+                        style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%'
+                        }}
+                >
                     <Suspense fallback={null}>
                         <AdaptiveDpr pixelated/>
                         <BakeShadows />
@@ -105,8 +113,9 @@ interface boxMat {
 }
 
 function BoxWithTransmissionMaterial({material}: boxMat) {
+    const width = useThree((state) => state.viewport.getCurrentViewport().width);
     return (
-        <RoundedBox scale={[5, 4.8, 8]} args={[10, 5, 2]} radius={0.3}>
+        <RoundedBox scale={[0.055*width, 4.8, 8]} args={[10, 5, 2]} radius={0.3}>
             {material}
         </RoundedBox>
     )

@@ -37,9 +37,9 @@ export default function CaseStudyCard(
                             <p className="text-sm font-medium tracking-wider text-neutral-950">ITEM {number}</p>
                             <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-950">{title}</h2>
                             <h2 className="text-2xl md:text-3xl font-normal tracking-normal text-neutral-700">{role}</h2>
-                            <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">{description}</p>
+                            <p className="text-lg md:text-xl text-neutral-700 leading-relaxed">{description}</p>
                         </div>
-                        <div className={'flex flex-row space-x-4 text-neutral-600'}>
+                        <div className={'flex flex-row space-x-4 text-neutral-700'}>
                             <div className={'rounded-3xl w-fit h-fit border-neutral-600 border py-1 px-3'}>
                                 {year}
                             </div>

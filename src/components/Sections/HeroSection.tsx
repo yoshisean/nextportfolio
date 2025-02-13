@@ -1,4 +1,3 @@
-'use client'
 import { motion, MotionValue,useTransform } from "motion/react"
 import Scene from "@/components/3D Elements/Scene";
 import ScrollDown from "@/components/ui/scrollDown";
