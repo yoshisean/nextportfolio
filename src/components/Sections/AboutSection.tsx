@@ -33,6 +33,7 @@ const AboutSection = () => {
                         alt={'Watching the sea at Sassnitz, GER'}
                         fill
                         objectFit="cover"
+                        placeholder='blur'
                     />
                 </motion.div>
             </div>
