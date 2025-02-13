@@ -8,6 +8,9 @@ const questrial = Questrial({
     variable: '--font-questrial',
     weight: "400"
 })
+
+import { Analytics } from "@vercel/analytics/react"
+
 export const metadata: Metadata = {
     title: "Sean Yoshihara",
     description: "A Dynamic and interactive portfolio website for software engineer Sean Yoshihara. ",
@@ -19,6 +22,7 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
             <body className={`${questrial.className} antialiased bg-black overflow-x-hidden`}>
                 <NavBar/>
                 {children}
+                <Analytics/>
             </body>
         </html>
 
