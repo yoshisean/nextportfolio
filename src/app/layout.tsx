@@ -45,12 +45,10 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
     return (
         <html lang="en">
             <body className={`${questrial.className} antialiased bg-black overflow-x-hidden`}>
-                <link rel="icon" href="/favicon.ico" sizes="any"/>
                 <NavBar/>
                     {children}
                 <Analytics/>
             </body>
         </html>
-
     );
 }
