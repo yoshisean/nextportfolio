@@ -15,7 +15,7 @@ export const caseStudies: caseStudyProps[] = [
         number: "001",
         title: "DATAFRONT",
         role: 'Fullstack Development, Web Design',
-        year: '2025+',
+        year: '2024-2025+',
         description:
             "Fullstack solo developer of a SaaS product that converts data into presentation ready visuals out of the box, " +
             "dramatically reducing reporting time for clients.",

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
     openGraph: {
         title: "Sean Yoshihara - Software Engineer & Designer",
-        description: "Interactive portfolio of Sean Yoshihara, showcasing innovative projects and dynamic experiences built with cutting-edge technologies.",
+        description: "An interactive portfolio site showcasing recent projects as a software developer.",
         url: "https://www.yoshisean.com/", // Replace with actual URL if needed
         images: [
             {
@@ -45,8 +45,9 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
     return (
         <html lang="en">
             <body className={`${questrial.className} antialiased bg-black overflow-x-hidden`}>
+                <link rel="icon" href="/favicon.ico" sizes="any"/>
                 <NavBar/>
-                {children}
+                    {children}
                 <Analytics/>
             </body>
         </html>
