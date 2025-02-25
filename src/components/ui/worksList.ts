@@ -13,7 +13,7 @@ export interface caseStudyProps {
 export const caseStudies: caseStudyProps[] = [
     {
         number: "001",
-        title: "DATAFRONT",
+        title: "ILLUTIX",
         role: 'Fullstack Development, Web Design',
         year: '2024-2025+',
         description:
