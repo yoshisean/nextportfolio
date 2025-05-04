@@ -19,6 +19,7 @@ export const caseStudies: caseStudyProps[] = [
         description:
             "Fullstack solo developer of a SaaS product that converts data into presentation ready visuals out of the box, " +
             "dramatically reducing reporting time for clients.",
+        siteUrl: 'https://www.illutix.com/',
         imageUrl: '/Illutix.png',
         imageAlt: "Image of data visualization website",
         tech: ['NextJS','Supabase','TypeScript','SQL','TailwindCSS'],
