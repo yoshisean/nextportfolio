@@ -116,7 +116,6 @@ function BoxWithTransmissionMaterial({material}: boxMat) {
     const width = useThree((state) => state.viewport.getCurrentViewport().width);
     return (
         <RoundedBox scale={[0.055*width, 4.8, 8]} args={[10, 5, 2]} radius={0.3}>
-        {/*<RoundedBox scale={[5, 4.8, 8]} args={[10, 5, 2]} radius={0.3}>*/}
             {material}
         </RoundedBox>
     )

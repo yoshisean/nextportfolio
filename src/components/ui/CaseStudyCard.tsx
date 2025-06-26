@@ -21,7 +21,7 @@ export default function CaseStudyCard(
 
     return (
         <div className="flex items-center justify-center h-screen sticky top-0">
-            <motion.div className="space-y-8 rounded-md relative lg:h-[550px]"
+            <motion.div className="space-y-8 rounded-md relative lg:min-h-[550px] h-fit"
                  style={{backgroundColor: caseStudy.color, scale: scale, top: `calc(-5vh + ${index * 40}px)`}}
             >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center p-4 md:p-6 lg:p-8 h-full">
