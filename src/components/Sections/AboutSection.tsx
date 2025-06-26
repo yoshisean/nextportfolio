@@ -34,6 +34,7 @@ const AboutSection = () => {
                         fill
                         objectFit="cover"
                         placeholder='blur'
+                        loading={'lazy'}
                     />
                 </motion.div>
             </div>

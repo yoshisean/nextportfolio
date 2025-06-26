@@ -55,7 +55,7 @@ export default function CaseStudyCard(
                                 alt={caseStudy.imageAlt}
                                 fill
                                 className="object-cover transition-all duration-500 ease-in-out group-hover:blur-sm group-hover:scale-105"
-                                priority
+                                loading={'lazy'}
                             />
                             {/* Overlay text */}
                             <div className="text-white absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100  transition-opacity duration-500">

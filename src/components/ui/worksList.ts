@@ -65,6 +65,6 @@ export const caseStudies: caseStudyProps[] = [
         imageUrl: '/PointDrift.png',
         imageAlt: "AI codebase startup",
         tech: ['React','Javascript','CSS'],
-        color: "#4E5166"
+        color: "#9C92A3"
     },
 ]
