@@ -20,7 +20,6 @@ interface Props {
 const Scene: React.FC<Props> = ({material}) => {
     const [isLgScreen, setIsLgScreen] = useState(false);
     const canvasRef = useRef<HTMLDivElement>(null);
-    // const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
         const checkScreenSize = () => {
@@ -31,34 +30,6 @@ const Scene: React.FC<Props> = ({material}) => {
         return () => window.removeEventListener('resize', checkScreenSize);
     }, []);
 
-
-    // useEffect(() => {
-    //     const observer = new IntersectionObserver(
-    //         (entries) => {
-    //             entries.forEach(entry => {
-    //                 if (entry.isIntersecting) {
-    //                     setIsVisible(true);
-    //                 } else {
-    //                     setIsVisible(false); // Canvas is not visible
-    //                 }
-    //             });
-    //         },
-    //         {
-    //             threshold: 0, // Change this based on how much of the element needs to be visible
-    //         }
-    //     );
-    //
-    //     if (canvasRef.current) {
-    //         observer.observe(canvasRef.current);
-    //     }
-    //
-    //     // Cleanup observer on unmount
-    //     return () => {
-    //         if (canvasRef.current) {
-    //             observer.unobserve(canvasRef.current);
-    //         }
-    //     };
-    // }, []);
 
     return (
         <div ref={canvasRef} className={'h-fit lg:h-full w-full p-0 m-0'}>
@@ -76,7 +47,7 @@ const Scene: React.FC<Props> = ({material}) => {
                     <Suspense fallback={null}>
                         <AdaptiveDpr pixelated/>
                         <BakeShadows />
-                        <Environment resolution={512} files={'overcast_soil_puresky_1k.hdr'}/>
+                        <Environment resolution={512} files={'overcast_soil_puresky_1k.hdr'} environmentIntensity={0.6}/>
                         <Bvh firstHitOnly>
                             <FishOptModel/>
                             <NameText/>

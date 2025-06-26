@@ -13,15 +13,16 @@ const HeroSection:React.FC<HeroProps> = ({scrollYProgress}) => {
             <MeshTransmissionMaterial
                 backside={true}
                 samples={4}
-                thickness={2.5}
+                thickness={2}
                 chromaticAberration={0.025}
+                // chromaticAberration={0.0}
                 anisotropy={0.1}
                 distortion={0.25}
                 distortionScale={0.1}
                 temporalDistortion={0.2}
-                iridescence={0.1}
+                iridescence={0}
                 iridescenceIOR={1}
-                iridescenceThicknessRange={[0, 1400]}
+                // iridescenceThicknessRange={[0, 1400]}
             />
         );
     }, []);
