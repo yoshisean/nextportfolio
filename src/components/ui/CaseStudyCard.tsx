@@ -24,7 +24,7 @@ export default function CaseStudyCard(
             <motion.div className="space-y-8 rounded-md relative lg:h-[550px]"
                  style={{backgroundColor: caseStudy.color, scale: scale, top: `calc(-5vh + ${index * 40}px)`}}
             >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-4 md:py-6 lg:py-8 h-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center p-4 md:p-6 lg:p-8 h-full">
                     <div className="space-y-6 p-6 md:p-8">
                         <div className="space-y-6">
                             <p className="text-sm font-medium tracking-wider text-neutral-950">ITEM {caseStudy.number}</p>
@@ -41,7 +41,7 @@ export default function CaseStudyCard(
                             </div>
                         </div>
                     </div>
-                    <div className="relative aspect-[4/3] overflow-hidden group transition-all duration-500 ease-in-out rounded-md m-4 h-full w-full">
+                    <div className="relative aspect-[4/3] overflow-hidden group transition-all duration-500 ease-in-out rounded-md h-full w-full">
                         <Link
                             href={caseStudy.siteUrl || "/"}
                             target="_blank"
@@ -54,13 +54,13 @@ export default function CaseStudyCard(
                                 src={caseStudy.imageUrl}
                                 alt={caseStudy.imageAlt}
                                 fill
-                                className="object-contain transition-all duration-500 ease-in-out group-hover:blur-sm"
+                                className="object-cover transition-all duration-500 ease-in-out group-hover:blur-sm group-hover:scale-105"
                                 priority
                             />
                             {/* Overlay text */}
                             <div className="text-white absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100  transition-opacity duration-500">
                                 <div className={'flex items-center justify-center bg-black p-2 px-4 rounded-full'}>
-                                    <p className=" text-lg font-normal">Visit Project</p>
+                                    <p className=" text-lg font-normal">View Project</p>
                                     <ArrowRight className={'w-4- h-4'}/>
                                 </div>
                             </div>

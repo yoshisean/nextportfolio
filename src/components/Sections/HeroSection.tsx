@@ -20,19 +20,19 @@ const HeroSection:React.FC<HeroProps> = ({scrollYProgress}) => {
                 distortionScale={0.1}
                 temporalDistortion={0.2}
                 iridescence={0.1}
-                iridescenceIOR={1.52}
+                iridescenceIOR={1}
                 iridescenceThicknessRange={[0, 1400]}
             />
         );
     }, []);
-    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+    const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
     // const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
 
     return (
         <motion.section
             className="sticky top-0 h-[100vh] flex flex-col justify-center items-center w-full
              pb-[10vh] -z-10 bg-[#edede9]"
-            style={{ scale }} // Control scaling origin
+            style={{ opacity }} // Control scaling origin
             id={'heroSection'}
         >
             <div className="text-center lg:hidden">
