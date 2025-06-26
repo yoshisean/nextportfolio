@@ -2,13 +2,13 @@
 const ScrollingText = () => {
     return (
         <div className={`w-full inline-flex flex-nowrap whitespace-nowrap overflow-hidden 
-            font-light text-7xl md:text-8xl lg:text-9xl`}
+            font-light text-7xl md:text-8xl lg:text-9xl tracking-wide`}
         >
                 <span className={'animate-infinite-scroll'}>
-                    RECENT WORK RECENT WORK&nbsp;
+                    RECENT WORK • RECENT WORK • RECENT WORK • RECENT WORK&nbsp;•&nbsp;
                 </span>
-            <span className={'animate-infinite-scroll'} aria-hidden="true">
-                    RECENT WORK RECENT WORK&nbsp;
+                <span className={'animate-infinite-scroll'} aria-hidden="true">
+                    RECENT WORK • RECENT WORK • RECENT WORK • RECENT WORK&nbsp;•&nbsp;
                 </span>
         </div>
     )

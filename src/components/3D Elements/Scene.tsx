@@ -5,7 +5,7 @@ import {
     Text,
     AdaptiveDpr,
     Float,
-    BakeShadows, Bvh, Preload
+    BakeShadows, Bvh, Preload, Html
 } from "@react-three/drei";
 
 import {Canvas, useThree} from "@react-three/fiber";
@@ -44,10 +44,15 @@ const Scene: React.FC<Props> = ({material}) => {
                             height: '100%'
                         }}
                 >
-                    <Suspense fallback={null}>
+                    <Suspense fallback={
+                        <Html center className={'w-fit'}>
+                            <h1 className={'whitespace-nowrap text-lg'}>Loading content... Please be patient :)</h1>
+                        </Html>
+                    }>
                         <AdaptiveDpr pixelated/>
-                        <BakeShadows />
-                        <Environment resolution={512} files={'overcast_soil_puresky_1k.hdr'} environmentIntensity={0.6}/>
+                        <BakeShadows/>
+                        <Environment resolution={512} files={'overcast_soil_puresky_1k.hdr'}
+                                     environmentIntensity={0.6}/>
                         <Bvh firstHitOnly>
                             <FishOptModel/>
                             <NameText/>
@@ -86,7 +91,7 @@ interface boxMat {
 function BoxWithTransmissionMaterial({material}: boxMat) {
     const width = useThree((state) => state.viewport.getCurrentViewport().width);
     return (
-        <RoundedBox scale={[0.055*width, 4.8, 8]} args={[10, 5, 2]} radius={0.3}>
+        <RoundedBox scale={[0.055 * width, 4.8, 8]} args={[10, 5, 2]} radius={0.3}>
             {material}
         </RoundedBox>
     )

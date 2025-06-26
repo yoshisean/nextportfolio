@@ -23,7 +23,7 @@ const SkillsSection: React.FC<SkillProps> = ({scrollYProgress}) => {
                         (01) ML Model Development
                     </h1>
                     <h1>
-                        (02) Fullstack WebDev
+                        (02) Fullstack Web Dev
                     </h1>
                     <h1>
                         (03) Web Design
@@ -32,7 +32,7 @@ const SkillsSection: React.FC<SkillProps> = ({scrollYProgress}) => {
                 <div className="md:w-1/2 md:ml-auto flex justify-center w-full">
                     <h1 className="text-sm sm:text-lg md:text-xl font-light mx-8">
                         I&apos;m an undergraduate student at Georgia Tech with an interest in interactive design.
-                        My computer science degree concentrations are in AI/ML model development processes and
+                        My computer science degree concentrations are in AI/ML model development and
                         theoretical study. Notable coursework includes Natural Language Processing,
                         Computer Vision, Machine Learning, and Advanced Algorithms.
                     </h1>

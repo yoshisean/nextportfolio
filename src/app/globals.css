@@ -118,11 +118,11 @@ section {
   }
 }
 .animate-infinite-scroll {
-  animation: infinite-scroll 20s linear infinite;
+  animation: infinite-scroll 30s linear infinite;
   animation-fill-mode: forwards;
 
 }
 .animate-infinite-scroll-reverse {
-  animation: infinite-scroll 20s linear infinite reverse;
+  animation: infinite-scroll 30s linear infinite reverse;
   animation-fill-mode: forwards;
 }
