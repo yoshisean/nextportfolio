@@ -20,7 +20,7 @@ export const caseStudies: caseStudyProps[] = [
             "Explored the use of sparse autoencoders to interpret hidden state representations in the LLaMA 3.2 language model, revealing semantically meaningful features tied to real-world tasks. " +
             "I implemented the JumpSAE architecture, tuned training hyperparameters, and developed custom evaluation metrics to analyze the tradeoff between sparsity and reconstruction fidelity.",
         siteUrl: 'https://drive.google.com/file/d/15dpW1GtyVDpgrm3L3mjUX1LLptUz-TzY/view?usp=sharing',
-        imageUrl: '/Illutix.png',
+        imageUrl: '/SaeThumbnail.png',
         imageAlt: "Image of data visualization website",
         tech: ['Jupyter','PyTorch','HuggingFace','LLama 3.2B'],
         color: "#B9B7A7"

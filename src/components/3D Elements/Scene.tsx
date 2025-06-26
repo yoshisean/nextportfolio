@@ -93,17 +93,17 @@ const Scene: React.FC<Props> = ({material}) => {
 function NameText() {
     // Designer × Developer
     const shared = {
-        text: 'Sean Yoshihara',
         font: '/Inter/Inter-VariableFont_opsz,wght.ttf',
         letterSpacing: -0.025,
         color: 'black',
         fontSize: 3.1,
         lineHeight: 1.2,
-        textAlign: 'center'
     }
     return (
         <Float rotationIntensity={0.5}>
-            <Text {...shared} anchorX="center" anchorY="middle"/>
+            <Text {...shared} anchorX="center" anchorY="middle" textAlign={'center'}>
+                Sean Yoshihara
+            </Text>
         </Float>
     )
 }

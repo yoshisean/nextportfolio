@@ -19,8 +19,8 @@ const HeroSection:React.FC<HeroProps> = ({scrollYProgress}) => {
                 distortion={0.25}
                 distortionScale={0.1}
                 temporalDistortion={0.2}
-                iridescence={1}
-                iridescenceIOR={1}
+                iridescence={0.1}
+                iridescenceIOR={1.52}
                 iridescenceThicknessRange={[0, 1400]}
             />
         );
