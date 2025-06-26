@@ -52,7 +52,7 @@ export default function Home() {
                     {caseStudies.map((work, index) => {
                         const targetScale = 1 - ((caseStudies.length - index) * 0.05);
                         return (
-                            <CaseStudyCard key={work.number} index={index} {...work}
+                            <CaseStudyCard key={work.number} index={index} caseStudy={work}
                                            progress={scrollYProgress} range={[index / caseStudies.length, 1]}
                                            targetScale={targetScale}
                             />

@@ -12,6 +12,20 @@ export interface caseStudyProps {
 }
 export const caseStudies: caseStudyProps[] = [
     {
+        number: "000",
+        title: "Sparse Autoencoders",
+        role: 'Applied ML Researcher',
+        year: '2025',
+        description:
+            "Explored the use of sparse autoencoders to interpret hidden state representations in the LLaMA 3.2 language model, revealing semantically meaningful features tied to real-world tasks. " +
+            "I implemented the JumpSAE architecture, tuned training hyperparameters, and developed custom evaluation metrics to analyze the tradeoff between sparsity and reconstruction fidelity.",
+        siteUrl: 'https://drive.google.com/file/d/15dpW1GtyVDpgrm3L3mjUX1LLptUz-TzY/view?usp=sharing',
+        imageUrl: '/Illutix.png',
+        imageAlt: "Image of data visualization website",
+        tech: ['Jupyter','PyTorch','HuggingFace','LLama 3.2B'],
+        color: "#B9B7A7"
+    },
+    {
         number: "001",
         title: "ILLUTIX",
         role: 'Fullstack Development, Web Design',
@@ -23,7 +37,7 @@ export const caseStudies: caseStudyProps[] = [
         imageUrl: '/Illutix.png',
         imageAlt: "Image of data visualization website",
         tech: ['NextJS','Supabase','TypeScript','SQL','TailwindCSS'],
-        color: "#d6ccc2"
+        color: "#B5AA9D"
     },
     {
         number: "002",
@@ -37,7 +51,7 @@ export const caseStudies: caseStudyProps[] = [
         imageUrl: '/Chunio.png',
         imageAlt: "Laptop recommendation site",
         tech: ['NextJS','TypeScript','TailwindCSS'],
-        color: "#e3d5ca"
+        color: "#7C90A0"
     },
     {
         number: "003",
@@ -51,6 +65,6 @@ export const caseStudies: caseStudyProps[] = [
         imageUrl: '/PointDrift.png',
         imageAlt: "AI codebase startup",
         tech: ['React','Javascript','CSS'],
-        color: "#d5bdaf"
+        color: "#4E5166"
     },
 ]
