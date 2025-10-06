@@ -12,18 +12,22 @@ export function SplitWord({ word }: { word: string }) {
     const fontUrl = '/Inter/Inter-VariableFont_opsz,wght.ttf'
     const fontSize = 1
 
-    const handleSync = (troika: any) => {
+    const handleSync = (troika: {
+        textRenderInfo: {glyphBounds: Float32Array};
+        geometry: { boundingBox: { getSize: (arg0: Vector3) => void }}
+    }) => {
         const info = troika.textRenderInfo
         if (!info || !info.glyphBounds) return
 
-        const bounds = info.glyphBounds // Float32Array [x1,y1,x2,y2,...]
+        const bounds = info.glyphBounds
+        // bounds is an array where each bound is of length 4, given by x0, x1, y0, y2
         const glyphCount = bounds.length / 4
         const offsets: number[] = []
 
         for (let i = 0; i < glyphCount; i++) {
             const x1 = bounds[i * 4]
             const x2 = bounds[i * 4 + 2]
-            offsets.push((x1 + x2) / 2) // glyph center X
+            offsets.push((x1 + x2) / 2)
         }
 
         const size = new Vector3()
@@ -90,7 +94,7 @@ export default function NameText() {
     useEffect(() => {
         const id = setInterval(() => setIndex(i => (i + 1) % words.length), 5000)
         return () => clearInterval(id)
-    }, [])
+    }, [words.length])
 
     return <SplitWord key={words[index]} word={words[index]} />
 }
