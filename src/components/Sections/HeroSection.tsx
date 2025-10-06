@@ -1,49 +1,19 @@
 import { motion, MotionValue,useTransform } from "motion/react"
-import Scene from "@/components/3D Elements/Scene";
-import ScrollDown from "@/components/ui/scrollDown";
-import {useMemo} from "react";
-import {MeshTransmissionMaterial} from "@react-three/drei";
+import Scene from "@/components/fiber-components/scene";
 
 interface HeroProps {
     scrollYProgress: MotionValue<number>
 }
 const HeroSection:React.FC<HeroProps> = ({scrollYProgress}) => {
-    const transmissionMaterial = useMemo(() => {
-        return (
-            <MeshTransmissionMaterial
-                backside={true}
-                samples={4}
-                thickness={2}
-                chromaticAberration={0.025}
-                // chromaticAberration={0.0}
-                anisotropy={0.1}
-                distortion={0.25}
-                distortionScale={0.1}
-                temporalDistortion={0.2}
-                iridescence={0}
-                iridescenceIOR={1}
-                // iridescenceThicknessRange={[0, 1400]}
-            />
-        );
-    }, []);
     const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-    // const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
 
     return (
         <motion.section
-            className="sticky top-0 h-[100vh] flex flex-col justify-center items-center w-full
-             pb-[10vh] -z-10 bg-[#edede9]"
+            className="sticky top-0 h-[100vh] flex flex-col justify-center items-center w-screen -z-10 bg-[#edede9]"
             style={{ opacity }} // Control scaling origin
             id={'heroSection'}
         >
-            <div className="text-center lg:hidden">
-                {/*<h2 className="font-light text-2xl tracking-[0.2em]">Designer × Developer</h2>*/}
-                <h1 className={`text-7xl sm:text-8xl md:text-9xl tracking-tight`}>
-                    Sean Yoshihara
-                </h1>
-            </div>
-            <Scene material={transmissionMaterial}/>
-            <ScrollDown/>
+            <Scene/>
         </motion.section>
     )
 }

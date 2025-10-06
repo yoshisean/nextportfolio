@@ -18,7 +18,7 @@ export function FishOptModel(props) {
   }, [actions]);
 
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} {...props} dispose={null} scale={0.04}>
       <group name="Scene">
         <group name="Fish" position={[0, 0, 1.911]} rotation={[Math.PI, 0, Math.PI]}>
           <mesh name="Mesh001" geometry={nodes.Mesh001.geometry} material={materials['Material.001']} morphTargetDictionary={nodes.Mesh001.morphTargetDictionary} morphTargetInfluences={nodes.Mesh001.morphTargetInfluences} />
