@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode; }>) {
     return (
         <html lang="en" className={'antialiased'}>
-            <body className={`${questrial.className} h-screen w-screen antialiased bg-black`}>
+            <body className={`${questrial.className} h-screen w-screen antialiased bg-black overflow-x-hidden`}>
                 <NavBar/>
                 {children}
                 <Analytics/>

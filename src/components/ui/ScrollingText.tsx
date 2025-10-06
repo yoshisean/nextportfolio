@@ -70,10 +70,10 @@ const ScrollingText = ({ text, speed = 1.3 }: ScrollingTextProps) => {
             font-light text-7xl md:text-8xl lg:text-9xl tracking-wide`}
         >
             <div ref={containerRef} className="inline-flex flex-nowrap">
-                <span className="pr-6">Recent Works •</span>
-                <span className="pr-6">Recent Works •</span>
-                <span className="pr-6">Recent Works •</span>
-                <span className="pr-6">Recent Works •</span>
+                <span className="pr-6">{text} •</span>
+                <span className="pr-6">{text} •</span>
+                <span className="pr-6">{text} •</span>
+                <span className="pr-6">{text} •</span>
             </div>
         </div>
     );

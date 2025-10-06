@@ -6,6 +6,7 @@ import Footer from "@/components/ui/Footer";
 import HeroSection from "@/components/Sections/HeroSection";
 import SkillsSection from "@/components/Sections/SkillsSection";
 import AboutSection from "@/components/Sections/AboutSection";
+import WorksSection from "@/components/Sections/works-section";
 
 export default function Home() {
 
@@ -21,16 +22,17 @@ export default function Home() {
     }, [])
 
     return (
-        <div className="flex flex-col scroll-smooth w-full overflow-x-hidden bg-[#FBF7ED]">
+        <div className="flex flex-col scroll-smooth w-full overflow-x-hidden bg-white">
             <main className={'relative h-full'}>
                 <HeroSection/>
                 <SkillsSection/>
+                <WorksSection/>
             </main>
 
             <section className={'relative w-full flex flex-col '}
                      id={'worksSection'}
             >
-                <ScrollingWorks/>
+                <ScrollingWorks text={'Recent Works'}/>
                 {/*<InteractiveInfiniteScroll/>*/}
                 {/*<div className="mx-auto container space-y-8 mt-32 md:mt-0 mb-16" >*/}
                 {/*    {caseStudies.map((work, index) => {*/}

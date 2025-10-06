@@ -2,8 +2,8 @@
 export default function SkillsSection() {
 
     return (
-        <section className="h-[100vh] flex flex-col justify-center items-center w-full
-                space-y-8 md:space-y-16 lg:space-y-32 mx-auto md:p-8 z-10 bg-[#FBF7ED]"
+        <section className="flex flex-col justify-center items-center w-full
+                space-y-8 md:space-y-16 lg:space-y-32 mx-auto md:p-8"
         >
             <h1 className={`font-light text-6xl md:text-7xl lg:text-8xl mx-8 md:[word-spacing:25px] text-center`}>
                 Professional Skillset

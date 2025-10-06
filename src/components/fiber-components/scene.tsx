@@ -16,14 +16,7 @@ export default function Scene() {
     return (
         <Canvas
             fallback={<div>Looks like your device doesn’t support WebGL!</div>}
-            className="!m-0 !p-0 block w-full h-full !mr-0 absolute top-0"
-            style={{
-                margin: 0,
-                padding: 0,
-                display: 'block',
-                width: '100%',
-                height: '100%'
-            }}
+            className="w-full h-full absolute top-0"
             performance={{ min: 1 }}
             shadows
         >
