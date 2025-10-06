@@ -3,16 +3,15 @@ import {useState} from 'react';
 // import Modal from '../components/modal';
 import Project from "@/components/works/project";
 import Modal from "@/components/works/modal";
-
 const projects = [
     {
         title: "C2 Montreal",
-        src: "c2montreal.png",
+        src: "PortfolioThumbnail.png",
         color: "#000000"
     },
     {
         title: "Office Studio",
-        src: "officestudio.png",
+        src: "Illutix.png",
         color: "#8C8C8C"
     },
     {
@@ -22,7 +21,7 @@ const projects = [
     },
     {
         title: "Silencio",
-        src: "silencio.png",
+        src: "PointDrift.png",
         color: "#706D63"
     }
 ]

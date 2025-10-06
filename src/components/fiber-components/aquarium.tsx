@@ -2,11 +2,11 @@ import {MeshTransmissionMaterial, RoundedBox} from "@react-three/drei";
 
 export default function Aquarium() {
     return (
-        <RoundedBox args={[1.2,0.7,0.7]} radius={0.05}>
+        <RoundedBox args={[1.2,0.7,0.7]} radius={0.015}>
             <MeshTransmissionMaterial
                 backside={true}
                 samples={4}
-                thickness={0.3}
+                thickness={0.1}
                 chromaticAberration={0.025}
                 // chromaticAberration={0.0}
                 anisotropy={0.1}
