@@ -58,11 +58,10 @@ export default function Modal({ modal, projects }: ModalProps) {
 
     return (
         <>
-            {/* Modal container */}
-            <motion.div ref={modalContainer} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"} className="absolute h-[350px] w-[400px]
-            bg-white overflow-hidden pointer-events-none flex items-center justify-center">
+            <motion.div ref={modalContainer} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"}
+                        className="absolute h-[350px] w-[400px] bg-white overflow-hidden pointer-events-none flex items-center justify-center">
                 <div style={{ top: index * -100 + "%" }}
-                    className="absolute h-full w-full transition-[top] duration-[500ms] ease-[cubic-bezier(0.76,0,0.24,1)]">
+                    className="absolute h-full w-full transition-[top] duration-500 ease-out">
                     {projects.map((project, i) => {
                         const { src, color } = project;
                         return (
