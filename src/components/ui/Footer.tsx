@@ -7,11 +7,11 @@ export default function Footer() {
             style={{clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)"}}
             id={'contactFooter'}
         >
-            <div className='relative h-[calc(100vh+500px)] -top-[100vh]'>
-                <div className='h-[500px] sticky top-[calc(100vh-500px)]'>
+            {/*<div className='relative h-[calc(100vh+500px)] -top-[100vh]'>*/}
+            {/*    <div className='h-[500px] sticky top-[calc(100vh-500px)]'>*/}
                     <FooterContent/>
-                </div>
-            </div>
+            {/*    </div>*/}
+            {/*</div>*/}
         </div>
     )
 }

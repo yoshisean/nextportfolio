@@ -5,28 +5,32 @@ Files: fish.glb [1.73MB] > /Users/yoshisean/Desktop/nextportfolio/public/fish-tr
 */
 
 import React, {useEffect} from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
+import {useGLTF, useAnimations, Trail} from '@react-three/drei'
 
 export function FishOptModel(props) {
-  const group = React.useRef()
-  const { nodes, materials, animations } = useGLTF('/fish-transformed.glb')
-  const { actions, mixer } = useAnimations(animations, group)
+    const group = React.useRef()
+    const {nodes, materials, animations} = useGLTF('/fish-transformed.glb')
+    const {actions, mixer} = useAnimations(animations, group)
 
-  useEffect(() => {
-    mixer.timeScale = 0.5
-    actions.KeyAction.play()
-  }, [actions]);
+    useEffect(() => {
+        mixer.timeScale = 0.5
+        actions.KeyAction.play()
+    }, [actions]);
 
-  return (
-    <group ref={group} {...props} dispose={null} scale={0.04}>
-      <group name="Scene">
-        <group name="Fish" position={[0, 0, 1.911]} rotation={[Math.PI, 0, Math.PI]}>
-          <mesh name="Mesh001" geometry={nodes.Mesh001.geometry} material={materials['Material.001']} morphTargetDictionary={nodes.Mesh001.morphTargetDictionary} morphTargetInfluences={nodes.Mesh001.morphTargetInfluences} />
-          <mesh name="Mesh001_1" geometry={nodes.Mesh001_1.geometry} material={materials['fin.001']} morphTargetDictionary={nodes.Mesh001_1.morphTargetDictionary} morphTargetInfluences={nodes.Mesh001_1.morphTargetInfluences} />
+    return (
+        <group ref={group} {...props} dispose={null} scale={0.04}>
+            <group name="Scene">
+                <group name="Fish" position={[0, 0, 1.911]} rotation={[Math.PI, 0, Math.PI]}>
+                    <mesh name="Mesh001" geometry={nodes.Mesh001.geometry} material={materials['Material.001']}
+                          morphTargetDictionary={nodes.Mesh001.morphTargetDictionary}
+                          morphTargetInfluences={nodes.Mesh001.morphTargetInfluences}/>
+                    <mesh name="Mesh001_1" geometry={nodes.Mesh001_1.geometry} material={materials['fin.001']}
+                          morphTargetDictionary={nodes.Mesh001_1.morphTargetDictionary}
+                          morphTargetInfluences={nodes.Mesh001_1.morphTargetInfluences}/>
+                </group>
+            </group>
         </group>
-      </group>
-    </group>
-  )
+    )
 }
 
 useGLTF.preload('/fish-transformed.glb')

@@ -1,18 +1,9 @@
 'use client'
-import {MotionValue, useTransform, motion} from "motion/react";
-
-interface SkillProps {
-    scrollYProgress: MotionValue<number>
-}
-
-const SkillsSection: React.FC<SkillProps> = ({scrollYProgress}) => {
-    const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
-    // const rotate = useTransform(scrollYProgress, [0, 1], [5, 0]);
+export default function SkillsSection() {
 
     return (
-        <motion.section className="h-[100vh] flex flex-col justify-center items-center w-full
+        <section className="h-[100vh] flex flex-col justify-center items-center w-full
                 space-y-8 md:space-y-16 lg:space-y-32 mx-auto md:p-8 z-10 bg-[#FBF7ED]"
-                        style={{scale}}
         >
             <h1 className={`font-light text-6xl md:text-7xl lg:text-8xl mx-8 md:[word-spacing:25px] text-center`}>
                 Professional Skillset
@@ -39,8 +30,6 @@ const SkillsSection: React.FC<SkillProps> = ({scrollYProgress}) => {
                 </div>
             </div>
 
-        </motion.section>
+        </section>
     )
 }
-
-export default SkillsSection

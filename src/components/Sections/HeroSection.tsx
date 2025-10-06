@@ -1,22 +1,10 @@
-import { motion, MotionValue,useTransform } from "motion/react"
 import Scene from "@/components/fiber-components/scene";
 
-interface HeroProps {
-    scrollYProgress: MotionValue<number>
-}
-const HeroSection:React.FC<HeroProps> = ({scrollYProgress}) => {
-    const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-
+export default function HeroSection() {
     return (
-        <motion.section
-            className="sticky top-0 h-screen flex flex-col justify-center items-center w-full -z-10 bg-[#edede9]"
-            style={{ opacity }}
-            id="heroSection"
-        >
+        <section className={'w-full h-full'}>
             <Scene/>
-        </motion.section>
+        </section>
 
     )
 }
-
-export default HeroSection
