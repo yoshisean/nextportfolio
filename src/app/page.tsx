@@ -22,32 +22,13 @@ export default function Home() {
     }, [])
 
     return (
-        <div className="flex flex-col scroll-smooth w-full overflow-x-hidden bg-white">
-            <main className={'relative h-full'}>
-                <HeroSection/>
-                <SkillsSection/>
-                <WorksSection/>
-            </main>
-
-            <section className={'relative w-full flex flex-col '}
-                     id={'worksSection'}
-            >
-                <ScrollingWorks text={'Recent Works'}/>
-                {/*<InteractiveInfiniteScroll/>*/}
-                {/*<div className="mx-auto container space-y-8 mt-32 md:mt-0 mb-16" >*/}
-                {/*    {caseStudies.map((work, index) => {*/}
-                {/*        const targetScale = 1 - ((caseStudies.length - index) * 0.05);*/}
-                {/*        return (*/}
-                {/*            <CaseStudyCard key={work.number} index={index} caseStudy={work} range={[index / caseStudies.length, 1]}*/}
-                {/*                           targetScale={targetScale}*/}
-                {/*            />*/}
-                {/*        )*/}
-                {/*    })*/}
-                {/*    }*/}
-                {/*</div>*/}
-            </section>
+        <main className="flex flex-col scroll-smooth w-full overflow-x-hidden bg-white scrollbar-hide">
+            <HeroSection/>
+            <SkillsSection/>
+            <ScrollingWorks text={'Recent Works'}/>
+            <WorksSection/>
             <AboutSection/>
             <Footer/>
-        </div>
+        </main>
     );
 }
