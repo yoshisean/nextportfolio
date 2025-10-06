@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     keywords: [
         "Sean Yoshihara", "full-stack developer", "software engineer", "computer science", "Georgia Tech",
         "ML/AI", "machine learning", "artificial intelligence", "web development", "3D graphics",
-        "Next.js", "React", "Node.js", "Express", "Tailwind CSS", "Framer Motion", "React Three Fiber",
+        "Next.js", "React", "Tailwind CSS", "Framer Motion", "React Three Fiber",
         "interactive design", "AI applications", "backend development"
     ],
 
@@ -43,8 +43,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode; }>) {
     return (
-        <html lang="en">
-            <body className={`${questrial.className} flex flex-col h-screen w-screen overflow-x-hidden antialiased bg-black`}>
+        <html lang="en" className={'antialiased'}>
+            <body className={`${questrial.className} h-screen w-screen antialiased bg-black`}>
                 <NavBar/>
                 {children}
                 <Analytics/>

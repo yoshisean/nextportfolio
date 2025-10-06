@@ -37,7 +37,7 @@ export default function Home() {
     })
 
     return (
-        <div className="flex flex-col scroll-smooth w-screen">
+        <div className="flex flex-col scroll-smooth w-full overflow-x-hidden">
             <main className={'relative h-[200vh]'} ref={mainContainer}>
                 <HeroSection scrollYProgress={mainYProgress}/>
                 <SkillsSection scrollYProgress={mainYProgress}/>

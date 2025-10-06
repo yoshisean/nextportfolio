@@ -2,7 +2,9 @@
 import {
     Environment,
     AdaptiveDpr,
-    BakeShadows, Bvh, Preload, Html
+    BakeShadows,
+    Html,
+    PerspectiveCamera, // Import the standard camera
 } from "@react-three/drei";
 
 import {Canvas} from "@react-three/fiber";
@@ -11,32 +13,32 @@ import ModelGroup from "@/components/fiber-components/model-group";
 
 export default function Scene() {
     return (
-        <div className={'h-full w-full p-0 m-0'}>
-            <Canvas performance={{min: 1}}
-                    fallback={<div>Sorry no WebGL supported!</div>}
-                    style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%'
-                    }}
-            >
-                <Suspense fallback={
-                    <Html center>
-                        <h1 className={'whitespace-nowrap text-lg'}>Loading content... Please be patient :)</h1>
-                    </Html>
-                }>
-                    <AdaptiveDpr pixelated/>
-                    <BakeShadows/>
-                    <Environment resolution={512} files={'../overcast_soil_puresky_1k.hdr'}
-                                 environmentIntensity={0.6}/>
-                    <Bvh firstHitOnly>
-                        <ModelGroup/>
-                    </Bvh>
-                    <Preload all/>
-                </Suspense>
-            </Canvas>
-        </div>
+        <Canvas fallback={<div>Looks like your device doesn&apos;t support WebGL!</div>}
+                className="!m-0 !p-0 block w-full h-full !mr-0"
+                style={{
+                    margin: 0,
+                    padding: 0,
+                    display: 'block',
+                    width: '100%',
+                    height: '100%',
+                }}
+        >
+            <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={50}/>
+
+            <Suspense fallback={
+                <Html center>
+                    <h1 className={'whitespace-nowrap text-lg'}>Loading content... Please be patient :)</h1>
+                </Html>
+            }>
+                <AdaptiveDpr pixelated/>
+                <BakeShadows/>
+                <Environment
+                    resolution={512}
+                    files={'../overcast_soil_puresky_1k.hdr'}
+                    environmentIntensity={1}
+                />
+                <ModelGroup/>
+            </Suspense>
+        </Canvas>
     )
 }

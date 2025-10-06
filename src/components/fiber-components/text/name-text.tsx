@@ -2,7 +2,6 @@ import React, { useRef, useState, useLayoutEffect, useEffect } from 'react'
 import { Text } from '@react-three/drei'
 import { gsap } from 'gsap'
 import { Mesh, Vector3 } from 'three'
-import Character from '@/components/fiber-components/text/character'
 
 export function SplitWord({ word }: { word: string }) {
     const [charOffsets, setCharOffsets] = useState<number[]>([])
@@ -67,14 +66,19 @@ export function SplitWord({ word }: { word: string }) {
             {charOffsets.length > 0 && (
                 <group position-x={-totalWidth / 2}>
                     {word.replace(/ /g, "").split('').map((char, i) => (
-                        <Character
+                        <Text
                             key={i}
                             ref={(el) => {charRefs.current[i] = el}}
-                            char={char}
-                            x={charOffsets[i] ?? 0}
-                            fontUrl={fontUrl}
+                            anchorX="center"
+                            position={[charOffsets[i] ?? 0, 0, 0]}
+                            font={fontUrl}
                             fontSize={fontSize}
-                        />
+                            color="white"
+                            material-transparent
+                            material-opacity={0} // start invisible for GSAP
+                        >
+                            {char}
+                        </Text>
                     ))}
                 </group>
             )}
@@ -96,5 +100,5 @@ export default function NameText() {
         return () => clearInterval(id)
     }, [words.length])
 
-    return <SplitWord key={words[index]} word={words[index]} />
+    return <SplitWord word={words[index]} />
 }

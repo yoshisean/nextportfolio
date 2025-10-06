@@ -9,12 +9,13 @@ const HeroSection:React.FC<HeroProps> = ({scrollYProgress}) => {
 
     return (
         <motion.section
-            className="sticky top-0 h-[100vh] flex flex-col justify-center items-center w-screen -z-10 bg-[#edede9]"
-            style={{ opacity }} // Control scaling origin
-            id={'heroSection'}
+            className="sticky top-0 h-screen flex flex-col justify-center items-center w-full -z-10 bg-[#edede9]"
+            style={{ opacity }}
+            id="heroSection"
         >
             <Scene/>
         </motion.section>
+
     )
 }
 
