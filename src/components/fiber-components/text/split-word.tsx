@@ -93,15 +93,13 @@ export default function SplitWord({word}: { word: string }) {
         charRefs.current.forEach((mesh, i) => {
             if (!mesh || !originalPositions.current[i]) return;
 
-            // 3. Apply the continuous rotation and drift
-            mesh.rotation.x += rotationSpeeds.current[i][0] * delta;
-            mesh.rotation.y += rotationSpeeds.current[i][1] * delta;
-            mesh.rotation.z += rotationSpeeds.current[i][2] * delta;
-
-            // Apply drift to the "home" position, making it a moving target
-            originalPositions.current[i].x += movementSpeeds.current[i][0] * delta;
-            originalPositions.current[i].y += movementSpeeds.current[i][1] * delta;
-            originalPositions.current[i].z += movementSpeeds.current[i][2] * delta;
+            // mesh.rotation.x += rotationSpeeds.current[i][0] * delta;
+            // mesh.rotation.y += rotationSpeeds.current[i][1] * delta;
+            // mesh.rotation.z += rotationSpeeds.current[i][2] * delta;
+            //
+            // originalPositions.current[i].x += movementSpeeds.current[i][0] * delta;
+            // originalPositions.current[i].y += movementSpeeds.current[i][1] * delta;
+            // originalPositions.current[i].z += movementSpeeds.current[i][2] * delta;
 
             const homePosition = originalPositions.current[i];
             let targetPosition = homePosition;

@@ -4,10 +4,9 @@ import SplitWord from "@/components/fiber-components/text/split-word";
 export default function NameText() {
     const [index, setIndex] = useState(0)
     const words = [
-        'Sean Yoshihara',
-        'Developer',
-        'Designer',
-        'Engineer',
+        'SEAN YOSHIHARA',
+        'DEVELOPER',
+        'DESIGNER',
     ]
 
     useEffect(() => {

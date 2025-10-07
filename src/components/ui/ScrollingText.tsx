@@ -34,19 +34,19 @@ const ScrollingText = ({ text, speed = 1.3 }: ScrollingTextProps) => {
 
             // Create an observer to react to vertical scrolling
             observer = Observer.create({
-                type: "wheel,touch,pointer", // Listen to all scroll-like events
+                type: "wheel,pointer", // Listen to all scroll-like events
                 onChangeY: (self) => {
                     // Set direction based on scroll. Negative for up, positive for down.
                     const factor = self.deltaY < 0 ? -speed : speed;
 
                     // Animate the timeScale for a dynamic speed-up/slow-down effect
                     gsap.to(loop, {
-                        timeScale: factor * 3, // Speed up in the scroll direction
+                        timeScale: factor * 1.5, // Speed up in the scroll direction
                         duration: 0.2,
                         overwrite: true,
                     });
                     gsap.to(loop, {
-                        timeScale: factor / 3, // Return to the base speed and direction
+                        timeScale: factor / 1.5, // Return to the base speed and direction
                         duration: 1,
                         delay: 0.2, // Wait for the speed-up to finish
                     });

@@ -1,7 +1,7 @@
-import {FishOptModel} from "../../../public/FishOptimized";
+import {FishOptModel} from "../../../public/fiber/FishOptimized";
 import NameText from "@/components/fiber-components/text/name-text";
 import Aquarium from "@/components/fiber-components/aquarium";
-import { useThree } from "@react-three/fiber";
+import {useThree} from "@react-three/fiber";
 
 
 export default function ModelGroup() {
