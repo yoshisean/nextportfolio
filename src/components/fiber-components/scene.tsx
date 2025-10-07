@@ -5,7 +5,7 @@ import {
     Bvh,
     Preload,
     Html,
-    PerspectiveCamera, AdaptiveEvents
+    PerspectiveCamera, AdaptiveEvents, RandomizedLight
 } from '@react-three/drei'
 import {Canvas} from '@react-three/fiber'
 import { Suspense } from 'react'
@@ -24,10 +24,12 @@ export default function Scene() {
             fallback={<div>Looks like your device doesn’t support WebGL!</div>}
             className="w-full h-full absolute top-0"
             dpr={[1, 1.5]}
-            gl={{ alpha: false, antialias: false, powerPreference: 'high-performance' }}
+            // gl={{ alpha: false, antialias: false,
+            //     depth: false, stencil: false,
+            //     powerPreference: 'high-performance' }}
         >
             <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={50} />
-            <color attach="background" args={['#ffffff']} />
+            <color attach="background" args={['#ffffff']}/>
 
             <Suspense
                 fallback={
@@ -40,19 +42,19 @@ export default function Scene() {
             >
                 <AdaptiveDpr pixelated />
                 <AdaptiveEvents />
-
+                <RandomizedLight radius={10} ambient={0.5} intensity={Math.PI} position={[2.5, 8, -2.5]} bias={0.001} />
                 <Environment
                     resolution={256}
                     files="../fiber/overcast_soil_puresky_1k.hdr"
-                    environmentIntensity={0.8}
+                    environmentIntensity={0.7}
                 />
 
                 <Bvh firstHitOnly>
                     <ModelGroup />
                 </Bvh>
-                <EffectComposer multisampling={0} enableNormalPass={false}
-                                resolutionScale={isCoarsePointer ? 0.6 : 1}
-                                stencilBuffer={false}
+                <EffectComposer
+                    multisampling={0} resolutionScale={isCoarsePointer ? 0.6 : 1}
+                    // enableNormalPass={false} stencilBuffer={false}
                 >
                     <DepthOfField
                         focusDistance={0}
