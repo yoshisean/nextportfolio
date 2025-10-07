@@ -2,7 +2,7 @@ import type {Metadata} from "next";
 import "./globals.css";
 
 import {Questrial} from 'next/font/google'
-import NavBar from "@/components/ui/navBar";
+import Navbar from "@/components/ui/navbar";
 const questrial = Questrial({
     subsets: ['latin'],
     variable: '--font-questrial',
@@ -43,9 +43,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode; }>) {
     return (
-        <html lang="en" className={'antialiased'}>
-            <body className={`${questrial.className} h-screen w-screen antialiased bg-black overflow-x-hidden scrollbar-hide`}>
-                <NavBar/>
+        <html lang="en" className={'antialiased [scrollbar-width:none] [&::-webkit-scrollbar]:w-0 [&::-webkit-scrollbar]:h-0'}>
+            <body className={`${questrial.className} h-screen w-screen bg-black overflow-x-hidden`}>
+                <Navbar/>
                 {children}
                 <Analytics/>
             </body>

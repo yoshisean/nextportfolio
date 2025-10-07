@@ -6,9 +6,9 @@ import { useThree } from "@react-three/fiber";
 
 export default function ModelGroup() {
     const {viewport} = useThree()
-
+    const scale = Math.pow(viewport.width, 0.9) / 2;
     return (
-        <group scale={viewport.width/3} position={[0, 0, 0]}>
+        <group scale={scale} position={[0, 0, 0]}>
             <FishOptModel/>
             <NameText/>
             <Aquarium/>

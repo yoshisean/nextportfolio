@@ -7,14 +7,9 @@ export default function Aquarium() {
                 backside={true}
                 samples={4}
                 thickness={0.1}
+                transmission={1}
+                ior={1.52}
                 chromaticAberration={0.025}
-                // chromaticAberration={0.0}
-                anisotropy={0.1}
-                distortion={0.1}
-                distortionScale={0.1}
-                iridescence={0}
-                iridescenceIOR={1}
-                // iridescenceThicknessRange={[0, 1400]}
             />
         </RoundedBox>
     )
