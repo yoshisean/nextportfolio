@@ -77,7 +77,7 @@ export default function SplitWord({word}: { word: string }) {
         )
     }, [word, charOffsets])
 
-    useFrame((state, delta) => {
+    useFrame((state) => {
         if (!textGroupRef.current) return;
 
         const repulsionRadius = 3;

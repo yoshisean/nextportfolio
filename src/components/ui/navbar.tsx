@@ -3,13 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Navbar = () => {
-    const scrollToSection = (id: string) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({behavior: 'smooth'});
-        }
-    };
-
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 pt-2 md:pt-4 lg:pt-6 xl:pt-8">
             <div className="container mx-4 md:mx-auto p-2">

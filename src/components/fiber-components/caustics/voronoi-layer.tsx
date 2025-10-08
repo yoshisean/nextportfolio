@@ -1,6 +1,6 @@
 'use client'
 import * as THREE from 'three'
-import {useRef, useMemo} from 'react'
+import {useRef} from 'react'
 import {useFrame} from '@react-three/fiber'
 
 /* ---------- GLSL Shaders ---------- */
@@ -12,7 +12,6 @@ const vertexShader = `
   }
 `
 
-// helper GLSL: Voronoi noise
 const fragmentShader = `
   uniform float uTime;
   uniform float uScale;
@@ -41,34 +40,76 @@ const fragmentShader = `
     return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
   }
 
-  // Voronoi with distance to closest AND second-closest point
-  vec2 voronoi(vec2 x) {
-    vec2 n = floor(x);
-    vec2 f = fract(x);
+vec3 voronoi(vec2 value) {
+    vec2 baseCell = floor(value);
+    vec2 f = fract(value);
     
+    // First pass: find closest cell
     float minDist1 = 8.0;
     float minDist2 = 8.0;
+    vec2 toClosestCell;
+    vec2 closestCell;
     
     for (int j = -1; j <= 1; j++) {
       for (int i = -1; i <= 1; i++) {
         vec2 g = vec2(float(i), float(j));
-        vec2 o = hash(n + g);
+        vec2 cell = baseCell + g;
+        vec2 o = hash(cell);
         o = 0.5 + 0.5 * sin(6.2831 * o);
         
-        vec2 r = g + o - f;
-        float d = dot(r, r);
+        // CHANGED: Gentler oscillation with unique seed per cell
+        vec2 cellHash = hash(cell + vec2(100.0, 200.0));  // Different seed
+        float angle = uTime * 0.3 + cellHash.x * 6.2831;
+        vec2 oscillation = vec2(cos(angle), sin(angle)) * 0.08;  // Smaller radius
+        o += oscillation;
+        
+        vec2 cellPosition = g + o;
+        vec2 toCell = cellPosition - f;
+        float d = dot(toCell, toCell);
         
         if (d < minDist1) {
           minDist2 = minDist1;
           minDist1 = d;
+          closestCell = cell;
+          toClosestCell = toCell;
         } else if (d < minDist2) {
           minDist2 = d;
         }
       }
     }
     
-    return vec2(sqrt(minDist1), sqrt(minDist2));
-  }
+    // Second pass: find distance to closest edge
+    float minEdgeDistance = 8.0;
+    for (int j = -1; j <= 1; j++) {
+      for (int i = -1; i <= 1; i++) {
+        vec2 g = vec2(float(i), float(j));
+        vec2 cell = baseCell + g;
+        vec2 o = hash(cell);
+        o = 0.5 + 0.5 * sin(6.2831 * o);
+        
+        // CHANGED: Same gentler oscillation
+        vec2 cellHash = hash(cell + vec2(100.0, 200.0));
+        float angle = uTime * 0.3 + cellHash.x * 6.2831;
+        vec2 oscillation = vec2(cos(angle), sin(angle)) * 0.09;
+        o += oscillation;
+        
+        vec2 cellPosition = g + o;
+        vec2 toCell = cellPosition - f;
+        
+        vec2 diffToClosestCell = abs(closestCell - cell);
+        bool isClosestCell = diffToClosestCell.x + diffToClosestCell.y < 0.1;
+        
+        if (!isClosestCell) {
+          vec2 toCenter = (toClosestCell + toCell) * 0.5;
+          vec2 cellDifference = normalize(toCell - toClosestCell);
+          float edgeDistance = dot(toCenter, cellDifference);
+          minEdgeDistance = min(minEdgeDistance, edgeDistance);
+        }
+      }
+    }
+    
+    return vec3(sqrt(minDist1), sqrt(minDist2), minEdgeDistance);
+}
 
   void main() {
     vec2 uv = vUv * uScale;
@@ -86,11 +127,12 @@ const fragmentShader = `
     uv.x += uTime * 0.1;
     
     // Get Voronoi distances
-    vec2 c = voronoi(uv);
-    float edge = c.y - c.x;
+    vec3 c = voronoi(uv);
+    // CHANGED: Use the proper edge distance (third component) instead of difference
+    float edge = c.z;  // Was: c.y - c.x
     
     // Create bright caustic lines at cell boundaries
-    float caustic = 1.0 - smoothstep(0.0, 0.1, edge);
+    float caustic = 1.0 - smoothstep(0.0, 0.075, edge);
     
     // Add some variation along the edges
     float edgeNoise = sin(c.x * 30.0 + uTime * 2.0) * 0.5 + 0.5;
@@ -98,17 +140,15 @@ const fragmentShader = `
     
     caustic = pow(caustic, 0.3);
     
-    // Apply color - keep color at full brightness
     vec3 color = uColor * uIntensity;
     
-    // Use caustic value ONLY for alpha
     float alpha = caustic;
     
     // Boost alpha to make dim areas more transparent
     alpha = pow(alpha, 1.5);
     
     gl_FragColor = vec4(color, alpha);
-}
+  }
 `
 
 export default function VoronoiLayer({
