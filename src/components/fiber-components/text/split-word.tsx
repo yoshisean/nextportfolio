@@ -12,9 +12,6 @@ export default function SplitWord({word}: { word: string }) {
 
     const textGroupRef = useRef<Group>(null!);
     const originalPositions = useRef<Vector3[]>([]);
-    const movementSpeeds = useRef<[number, number, number][]>([]);
-    const rotationSpeeds = useRef<[number, number, number][]>([]);
-
 
     const fontUrl = '/Inter/Inter-VariableFont_opsz,wght.ttf'
     const fontSize = 1
@@ -44,18 +41,6 @@ export default function SplitWord({word}: { word: string }) {
     }
 
     useLayoutEffect(() => {
-        const chars = word.replace(/ /g, "").split('');
-        movementSpeeds.current = chars.map(() => [
-            (Math.random() - 0.5) * 0.1,
-            (Math.random() - 0.5) * 0.1,
-            (Math.random() - 0.5) * 0.1,
-        ]);
-        rotationSpeeds.current = chars.map(() => [
-            (Math.random() - 0.5) * 0.2,
-            (Math.random() - 0.5) * 0.2,
-            (Math.random() - 0.5) * 0.2,
-        ]);
-
         charRefs.current.forEach((mesh, i) => {
             if (mesh) {
                 originalPositions.current[i] = mesh.position.clone();
@@ -92,29 +77,17 @@ export default function SplitWord({word}: { word: string }) {
 
         charRefs.current.forEach((mesh, i) => {
             if (!mesh || !originalPositions.current[i]) return;
-
-            // mesh.rotation.x += rotationSpeeds.current[i][0] * delta;
-            // mesh.rotation.y += rotationSpeeds.current[i][1] * delta;
-            // mesh.rotation.z += rotationSpeeds.current[i][2] * delta;
-            //
-            // originalPositions.current[i].x += movementSpeeds.current[i][0] * delta;
-            // originalPositions.current[i].y += movementSpeeds.current[i][1] * delta;
-            // originalPositions.current[i].z += movementSpeeds.current[i][2] * delta;
-
             const homePosition = originalPositions.current[i];
             let targetPosition = homePosition;
 
-            // 4. Calculate repulsion based on the current mesh position
             const distance = mesh.position.distanceTo(pointer3D);
             if (distance < repulsionRadius) {
                 const pushDirection = mesh.position.clone().sub(pointer3D).normalize();
                 const pushStrength = (1 - distance / repulsionRadius) * repulsionStrength;
 
-                // The target is the drifting home position PLUS the repulsion push
                 targetPosition = homePosition.clone().add(pushDirection.multiplyScalar(pushStrength));
             }
 
-            // 5. Smoothly move towards the final combined target
             mesh.position.lerp(targetPosition, 0.1);
         });
     });
