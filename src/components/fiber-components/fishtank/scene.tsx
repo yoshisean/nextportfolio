@@ -10,7 +10,7 @@ import {
 } from '@react-three/drei'
 import {Canvas} from '@react-three/fiber'
 import { Suspense } from 'react'
-import ModelGroup from '@/components/fiber-components/model-group'
+import ModelGroup from '@/components/fiber-components/fishtank/model-group'
 import {
     EffectComposer,
     Noise,

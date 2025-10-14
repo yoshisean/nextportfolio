@@ -9,7 +9,7 @@ import {useGLTF, useAnimations, Trail} from '@react-three/drei'
 
 export function FishOptModel(props) {
     const group = React.useRef()
-    const {nodes, materials, animations} = useGLTF('/fiber/fish-transformed.glb')
+    const {nodes, materials, animations} = useGLTF('/fiber/fish/fish-transformed.glb')
     const {actions, mixer} = useAnimations(animations, group)
 
     useEffect(() => {

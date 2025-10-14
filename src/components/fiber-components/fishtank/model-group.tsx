@@ -1,8 +1,8 @@
-import {FishOptModel} from "../../../public/fiber/FishOptimized";
-import NameText from "@/components/fiber-components/text/name-text";
-import Aquarium from "@/components/fiber-components/aquarium";
+import {FishOptModel} from "../../../../public/fiber/fish/FishOptimized";
+import NameText from "@/components/fiber-components/fishtank/text/name-text";
+import Aquarium from "@/components/fiber-components/fishtank/aquarium";
 import {useThree} from "@react-three/fiber";
-import Atmosphere from "@/components/fiber-components/atmosphere";
+import Atmosphere from "@/components/fiber-components/fishtank/atmosphere";
 
 
 export default function ModelGroup() {

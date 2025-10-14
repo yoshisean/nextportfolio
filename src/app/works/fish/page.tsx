@@ -1,5 +1,5 @@
 'use client'
-import Scene from "@/components/fiber-components/scene";
+import Scene from "@/components/fiber-components/fishtank/scene";
 
 export default function FishPortfolio() {
     return (

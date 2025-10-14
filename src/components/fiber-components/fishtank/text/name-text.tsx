@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import SplitWord from "@/components/fiber-components/text/split-word";
+import SplitWord from "@/components/fiber-components/fishtank/text/split-word";
 
 export default function NameText() {
     const [index, setIndex] = useState(0)

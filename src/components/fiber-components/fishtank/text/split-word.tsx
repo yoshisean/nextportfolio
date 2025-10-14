@@ -3,7 +3,7 @@ import {Group, Mesh, Vector3} from "three";
 import {gsap} from "gsap";
 import {useFrame} from "@react-three/fiber";
 import {Text} from "@react-three/drei";
-import Char from "@/components/fiber-components/text/character";
+import Char from "@/components/fiber-components/fishtank/text/character";
 
 export default function SplitWord({word}: { word: string }) {
     const [charOffsets, setCharOffsets] = useState<number[]>([])

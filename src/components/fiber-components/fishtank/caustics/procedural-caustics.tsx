@@ -1,5 +1,5 @@
 'use client'
-import VoronoiLayer from "@/components/fiber-components/caustics/voronoi-layer";
+import VoronoiLayer from "@/components/fiber-components/fishtank/caustics/voronoi-layer";
 
 export default function ProceduralCaustics({size = [1.2, 0.7-0.02],}: { size?: [number, number] }) {
     return (

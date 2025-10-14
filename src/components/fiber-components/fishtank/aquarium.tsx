@@ -1,6 +1,6 @@
 'use client'
 import {MeshTransmissionMaterial} from '@react-three/drei'
-import ProceduralCaustics from "@/components/fiber-components/caustics/procedural-caustics";
+import ProceduralCaustics from "@/components/fiber-components/fishtank/caustics/procedural-caustics";
 
 export default function Aquarium() {
     return (
