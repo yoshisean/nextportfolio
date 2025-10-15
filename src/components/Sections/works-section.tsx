@@ -5,22 +5,22 @@ import Project from "@/components/works/project";
 import Modal from "@/components/works/modal";
 const projects = [
     {
-        title: "C2 Montreal",
+        title: "Wallace Room",
         src: "PortfolioThumbnail.png",
         color: "#000000"
     },
     {
-        title: "Office Studio",
+        title: "Illutix",
         src: "Illutix.png",
         color: "#8C8C8C"
     },
     {
-        title: "Locomotive",
+        title: "Sparse Autoencoders",
         src: "locomotive.png",
         color: "#EFE8D3"
     },
     {
-        title: "Silencio",
+        title: "Point Drift",
         src: "PointDrift.png",
         color: "#706D63"
     }

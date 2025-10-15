@@ -10,6 +10,7 @@ import {
 import {LetterboxEffect} from "@/components/fiber-components/bladerunner/letterbox";
 import CausticSpotLight from "@/components/fiber-components/bladerunner/caustics/caustic-spotlight";
 import {Perf} from "r3f-perf";
+import NameText from "@/components/fiber-components/fishtank/text/name-text";
 
 export default function WallaceRoomScene() {
     return (
@@ -27,11 +28,11 @@ export default function WallaceRoomScene() {
         >
             <Perf position="top-left" />
             <WallaceRoom/>
-
+            <NameText/>
             <Environment
                 resolution={128}
-                files="../fiber/fish/overcast_soil_puresky_1k.hdr"
-                environmentIntensity={0.01}
+                files="../fiber/overcast_soil_puresky_1k.hdr"
+                environmentIntensity={0.02}
             />
 
             <CausticSpotLight

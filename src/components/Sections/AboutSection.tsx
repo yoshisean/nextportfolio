@@ -22,8 +22,8 @@ const AboutSection = () => {
             <div className='relative flex justify-center my-40 z-10'>
                 <p className='text-[4vw] uppercase text-center max-w-[80vw] leading-none text-white'>
                     Developer, designer, and cellist.
-                    Coding for 7+ years.
-                    Startup and solo project enthusiast.
+                    Coding for 8+ years.
+                    Project enthusiast.
                 </p>
             </div>
             <div className={'fixed top-[-10vh] left-0 h-[120vh] w-full'}>

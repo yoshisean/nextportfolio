@@ -15,10 +15,11 @@ import {
     EffectComposer,
     Noise,
 } from '@react-three/postprocessing'
+import {Perf} from "r3f-perf";
 
 const isCoarsePointer = typeof window !== 'undefined' && matchMedia('(pointer: coarse)').matches
 
-export default function Scene() {
+export default function AquariumScene() {
     return (
         <Canvas
             fallback={<div>Looks like your device doesn’t support WebGL!</div>}
@@ -40,6 +41,7 @@ export default function Scene() {
                     </Html>
                 }
             >
+                <Perf position="top-left" />
                 <AdaptiveDpr pixelated />
                 <AdaptiveEvents />
                 <RandomizedLight radius={10} ambient={0.5} intensity={Math.PI} position={[0, 0, 0]}/>
