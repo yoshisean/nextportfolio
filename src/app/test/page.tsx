@@ -1,7 +1,7 @@
-import MinimalScene from "@/components/fiber-components/bladerunner/minimalScene";
+import BladerunnerScene from "@/components/fiber-components/bladerunner/BladerunnerScene";
 
 export default function Page() {
     return (
-        <MinimalScene/>
+        <BladerunnerScene/>
     )
 }

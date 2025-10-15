@@ -184,7 +184,7 @@ export default function VoronoiLayer({
     })
 
     return (
-        <mesh rotation={rotation} position={position}>
+        <mesh rotation={rotation} position={position} castShadow>
             <planeGeometry args={size} />
             <shaderMaterial
                 ref={mat}
