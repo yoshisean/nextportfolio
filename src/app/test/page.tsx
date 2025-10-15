@@ -1,7 +1,7 @@
-import BladerunnerScene from "@/components/fiber-components/bladerunner/BladerunnerScene";
+import WallaceRoomScene from "@/components/fiber-components/bladerunner/wallace-room-scene";
 
 export default function Page() {
     return (
-        <BladerunnerScene/>
+        <WallaceRoomScene/>
     )
 }

@@ -22,7 +22,7 @@ export default function Home() {
     }, [])
 
     return (
-        <main className="flex flex-col scroll-smooth w-full bg-white [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <main className="flex flex-col scroll-smooth w-full [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             <HeroSection/>
             <SkillsSection/>
             <ScrollingWorks text={'Recent Works'}/>
