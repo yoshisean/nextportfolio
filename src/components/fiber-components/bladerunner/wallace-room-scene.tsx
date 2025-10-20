@@ -7,14 +7,15 @@ import {
     AgXToneMapping,
     SRGBColorSpace,
 } from "three";
-import {LetterboxEffect} from "@/components/fiber-components/bladerunner/letterbox";
 import CausticSpotLight from "@/components/fiber-components/bladerunner/caustics/caustic-spotlight";
 import {Perf} from "r3f-perf";
 import NameText from "@/components/fiber-components/fishtank/text/name-text";
+import {LetterboxEffect} from "@/components/fiber-components/bladerunner/letterbox";
 
 export default function WallaceRoomScene() {
     return (
         <Canvas
+            //animate from 4 to 8, along with letterbox?
             camera={{position: [0, 1.35, 8], rotation: [-0.1, 0, 0], fov: 51.52}}
             shadows
             gl={{

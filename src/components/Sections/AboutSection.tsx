@@ -19,7 +19,7 @@ const AboutSection = () => {
                  style={{clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)"}}
                  id={'aboutSection'}
         >
-            <div className='relative flex justify-center my-40 z-10'>
+            <div className='relative flex justify-center my-40 z-20'>
                 <p className='text-[4vw] uppercase text-center max-w-[80vw] leading-none text-white'>
                     Developer, designer, and cellist.
                     Coding for 8+ years.

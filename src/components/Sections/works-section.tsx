@@ -31,7 +31,7 @@ export default function WorksSection() {
     const [modal, setModal] = useState({active: false, index: 0})
 
     return (
-        <div className={'w-full flex flex-col justify-center items-center'}>
+        <div className={'w-full flex flex-col justify-center items-center z-10'}>
             {
                 projects.map((project, index) => {
                     return <Project index={index} title={project.title} setModal={setModal} key={index}/>
