@@ -10,6 +10,7 @@ interface CausticSpotLightProps {
     angle?: number;
     penumbra?: number;
     distance?: number;
+    rotation?: number; // Rotation in degrees around Z-axis
 }
 
 export default function CausticSpotLight({
@@ -19,6 +20,7 @@ export default function CausticSpotLight({
                                              angle = 0.8,
                                              penumbra = 0.3,
                                              distance = 20,
+                                             rotation = 0,
                                          }: CausticSpotLightProps) {
     const spotLightRef = useRef<SpotLight>(null);
     const currentFrameRef = useRef(0);
@@ -58,18 +60,22 @@ export default function CausticSpotLight({
         }
     }, [configuredTextures]);
 
+    const rotationRadians = (rotation * Math.PI) / 180;
+
     return (
-        <spotLight
-            ref={spotLightRef}
-            position={position}
-            angle={angle}
-            penumbra={penumbra}
-            intensity={intensity}
-            distance={distance}
-            color={color}
-            castShadow
-            shadow-mapSize={[1024, 1024]}
-            shadow-bias={-0.001}
-        />
+        <group position={position} rotation={[0, rotationRadians, 0]}>
+            <spotLight
+                ref={spotLightRef}
+                position={[0, 0, 0]}
+                angle={angle}
+                penumbra={penumbra}
+                intensity={intensity}
+                distance={distance}
+                color={color}
+                castShadow
+                shadow-mapSize={[1024, 1024]}
+                shadow-bias={-0.001}
+            />
+        </group>
     );
 }

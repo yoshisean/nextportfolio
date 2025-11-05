@@ -4,37 +4,32 @@ import { Uniform } from 'three';
 
 const fragmentShader = `
 uniform float targetAspect;
-uniform float vignette;
-uniform float vignetteStrength;
 
 void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor) {
     vec2 centeredUv = uv - 0.5;
     
-    // Calculate actual screen aspect ratio
-    float screenAspect = resolution.x / resolution.y;
+    // Calculate actual canvas aspect ratio
+    float canvasAspect = resolution.x / resolution.y;
     
-    // Determine letterbox strategy based on screen shape
+    // We want to maintain the 2.39:1 aspect ratio with letterbox bars
     float letterboxMask = 0.0;
     
-    if (screenAspect > targetAspect) {
-        // Screen is wider than target - add side pillars
-        float targetWidth = targetAspect / screenAspect;
-        float horizontalPos = abs(centeredUv.x);
-        letterboxMask = smoothstep(targetWidth * 0.5 - 0.01, targetWidth * 0.5, horizontalPos);
-    } else {
-        // Screen is taller than target - add top/bottom bars
-        float targetHeight = screenAspect / targetAspect;
+    if (canvasAspect < targetAspect) {
+        // Canvas is narrower/taller than target (2.39:1) - add top/bottom bars
+        // This maintains the 2.39:1 ratio using the full width
+        float targetHeight = canvasAspect / targetAspect;
         float verticalPos = abs(centeredUv.y);
-        letterboxMask = smoothstep(targetHeight * 0.5 - 0.01, targetHeight * 0.5, verticalPos);
+        letterboxMask = smoothstep(targetHeight * 0.5 - 0.005, targetHeight * 0.5, verticalPos);
+    } else {
+        // Canvas is wider than target - add side pillars
+        // This is less common with your responsive height setup
+        float targetWidth = targetAspect / canvasAspect;
+        float horizontalPos = abs(centeredUv.x);
+        letterboxMask = smoothstep(targetWidth * 0.5 - 0.005, targetWidth * 0.5, horizontalPos);
     }
     
-    // Calculate vignette
-    float dist = length(centeredUv * vec2(screenAspect, 1.0));
-    float vignetteMask = 1.0 - smoothstep(vignette, vignette + 0.5, dist);
-    vignetteMask = mix(1.0, vignetteMask, vignetteStrength);
-    
-    // Combine masks
-    vec3 finalColor = inputColor.rgb * vignetteMask * (1.0 - letterboxMask);
+    // Apply letterbox mask
+    vec3 finalColor = inputColor.rgb * (1.0 - letterboxMask);
     
     outputColor = vec4(finalColor, inputColor.a);
 }
@@ -42,34 +37,35 @@ void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor)
 
 class LetterboxEffectImpl extends Effect {
     constructor({
-                    targetAspect = 2.39,
-                    vignette = 0.6,
-                    vignetteStrength = 0.5
+                    targetAspect = 2.39
                 } = {}) {
         super('LetterboxEffect', fragmentShader, {
             uniforms: new Map([
-                ['targetAspect', new Uniform(targetAspect)],
-                ['vignette', new Uniform(vignette)],
-                ['vignetteStrength', new Uniform(vignetteStrength)]
+                ['targetAspect', new Uniform(targetAspect)]
             ])
         });
+    }
+
+    // Allow updating the target aspect ratio if needed
+    set targetAspect(value: number) {
+        this.uniforms.get('targetAspect')!.value = value;
+    }
+
+    get targetAspect(): number {
+        return this.uniforms.get('targetAspect')!.value;
     }
 }
 
 interface LetterboxEffectProps {
     targetAspect?: number;
-    vignette?: number;
-    vignetteStrength?: number;
 }
 
 export const LetterboxEffect = forwardRef<Effect, LetterboxEffectProps>(({
-                                                                             targetAspect = 2.39,
-                                                                             vignette = 0.6,
-                                                                             vignetteStrength = 0.5
+                                                                             targetAspect = 2.39
                                                                          }, ref) => {
     const effect = useMemo(
-        () => new LetterboxEffectImpl({ targetAspect, vignette, vignetteStrength }),
-        [targetAspect, vignette, vignetteStrength]
+        () => new LetterboxEffectImpl({ targetAspect }),
+        [targetAspect]
     );
 
     return <primitive ref={ref} object={effect} />;

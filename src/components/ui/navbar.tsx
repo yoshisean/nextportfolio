@@ -4,13 +4,13 @@ import Image from "next/image";
 
 const Navbar = () => {
     return (
-        <nav className="absolute top-0 left-0 right-0 z-10 px-4 md:px-8 lg:px-12 xl:px-16">
+        <nav className="relative md:absolute top-0 left-0 right-0 z-10 px-4 md:px-8 lg:px-12 xl:px-16">
             <div className="mx-4 md:mx-auto p-2">
                 <div className="flex items-center justify-between h-16">
                     <Link href={"/"}>
                         <Image src={'/logo.svg'} width={32} height={32} alt={'site logo'}/>
                     </Link>
-                    <div className={`flex space-x-4 md:space-x-8 lg:space-x-12 text-lg`}>
+                    <div className={`flex space-x-4 md:space-x-8 lg:space-x-12 text-sm md:text-md lg:text-lg`}>
                         {/*<Link href="/works">*/}
                         <Link href={"/works"}>
                             <h1 className="font-light tracking-wide hover:underline underline-offset-4">
