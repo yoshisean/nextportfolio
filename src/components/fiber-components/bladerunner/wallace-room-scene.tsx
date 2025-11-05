@@ -8,12 +8,12 @@ import {
 } from "three";
 import {useEffect} from "react";
 import CausticSpotLight from "@/components/fiber-components/bladerunner/caustics/caustic-spotlight";
-import NameText from "@/components/fiber-components/fishtank/text/name-text";
 import {LetterboxEffect} from "@/components/fiber-components/bladerunner/letterbox";
-import {WallaceRoomOptimized} from "../../../../public/fiber/bladerunner/Wallace_room_opt";
-import {SimpleTableOpt} from "../../../../public/fiber/bladerunner/Simple_table";
+import {WallaceRoomOptimized} from "../../../../public/fiber/bladerunner/room/Wallace_room_opt";
+import {SimpleTableOpt} from "../../../../public/fiber/bladerunner/table/Simple_table";
 import { Perf } from 'r3f-perf'
-import LEDClock from "@/components/fiber-components/bladerunner/clock";
+import {RibbonChair} from "../../../../public/fiber/bladerunner/chair/Ribbon_chair";
+import {CoffeeTable} from "../../../../public/fiber/bladerunner/coffee_table/Coffee_table";
 
 function ResponsiveCamera() {
     const { camera, viewport } = useThree();
@@ -73,15 +73,20 @@ export default function WallaceRoomScene() {
             <Perf position="top-left" />
             <WallaceRoomOptimized/>
             <SimpleTableOpt/>
-            {/*<NameText/>*/}
-            <LEDClock
-                position={[-0.4, 1, -0.8]}
-                rotation={[0, 0.4, 0]}
-                color="#F00"             // Match your warm lighting
-                glowIntensity={2}
-                fontSize={0.1}
-                showBackground={true}
+            <pointLight
+                position={[0, -1, 15]}
+                color="#ffffff"
+                intensity={20}
             />
+            <group position={[2, 0, 1]} rotation={[0, -0.5, 0]}>
+                <RibbonChair/>
+            </group>
+            <group position={[1.9, 0, 2]} rotation={[0, 0, 0]}>
+                <CoffeeTable/>
+            </group>
+            <group position={[2.5, 0, 2.8]} rotation={[0, -2.5, 0]}>
+                <RibbonChair/>
+            </group>
             <Environment
                 resolution={128}
                 files="../fiber/overcast_soil_puresky_1k.hdr"
@@ -92,7 +97,7 @@ export default function WallaceRoomScene() {
                 name="Left Light"
                 position={[-3.423, 7, -1]}
                 color="#ffd000"
-                intensity={400}
+                intensity={200}
                 angle={0.7}
             />
 
@@ -100,7 +105,7 @@ export default function WallaceRoomScene() {
                 name="Right Light"
                 position={[3.423, 7, -1]}
                 color="#ffd000"
-                intensity={400}
+                intensity={200}
                 angle={0.7}
                 rotation={180}
             />
@@ -109,7 +114,7 @@ export default function WallaceRoomScene() {
                 name="Front Light"
                 position={[0, 7.6, 5.6]}
                 color="#ffcc88"
-                intensity={600}
+                intensity={200}
                 angle={0.7}
             />
 
@@ -117,9 +122,10 @@ export default function WallaceRoomScene() {
                 name="Back Light"
                 position={[0, 8, -5]}
                 color="#ffcc88"
-                intensity={400}
+                intensity={200}
                 angle={0.4}
             />
+
 
             {/* Optional: Add a subtle fill light without caustics */}
             <ambientLight intensity={0.15} color="#ffeecc" />

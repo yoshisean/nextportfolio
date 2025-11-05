@@ -8,7 +8,7 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function WallaceRoomOptimized(props) {
-  const { nodes, materials } = useGLTF('fiber/bladerunner/wallace_room-transformed.glb')
+  const { nodes, materials } = useGLTF('fiber/bladerunner/room/wallace_room-transformed.glb')
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.SeatL.geometry} material={materials.SimpleWood} scale={[1, 0.929, 1]} receiveShadow castShadow/>
@@ -16,4 +16,4 @@ export function WallaceRoomOptimized(props) {
   )
 }
 
-useGLTF.preload('fiber/bladerunner/wallace_room-transformed.glb')
+useGLTF.preload('fiber/bladerunner/room/wallace_room-transformed.glb')

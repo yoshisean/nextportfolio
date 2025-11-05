@@ -4,15 +4,16 @@ Command: npx gltfjsx@6.5.3 public/fiber/bladerunner/simple_table.glb --transform
 Files: public/fiber/bladerunner/simple_table.glb [25.72KB] > /Users/yoshisean/Desktop/nextportfolio/simple_table-transformed.glb [3.11KB] (88%)
 */
 
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import {useGLTF} from '@react-three/drei'
-import {Color} from "three";
+import {Color, Mesh} from "three";
 
 export function SimpleTableOpt(props) {
-    const {nodes, materials} = useGLTF('fiber/bladerunner/simple_table-transformed.glb')
+    const {nodes, materials} = useGLTF('fiber/bladerunner/table/simple_table-transformed.glb')
+
     return (
         <group {...props} dispose={null} position={[0, 0.17, -1]}>
-            <mesh geometry={nodes.Surface.geometry} material={materials.Black} position={[0, 0.716, 0]} scale={[1.524, 0.025, 0.5]} castShadow>
+            <mesh geometry={nodes.Surface.geometry} material={materials.Black} position={[0, 0.716, 0]} scale={[1.524, 0.025, 0.5]} castShadow layers={[0,1]}>
                 <meshStandardMaterial
                     color="#0f0f0f"
                     metalness={1}
@@ -20,7 +21,7 @@ export function SimpleTableOpt(props) {
                     envMapIntensity={0}        // No reflections
                 />
             </mesh>
-            <mesh geometry={nodes.Supports.geometry} material={materials.Metal} scale={[1, 0.953, 1]}>
+            <mesh geometry={nodes.Supports.geometry} material={materials.Metal} scale={[1, 0.953, 1]} layers={[0,1]}>
                 <meshStandardMaterial
                     color="#141414"
                     metalness={0.3}            // Some metallic quality
@@ -32,4 +33,4 @@ export function SimpleTableOpt(props) {
     )
 }
 
-useGLTF.preload('fiber/bladerunner/simple_table-transformed.glb')
+useGLTF.preload('fiber/bladerunner/table/simple_table-transformed.glb')
