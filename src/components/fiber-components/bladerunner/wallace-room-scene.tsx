@@ -1,7 +1,6 @@
 'use client'
-import {Canvas} from "@react-three/fiber";
+import {Canvas, useThree} from "@react-three/fiber";
 import {Environment} from "@react-three/drei";
-import {WallaceRoom} from "../../../../public/fiber/bladerunner/Wallace_room";
 import {EffectComposer, Noise, ToneMapping} from "@react-three/postprocessing";
 import {
     AgXToneMapping,
@@ -11,6 +10,8 @@ import CausticSpotLight from "@/components/fiber-components/bladerunner/caustics
 import {Perf} from "r3f-perf";
 import NameText from "@/components/fiber-components/fishtank/text/name-text";
 import {LetterboxEffect} from "@/components/fiber-components/bladerunner/letterbox";
+import {WallaceRoomOptimized} from "../../../../public/fiber/bladerunner/Wallace_room_opt";
+import RoomGroup from "@/components/fiber-components/bladerunner/room-group";
 
 export default function WallaceRoomScene() {
     return (
@@ -28,7 +29,8 @@ export default function WallaceRoomScene() {
             }}
         >
             <Perf position="top-left" />
-            <WallaceRoom/>
+            {/*<WallaceRoom/>*/}
+            <RoomGroup/>
             <NameText/>
             <Environment
                 resolution={128}
@@ -73,7 +75,7 @@ export default function WallaceRoomScene() {
 
             <EffectComposer multisampling={4} stencilBuffer={false} enableNormalPass={false}>
                 <ToneMapping/>
-                <LetterboxEffect targetAspect={2.39} vignette={0.5} vignetteStrength={0.4} />
+                {/*<LetterboxEffect targetAspect={2.39} vignette={0.5} vignetteStrength={0.4} />*/}
                 <Noise opacity={0.02} />
             </EffectComposer>
         </Canvas>

@@ -40,4 +40,4 @@ export function WallaceRoom(props) {
   )
 }
 
-useGLTF.preload('/wallace_room.glb')
+useGLTF.preload('fiber/bladerunner/wallace_room.glb')
