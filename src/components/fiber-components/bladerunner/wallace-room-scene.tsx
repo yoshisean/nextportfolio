@@ -2,13 +2,7 @@
 import {Canvas, useThree} from "@react-three/fiber";
 import {AdaptiveDpr, AdaptiveEvents, Bvh, Environment} from "@react-three/drei";
 import {
-    Bloom,
-    DotScreen,
     EffectComposer,
-    Glitch,
-    Noise,
-    Pixelation,
-    Scanline,
     ToneMapping
 } from "@react-three/postprocessing";
 import {
@@ -20,10 +14,8 @@ import CausticSpotLight from "@/components/fiber-components/bladerunner/caustics
 import {LetterboxEffect} from "@/components/fiber-components/bladerunner/letterbox";
 import {WallaceRoomOptimized} from "../../../../public/fiber/bladerunner/room/Wallace_room_opt";
 import {SimpleTableOpt} from "../../../../public/fiber/bladerunner/table/Simple_table";
-import { Perf } from 'r3f-perf'
 import {RibbonChair} from "../../../../public/fiber/bladerunner/chair/Ribbon_chair";
 import {CoffeeTable} from "../../../../public/fiber/bladerunner/coffee_table/Coffee_table";
-import {BlendFunction} from "postprocessing";
 
 function ResponsiveCamera() {
     const { camera, viewport } = useThree();
@@ -82,7 +74,7 @@ export default function WallaceRoomScene() {
             <AdaptiveDpr pixelated />
             <AdaptiveEvents />
             <ResponsiveCamera />
-            <Perf position="top-left" />
+            {/*<Perf position="top-left" />*/}
 
             <Bvh firstHitOnly>
                 <WallaceRoomOptimized/>

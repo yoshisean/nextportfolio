@@ -15,7 +15,6 @@ import {
     EffectComposer,
     Noise,
 } from '@react-three/postprocessing'
-import {Perf} from "r3f-perf";
 
 const isCoarsePointer = typeof window !== 'undefined' && matchMedia('(pointer: coarse)').matches
 

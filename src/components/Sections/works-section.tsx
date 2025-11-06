@@ -6,8 +6,8 @@ import Modal from "@/components/works/modal";
 const projects = [
     {
         title: "Wallace Room",
-        src: "PortfolioThumbnail.png",
-        color: "#000000"
+        src: "WallaceRoom.png",
+        color: "#623505"
     },
     {
         title: "Illutix",
@@ -16,13 +16,13 @@ const projects = [
     },
     {
         title: "Sparse Autoencoders",
-        src: "locomotive.png",
-        color: "#EFE8D3"
+        src: "SaeThumbnail.png",
+        color: "#326273"
     },
     {
         title: "Point Drift",
         src: "PointDrift.png",
-        color: "#706D63"
+        color: "#5D576B"
     }
 ]
 

@@ -25,9 +25,32 @@ const Section1 = () => {
 const Section2 = () => {
     const textRef = useRef(null);
     const originalText = 'Get in touch';
+    const hoverText = 'send an email →'; // Text to show on hover
 
-    const shuffleText = () => {
-        gsap.to(textRef.current, {
+    // --- Define handlers in the component's render scope ---
+
+    // Animation for mouse enter
+    const scrambleOnEnter = () => {
+        // Check if the ref is attached
+        if (!textRef.current) return;
+
+        gsap.to(textRef.current, { // Use textRef.current directly
+            duration: 0.8,
+            scrambleText: {
+                text: hoverText,
+                chars: 'abcdefghijklmnopqrstuvwxyz',
+                speed: 0.3,
+            },
+            ease: 'power1.inOut',
+            overwrite: true,
+        });
+    };
+
+    // Animation for mouse leave
+    const scrambleOnLeave = () => {
+        if (!textRef.current) return;
+
+        gsap.to(textRef.current, { // Use textRef.current directly
             duration: 0.8,
             scrambleText: {
                 text: originalText,
@@ -35,8 +58,11 @@ const Section2 = () => {
                 speed: 0.3,
             },
             ease: 'power1.inOut',
+            overwrite: true,
         });
     };
+
+    // The useEffect is no longer needed
 
     return (
         <div className='flex justify-between items-end'>
@@ -44,9 +70,10 @@ const Section2 = () => {
                 <h1
                     ref={textRef}
                     className='text-[10vw] leading-[0.8] mt-10'
-                    onMouseEnter={shuffleText}
+                    // --- Add the event handlers directly to the element ---
+                    onMouseEnter={scrambleOnEnter}
+                    onMouseLeave={scrambleOnLeave}
                 >
-                    {/* The original text is now the default content */}
                     {originalText}
                 </h1>
             </a>
