@@ -1,7 +1,16 @@
 'use client'
 import {Canvas, useThree} from "@react-three/fiber";
-import {Environment} from "@react-three/drei";
-import {EffectComposer, Noise, ToneMapping} from "@react-three/postprocessing";
+import {AdaptiveDpr, AdaptiveEvents, Bvh, Environment} from "@react-three/drei";
+import {
+    Bloom,
+    DotScreen,
+    EffectComposer,
+    Glitch,
+    Noise,
+    Pixelation,
+    Scanline,
+    ToneMapping
+} from "@react-three/postprocessing";
 import {
     AgXToneMapping,
     SRGBColorSpace,
@@ -14,6 +23,7 @@ import {SimpleTableOpt} from "../../../../public/fiber/bladerunner/table/Simple_
 import { Perf } from 'r3f-perf'
 import {RibbonChair} from "../../../../public/fiber/bladerunner/chair/Ribbon_chair";
 import {CoffeeTable} from "../../../../public/fiber/bladerunner/coffee_table/Coffee_table";
+import {BlendFunction} from "postprocessing";
 
 function ResponsiveCamera() {
     const { camera, viewport } = useThree();
@@ -66,74 +76,75 @@ export default function WallaceRoomScene() {
                 powerPreference: 'high-performance',
                 outputColorSpace: SRGBColorSpace,
                 toneMapping: AgXToneMapping,
-                toneMappingExposure: 1.0
+                toneMappingExposure: 0.9
             }}
         >
+            <AdaptiveDpr pixelated />
+            <AdaptiveEvents />
             <ResponsiveCamera />
             <Perf position="top-left" />
-            <WallaceRoomOptimized/>
-            <SimpleTableOpt/>
-            <pointLight
-                position={[0, -1, 15]}
-                color="#ffffff"
-                intensity={20}
-            />
-            <group position={[2, 0, 1]} rotation={[0, -0.5, 0]}>
-                <RibbonChair/>
-            </group>
-            <group position={[1.9, 0, 2]} rotation={[0, 0, 0]}>
-                <CoffeeTable/>
-            </group>
-            <group position={[2.5, 0, 2.8]} rotation={[0, -2.5, 0]}>
-                <RibbonChair/>
-            </group>
-            <Environment
-                resolution={128}
-                files="../fiber/overcast_soil_puresky_1k.hdr"
-                environmentIntensity={0.02}
-            />
 
-            <CausticSpotLight
-                name="Left Light"
-                position={[-3.423, 7, -1]}
-                color="#ffd000"
-                intensity={200}
-                angle={0.7}
-            />
+            <Bvh firstHitOnly>
+                <WallaceRoomOptimized/>
+                <SimpleTableOpt/>
+                <pointLight
+                    position={[0, -1, 15]}
+                    color="#ffffff"
+                    intensity={20}
+                />
+                <group position={[2, 0, 1]} rotation={[0, -0.5, 0]}>
+                    <RibbonChair/>
+                </group>
+                <group position={[1.9, 0, 2]} rotation={[0, 0, 0]}>
+                    <CoffeeTable/>
+                </group>
+                <group position={[2.5, 0, 2.8]} rotation={[0, -2.5, 0]}>
+                    <RibbonChair/>
+                </group>
+                <Environment
+                    resolution={128}
+                    files="../fiber/overcast_soil_puresky_1k.hdr"
+                    environmentIntensity={0.02}
+                />
 
-            <CausticSpotLight
-                name="Right Light"
-                position={[3.423, 7, -1]}
-                color="#ffd000"
-                intensity={200}
-                angle={0.7}
-                rotation={180}
-            />
+                <CausticSpotLight
+                    name="Left Light"
+                    position={[-3.423, 7, -1]}
+                    color="#ffd000"
+                    intensity={200}
+                    angle={0.7}
+                />
 
-            <CausticSpotLight
-                name="Front Light"
-                position={[0, 7.6, 5.6]}
-                color="#ffcc88"
-                intensity={200}
-                angle={0.7}
-            />
+                <CausticSpotLight
+                    name="Right Light"
+                    position={[3.423, 7, -1]}
+                    color="#ffd000"
+                    intensity={200}
+                    angle={0.7}
+                    rotation={180}
+                />
 
-            <CausticSpotLight
-                name="Back Light"
-                position={[0, 8, -5]}
-                color="#ffcc88"
-                intensity={200}
-                angle={0.4}
-            />
+                <CausticSpotLight
+                    name="Front Light"
+                    position={[0, 7.6, 5.6]}
+                    color="#ffcc88"
+                    intensity={200}
+                    angle={0.7}
+                />
 
-
-            {/* Optional: Add a subtle fill light without caustics */}
-            <ambientLight intensity={0.15} color="#ffeecc" />
+                <CausticSpotLight
+                    name="Back Light"
+                    position={[0, 8, -5]}
+                    color="#ffcc88"
+                    intensity={200}
+                    angle={0.4}
+                />
+                <ambientLight intensity={0.05} color="#ffeecc" />
+            </Bvh>
 
             <EffectComposer multisampling={4} stencilBuffer={false} enableNormalPass={false}>
                 <ToneMapping/>
                 <LetterboxEffect targetAspect={2.39} />
-                <Noise opacity={0.02} />
             </EffectComposer>
         </Canvas>
     )

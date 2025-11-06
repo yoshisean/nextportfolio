@@ -15,7 +15,7 @@ export function SimpleTableOpt(props) {
         <group {...props} dispose={null} position={[0, 0.17, -1]}>
             <mesh geometry={nodes.Surface.geometry} material={materials.Black} position={[0, 0.716, 0]} scale={[1.524, 0.025, 0.5]} castShadow layers={[0,1]}>
                 <meshStandardMaterial
-                    color="#0f0f0f"
+                    color="#5D4943"
                     metalness={1}
                     roughness={0.95}           // High roughness for matte finish
                     envMapIntensity={0}        // No reflections
