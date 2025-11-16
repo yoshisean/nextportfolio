@@ -8,7 +8,7 @@ const Navbar = () => {
             <div className="mx-4 md:mx-auto p-2">
                 <div className="flex items-center justify-between h-16">
                     <Link href={"/"}>
-                        <Image src={'/logo.svg'} width={32} height={32} alt={'site logo'}/>
+                        <Image src={'/logov2.svg'} width={72} height={72} alt={'site logo'}/>
                     </Link>
                     <div className={`flex space-x-4 md:space-x-8 lg:space-x-12 text-sm md:text-md lg:text-lg`}>
                         {/*<Link href="/works">*/}
