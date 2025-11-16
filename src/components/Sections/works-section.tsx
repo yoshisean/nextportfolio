@@ -12,7 +12,7 @@ const projects = [
     {
         title: "Illutix",
         src: "Illutix.png",
-        color: "#8C8C8C"
+        color: "#101d42"
     },
     {
         title: "Sparse Autoencoders",
@@ -31,7 +31,7 @@ export default function WorksSection() {
     const [modal, setModal] = useState({active: false, index: 0})
 
     return (
-        <div className={'w-full flex flex-col justify-center items-center z-10'}>
+        <div className={'w-full flex flex-col justify-center items-center z-10 pt-24 pb-24'}>
             {
                 projects.map((project, index) => {
                     return <Project index={index} title={project.title} setModal={setModal} key={index}/>

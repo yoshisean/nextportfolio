@@ -67,7 +67,7 @@ const ScrollingText = ({ text, speed = 1.3 }: ScrollingTextProps) => {
 
     return (
         <div className={`w-full inline-flex flex-nowrap whitespace-nowrap overflow-hidden
-            font-light text-7xl md:text-8xl lg:text-9xl tracking-wide`}
+            font-light text-7xl md:text-8xl lg:text-9xl tracking-wide pt-24`}
         >
             <div ref={containerRef} className="inline-flex flex-nowrap">
                 <span className="pr-6">{text} •</span>

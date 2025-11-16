@@ -2,7 +2,7 @@ import AquariumScene from "@/components/fiber-components/fishtank/aquarium-scene
 
 export default function HeroSection() {
     return (
-        <section className={'w-full h-[40vh] md:h-[60vh] lg:h-[80vh] 2xl:h-[100vh]'}>
+        <section className={'w-full h-[40vh] md:h-[60vh] lg:h-[80vh] 2xl:h-[95vh]'}>
             <AquariumScene/>
         </section>
 

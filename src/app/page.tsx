@@ -25,7 +25,7 @@ export default function Home() {
         <main className="flex flex-col scroll-smooth w-full [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             <HeroSection/>
             <SkillsSection/>
-            <ScrollingWorks text={'Recent Works'}/>
+            <ScrollingWorks text={'Project Highlights'}/>
             <WorksSection/>
             <AboutSection/>
             <Footer/>
