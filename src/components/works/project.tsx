@@ -4,10 +4,11 @@ import React, {Dispatch, SetStateAction} from 'react'
 interface ProjectProps {
     index: number;
     title: string;
+    category: string;
     setModal: Dispatch<SetStateAction<{active: boolean, index: number}>>
 
 }
-export default function Project({ index, title, setModal }: ProjectProps) {
+export default function Project({ index, title, category, setModal }: ProjectProps) {
     return (
         <div
             onMouseEnter={() => setModal({ active: true, index })}
@@ -18,7 +19,7 @@ export default function Project({ index, title, setModal }: ProjectProps) {
                 {title}
             </h2>
             <p className="font-light transition-all duration-400 group-hover:translate-x-[10px]">
-                Design & Development
+                {category}
             </p>
         </div>
     );

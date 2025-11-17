@@ -6,17 +6,15 @@ export default function SkillsSection() {
                 space-y-8 md:space-y-16 lg:space-y-32 mx-auto md:p-8 container"
         >
             <h1 className="font-light text-6xl md:text-7xl lg:text-8xl mx-8 text-center">
-                Professional Skillset
+                Professional Skills
             </h1>
 
             {/* Main intro */}
             <div className="flex flex-col md:flex-row gap-8 md:gap-16 w-full">
                 <p className="text-sm sm:text-xl md:text-2xl lg:text-3xl 2xl:text-4xl font-light mx-8 text-left leading-relaxed">
                     Hey, I&apos;m Sean, a CS graduate student at Georgia Tech specializing in AI. I work at the intersection
-                    of machine learning research and production systems—training models to understand
-                    language and vision, then building the infrastructure to deploy them at scale. My passion
-                    lies in web development, and I pursue projects that combine my studies with clean and intentional
-                    user interfaces.
+                    of machine learning research and product development. My passion lies in web development, and in my free time
+                    I try to build projects that combine my studies with clean and intentional user interfaces.
                 </p>
             </div>
 
@@ -102,37 +100,6 @@ export default function SkillsSection() {
                         </p>
                         <p className="opacity-70 text-sm md:text-base italic">
                             Three.js • React Three Fiber • GLSL • Blender • WebGL
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            {/* Approach/Philosophy */}
-            <div className="w-full space-y-6">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mx-8">
-                    How I Work
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-base md:text-lg font-light mx-8">
-                    <div>
-                        <h3 className="font-normal mb-3 text-xl">Research-Driven</h3>
-                        <p className="opacity-70">
-                            I don&apos;t just implement papers—I understand them. Whether it&apos;s FLARE augmented
-                            generation or sparse autoencoder architectures, I dig into the theory before
-                            writing code.
-                        </p>
-                    </div>
-                    <div>
-                        <h3 className="font-normal mb-3 text-xl">User-Focused</h3>
-                        <p className="opacity-70">
-                            Technical decisions serve user needs. I&apos;ve conducted research with 100+ developers
-                            to understand real workflow pain points, then built solutions that address them.
-                        </p>
-                    </div>
-                    <div>
-                        <h3 className="font-normal mb-3 text-xl">Metrics-Oriented</h3>
-                        <p className="opacity-70">
-                            What gets measured gets improved. Whether it&apos;s model mIoU, websocket latency,
-                            or user engagement KPIs, I instrument systems to understand what&apos;s actually happening.
                         </p>
                     </div>
                 </div>

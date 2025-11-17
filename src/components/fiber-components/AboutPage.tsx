@@ -1,0 +1,144 @@
+import * as THREE from 'three'
+import { useRef, useState } from 'react'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { useIntersect, Image, ScrollControls, Scroll } from '@react-three/drei'
+import Link from 'next/link'
+import {Mesh} from "three";
+
+function Item({ url, scale, alt, ...props }: { url: string; scale: [number, number, number]; alt: string, [key: string]: any }) {
+    const visible = useRef(false)
+    const [hovered, hover] = useState(false)
+    const ref = useIntersect<Mesh>((isVisible) => (visible.current = isVisible))
+    const { height } = useThree((state) => state.viewport)
+
+    useFrame((state, delta) => {
+        if (!ref.current) return
+        ref.current.position.y = THREE.MathUtils.damp(ref.current.position.y, visible.current ? 0 : -height / 2 + 1, 4, delta)
+        ref.current.material.zoom = THREE.MathUtils.damp(ref.current.material.zoom, visible.current ? 1 : 1.5, 4, delta)
+        ref.current.material.grayscale = THREE.MathUtils.damp(ref.current.material.grayscale, hovered ? 1 : 0, 4, delta)
+    })
+
+    return (
+        <group {...props}>
+            <Image ref={ref} onPointerOver={() => hover(true)} onPointerOut={() => hover(false)} scale={scale} url={url} alt={alt}/>
+        </group>
+    )
+}
+
+function Items() {
+    const { width: w, height: h } = useThree((state) => state.viewport)
+    return (
+        <Scroll>
+            <Item url="/fiber/about/placeholder.png" scale={[w / 3, w / 3, 1]} position={[-w / 6, 0, 0]} alt={'placeholder'}/>
+            <Item url="/fiber/about/placeholder.png" scale={[2, w / 3, 1]} position={[w / 30, -h, 0]} alt={'placeholder'}/>
+            <Item url="/fiber/about/placeholder.png" scale={[w / 3, w / 5, 1]} position={[-w / 4, -h * 1, 0]} alt={'placeholder'}/>
+            <Item url="/fiber/about/placeholder.png" scale={[w / 5, w / 5, 1]} position={[w / 4, -h * 1.2, 0]} alt={'placeholder'}/>
+            <Item url="/fiber/about/placeholder.png" scale={[w / 5, w / 5, 1]} position={[w / 10, -h * 1.75, 0]} alt={'placeholder'}/>
+            <Item url="/fiber/about/placeholder.png" scale={[w / 3, w / 3, 1]} position={[-w / 4, -h * 2, 0]} alt={'placeholder'}/>
+            <Item url="/fiber/about/placeholder.png" scale={[w / 3, w / 5, 1]} position={[-w / 4, -h * 2.6, 0]} alt={'placeholder'}/>
+            <Item url="/fiber/about/placeholder.png" scale={[w / 2, w / 2, 1]} position={[w / 4, -h * 3.1, 0]} alt={'placeholder'}/>
+            <Item url="/fiber/about/placeholder.png" scale={[w / 2.5, w / 2, 1]} position={[-w / 6, -h * 4.1, 0]} alt={'placeholder'}/>
+        </Scroll>
+    )
+}
+
+export default function AboutScrollSection() {
+    return (
+        <div className="w-full h-screen">
+            <Canvas
+                orthographic
+                camera={{ zoom: 80 }}
+                gl={{ alpha: false, antialias: false, stencil: false, depth: false }}
+                dpr={[1, 1.5]}
+            >
+                <color attach="background" args={['#000000']} />
+                <ScrollControls damping={0.5} pages={5}>
+                    <Items />
+                    <Scroll html style={{ width: '100%' }}>
+                        {/* Hero intro */}
+                        <div className="absolute top-[100vh] left-1/2 -translate-x-1/2 -translate-y-full w-full max-w-5xl px-8">
+                            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-light text-center">
+                                I&apos;m Sean, a computer science student and cellist navigating the intersection
+                                of technical precision and creative expression.
+                            </p>
+                        </div>
+
+                        {/* Background */}
+                        <div className="absolute top-[180vh] left-1/2 w-full max-w-6xl px-8">
+                            <div className="flex flex-col md:flex-row gap-6 md:gap-12">
+                                <div className="md:w-1/3">
+                                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-4">
+                                        Background
+                                    </h2>
+                                </div>
+                                <div className="md:w-2/3 space-y-4 text-base md:text-lg lg:text-xl font-light">
+                                    <p>
+                                        Currently pursuing my Master&apos;s in Computer Science at Georgia Tech with a
+                                        specialization in Artificial Intelligence, building on my undergraduate degree
+                                        in Intelligence & Theory. My academic path has taken me from fundamental
+                                        algorithms and theory to cutting-edge ML research.
+                                    </p>
+                                    <p>
+                                        In summer 2023, I co-founded Point Drift in Berlin, working with a small
+                                        team to bring novel AI research into production. It ended up failing, but getting to
+                                        talk to developers and demo a product to a company was something you don&apos;t
+                                        learn in a classroom. I try to apply my experiences throughout any given
+                                        product development process.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Music */}
+                        <div className="absolute top-[260vh] left-1/2 translate-x-1 w-full max-w-6xl px-8">
+                            <div className="flex flex-col md:flex-row gap-6 md:gap-12">
+                                <div className="md:w-1/3">
+                                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-4">
+                                        Music
+                                    </h2>
+                                </div>
+                                <div className="md:w-2/3 space-y-4 text-base md:text-lg lg:text-xl font-light">
+                                    <p>
+                                        I regularly serve as principal cellist for the Georgia Tech Symphony Orchestra and simultaneously
+                                        perform with the Emory University Symphony Orchestra. In 2023, I won the GTSO Concerto Competition and
+                                        performed Dvořák&apos;s Cello Concerto with the orchestra. I&apos;m inactive in the competition scene now,
+                                        but would love to perform in the near future.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Current Focus */}
+                        <div className="absolute top-[350vh] left-1/2 w-full max-w-6xl px-8">
+                            <div className="flex flex-col md:flex-row gap-6 md:gap-12">
+                                <div className="md:w-1/3">
+                                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-4">
+                                        Current Focus
+                                    </h2>
+                                </div>
+                                <div className="md:w-2/3 space-y-4 text-base md:text-lg lg:text-xl font-light">
+                                    <p>
+                                        Professionally, I&apos;m working on Illutix through Georgia Tech&apos;s
+                                        Create-X program, building infrastructure for real-time visualization and analysis
+                                        of massive datasets. It&apos;s been particularly challenging both in terms of technical scope
+                                        and execution, and I&apos;ve grown significantly through the journey.
+                                    </p>
+                                    <p>
+                                        For my fun projects, I actually considered a complete revamp of this portfolio site starting with the hero
+                                        section. The Wallace Room scene from the film Bladerunner 2049 was going to be the source of inspiration
+                                        but I ended up scrapping it in the end. The process ended up being quite interesting especially
+                                        due to the lack of relevant tutorials/information online so I will make a short writeup on that
+                                        in the near future. In the meantime you can access the Three.JS scene through this link
+                                        here: <Link href={'/room'} className="hover:underline">
+                                        /room
+                                    </Link>.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </Scroll>
+                </ScrollControls>
+            </Canvas>
+        </div>
+    )
+}
