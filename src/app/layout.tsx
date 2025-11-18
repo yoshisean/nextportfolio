@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode; }>) {
     return (
-        <html lang="en" className={'antialiased [scrollbar-width:none] [&::-webkit-scrollbar]:w-0 [&::-webkit-scrollbar]:h-0'}>
+        <html lang="en" className={'antialiased [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'}>
             <body className={`${questrial.className} h-screen w-screen text-white bg-black overflow-x-hidden`}>
                 <Navbar/>
                 {children}

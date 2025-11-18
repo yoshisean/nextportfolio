@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link";
+import AboutSection from "@/components/Sections/AboutSection";
 import AboutScrollSection from "@/components/fiber-components/AboutPage";
 
 export default function Page() {
