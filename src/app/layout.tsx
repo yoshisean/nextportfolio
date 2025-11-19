@@ -13,7 +13,7 @@ import { Analytics } from "@vercel/analytics/react"
 
 export const metadata: Metadata = {
     title: "Sean Yoshihara - Software Engineer & Designer",
-    description: "The portfolio of Sean Yoshihara, a full-stack software engineer and undergraduate at Georgia Tech specializing in machine learning and artificial intelligence. Explore projects showcasing my skills in web development and AI-driven applications.",
+    description: "Sean Yoshihara's portfolio website, a full-stack software engineer and Masters student at Georgia Tech specializing in Artificial Intelligence. Displays bio along with projects in web development and AI-driven applications.",
     keywords: [
         "Sean Yoshihara", "full-stack developer", "software engineer", "computer science", "Georgia Tech",
         "ML/AI", "machine learning", "artificial intelligence", "web development", "3D graphics",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Sean Yoshihara - Software Engineer & Designer",
         description: "An interactive portfolio site showcasing recent projects as a software developer.",
-        url: "https://www.yoshisean.com/", // Replace with actual URL if needed
+        url: "https://www.yoshisean.com/",
         images: [
             {
                 url: "/PortfolioThumbnail.png", // Replace with the path to your image

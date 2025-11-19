@@ -9,9 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@radix-ui/react-separator": "^1.1.1",
     "@radix-ui/react-slot": "^1.2.3",
-    "@react-three/drei": "^10.7.6",
+    "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.4.0",
     "@react-three/postprocessing": "^3.0.4",
     "@tailwindcss/postcss": "^4.1.14",
@@ -29,7 +28,7 @@
     "r3f-perf": "^7.2.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "tailwind-merge": "^3.3.1",
+    "tailwind-merge": "^3.4.0",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.173.0"
   },

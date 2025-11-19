@@ -1,65 +1,16 @@
 'use client'
-import * as THREE from 'three'
-import { useRef, useState } from 'react'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { useIntersect, Image, ScrollControls, Scroll } from '@react-three/drei'
+import {useEffect, useRef, useState} from 'react'
+import {Canvas, useFrame, useThree} from '@react-three/fiber'
+import {useIntersect, Image, ScrollControls, Scroll, Preload, useScroll} from '@react-three/drei'
 import Link from 'next/link'
-import {Mesh} from "three";
+import ImageItems from "@/components/fiber-components/ImageItems";
 
-function Item({ url, scale, ...props }: { url: string; scale: [number, number]; [key: string]: any }) {
-    const visible = useRef(false)
-    const [hovered, hover] = useState(false)
-    const ref = useIntersect<Mesh>((isVisible) => (visible.current = isVisible))
-    const { height } = useThree((state) => state.viewport)
-
-    useFrame((state, delta) => {
-        if (!ref.current) return
-        const material = ref.current.material as any// Cast to any for custom properties
-        ref.current.position.y = THREE.MathUtils.damp(ref.current.position.y, visible.current ? 0 : -height / 2 + 1, 4, delta)
-        material.zoom = THREE.MathUtils.damp(material.zoom, visible.current ? 1 : 1.5, 4, delta)
-        material.grayscale = THREE.MathUtils.damp(material.grayscale, hovered ? 0 : 1, 4, delta)
-    })
-
+function Content() {
     return (
-        <group {...props}>
-            {/* eslint-disable-next-line jsx-a11y/alt-text */}
-            <Image ref={ref} onPointerOver={() => hover(true)} onPointerOut={() => hover(false)} scale={scale} url={url}/>
-        </group>
-    )
-}
-
-function Items() {
-    const { width: w, height: h } = useThree((state) => state.viewport)
-    return (
-        <Scroll>
-            <Item url="/fiber/about/Main-1.webp" scale={[w / 3, w / 3]} position={[-w / 6, 0, 0]} alt={'profile'}/>
-            <Item url="/fiber/about/Berlin-3.webp" scale={[2, w / 3]} position={[w / 30, -h, 0]} alt={'TU-Berlin lobby'}/>
-            <Item url="/fiber/about/Berlin-2.webp" scale={[w / 3, w / 5]} position={[-w / 4, -h * 1, 0]} alt={'Berlin River'}/>
-            <Item url="/fiber/about/Berlin-1.webp" scale={[w / 5, w / 5]} position={[w / 4, -h * 1.2, 0]} alt={'Berlin city'}/>
-            <Item url="/fiber/about/Music-1.webp" scale={[w / 5, w / 5]} position={[w / 10, -h * 1.75, 0]} alt={'Sleeping'}/>
-            <Item url="/fiber/about/Music-2.webp" scale={[w / 3, w / 3]} position={[-w / 4, -h * 2, 0]} alt={'EUSO'}/>
-            <Item url="/fiber/about/placeholder.png" scale={[w / 3, w / 5]} position={[-w / 4, -h * 2.7, 0]} alt={'placeholder'}/>
-            <Item url="/fiber/about/Current-2.webp" scale={[w / 2, w / 2]} position={[w / 4, -h * 3.1, 0]} alt={'Bladerunner calculations'}/>
-            <Item url="/fiber/about/placeholder.png" scale={[w / 2.5, w / 2]} position={[-w / 6, -h * 4.1, 0]} alt={'placeholder'}/>
-        </Scroll>
-    )
-}
-
-export default function AboutPage() {
-    return (
-        <section className="w-full h-screen">
-            <Canvas
-                orthographic
-                camera={{ zoom: 80 }}
-                gl={{ alpha: false, antialias: false, stencil: false, depth: false }}
-                dpr={[1, 1.5]}
-                key={'about-canvas'}
-            >
-                <color attach="background" args={['#000000']} />
-                <ScrollControls damping={0.2} pages={5}>
-                    <Items />
-                    <Scroll html style={{ width: '100%'}}>
-                        {/* Hero intro - centered */}
+        <div className="absolute top-0 left-0 w-full h-[500vh] overflow-hidden pointer-events-none">
+            <div className="sticky top-0 w-full h-screen pointer-events-none">
+                <ScrollSyncedHTML>
+                    <div className="w-full h-[500vh]">            {/* Hero intro - centered */}
                         <div className="absolute top-[80vh] right-8 w-full max-w-5xl px-8">
                             <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-light text-center">
                                 I&apos;m Sean, a computer science student and cellist navigating the intersection
@@ -101,7 +52,7 @@ export default function AboutPage() {
                                     <p>
                                         I regularly serve as principal cellist for the Georgia Tech Symphony Orchestra and simultaneously
                                         perform with the Emory University Symphony Orchestra. In 2023, I won the GTSO Concerto Competition and
-                                        performed Dvořák&apos;s Cello Concerto with the orchestra. I&apos;m inactive in the competition scene now,
+                                        performed Dvořák&apos;s Cello Concerto as a soloist. I&apos;m currently inactive in competitions,
                                         but would love to perform in the near future.
                                     </p>
                                 </div>
@@ -134,9 +85,59 @@ export default function AboutPage() {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </ScrollSyncedHTML>
+            </div>
+        </div>
+    )
+}
+
+function ScrollSyncedHTML({children}: { children: React.ReactNode }) {
+    const scroll = useScroll()
+    const [offset, setOffset] = useState(0)
+
+    useFrame(() => {
+        setOffset(scroll.offset)
+    })
+
+    return (
+        <div
+            className="absolute top-0 left-0 w-full pointer-events-none"
+            style={{
+                transform: `translateY(${-offset * 400}vh)`, // 5 pages * 100vh - adjust multiplier
+                willChange: 'transform'
+            }}
+        >
+            <div className="pointer-events-auto">
+                {children}
+            </div>
+        </div>
+    )
+}
+
+export default function AboutPage() {
+    useEffect(() => {
+        console.log('AboutPage mounted')
+        return () => console.log('AboutPage unmounted')
+    }, [])
+    return (
+        <section className="w-full h-screen">
+            <Canvas
+                fallback={<div>Looks like your device doesn’t support WebGL!</div>}
+                orthographic
+                camera={{zoom: 80}}
+                gl={{alpha: false, antialias: false, stencil: false, depth: false}}
+                dpr={[1, 1.5]}>
+                <color attach="background" args={['#000000']}/>
+                <ScrollControls damping={0.2} pages={5}>
+                    <ImageItems/>
+                    <Scroll html style={{width: '100%'}}>
                     </Scroll>
                 </ScrollControls>
+                <Preload all/>
             </Canvas>
+            <Content/>
+
         </section>
     )
 }
