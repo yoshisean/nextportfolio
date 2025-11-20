@@ -1,4 +1,4 @@
-import AboutPage from "@/components/fiber-components/AboutPage";
+import AboutPage from "@/components/fiber-components/about/AboutPage";
 
 export default function Page() {
     return (
