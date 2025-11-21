@@ -8,11 +8,11 @@ const projects = [
         title: "Wallace Room",
         src: "WallaceRoom.png",
         color: "#623505",
-        category: "Web Development & 3D, 2025",
+        category: "Experimental 3D, 2025",
         link: "/room"
     },
     {
-        title: "Illutix",
+        title: "Illutix (Not deployed)",
         src: "Illutix.png",
         color: "#101d42",
         category: "Fullstack Development, 2025",

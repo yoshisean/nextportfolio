@@ -70,7 +70,7 @@ export default function SkillsSection() {
                         <p>
                             I create immersive 3D web experiences that enhance user engagement without sacrificing performance.
                             From concept mock ups in Blender to optimized WebGL deployment, I focus on achieving specific creative visions
-                            without distracting users from key site information. I&apos;m deliberate about using 3D only when it makes sense.
+                            without distracting users from the key site purpose. I&apos;m deliberate about using 3D only when it makes sense.
                         </p>
                         <p className="opacity-70 text-sm md:text-base italic">
                             Three.js • React Three Fiber • Blender • WebGL
