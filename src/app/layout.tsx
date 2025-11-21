@@ -2,7 +2,7 @@ import type {Metadata} from "next";
 import "./globals.css";
 
 import {Questrial} from 'next/font/google'
-import NavBar from "@/components/ui/navBar";
+import Navbar from "@/components/ui/navbar";
 const questrial = Questrial({
     subsets: ['latin'],
     variable: '--font-questrial',
@@ -13,18 +13,18 @@ import { Analytics } from "@vercel/analytics/react"
 
 export const metadata: Metadata = {
     title: "Sean Yoshihara - Software Engineer & Designer",
-    description: "The portfolio of Sean Yoshihara, a full-stack software engineer and undergraduate at Georgia Tech specializing in machine learning and artificial intelligence. Explore projects showcasing my skills in web development and AI-driven applications.",
+    description: "Sean Yoshihara's portfolio website, a full-stack software engineer and Masters student at Georgia Tech specializing in Artificial Intelligence. Displays bio along with projects in web development and AI-driven applications.",
     keywords: [
         "Sean Yoshihara", "full-stack developer", "software engineer", "computer science", "Georgia Tech",
         "ML/AI", "machine learning", "artificial intelligence", "web development", "3D graphics",
-        "Next.js", "React", "Node.js", "Express", "Tailwind CSS", "Framer Motion", "React Three Fiber",
+        "Next.js", "React", "Tailwind CSS", "Framer Motion", "React Three Fiber",
         "interactive design", "AI applications", "backend development"
     ],
 
     openGraph: {
         title: "Sean Yoshihara - Software Engineer & Designer",
         description: "An interactive portfolio site showcasing recent projects as a software developer.",
-        url: "https://www.yoshisean.com/", // Replace with actual URL if needed
+        url: "https://www.yoshisean.com/",
         images: [
             {
                 url: "/PortfolioThumbnail.png", // Replace with the path to your image
@@ -43,10 +43,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode; }>) {
     return (
-        <html lang="en">
-            <body className={`${questrial.className} antialiased bg-black overflow-x-hidden`}>
-                <NavBar/>
-                    {children}
+        <html lang="en" className={'antialiased [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'}>
+            <body className={`${questrial.className} h-screen w-screen text-white bg-black overflow-x-hidden`}>
+                <Navbar/>
+                {children}
                 <Analytics/>
             </body>
         </html>

@@ -1,68 +1,49 @@
 'use client'
 import ScrollingWorks from "@/components/ui/ScrollingText";
-import {useEffect, useRef} from "react";
+import {Suspense, useEffect, useRef} from "react";
 import Lenis from "lenis";
 import Footer from "@/components/ui/Footer";
-import {useScroll} from "motion/react";
-import CaseStudyCard from "@/components/ui/CaseStudyCard";
-import {caseStudies} from "@/components/ui/worksList";
 import HeroSection from "@/components/Sections/HeroSection";
 import SkillsSection from "@/components/Sections/SkillsSection";
 import AboutSection from "@/components/Sections/AboutSection";
+import WorksSection from "@/components/Sections/works-section";
+import {usePathname} from "next/navigation";
 
 export default function Home() {
 
+    const pathname = usePathname()
+    const lenisRef = useRef<Lenis | null>(null)
+
     useEffect(() => {
+        // Only init Lenis on home page
+        if (pathname !== '/') return
+
         const lenis = new Lenis()
+        lenisRef.current = lenis
 
         function raf(time: number) {
             lenis.raf(time)
             requestAnimationFrame(raf)
         }
 
-        requestAnimationFrame(raf);
-    }, [])
+        const rafId = requestAnimationFrame(raf)
 
-
-    const container = useRef(null);
-    const {scrollYProgress} = useScroll({
-        target: container,
-        offset: ['start start', 'end end']
-    })
-
-    const mainContainer = useRef(null);
-    const { scrollYProgress: mainYProgress } = useScroll({
-        target: mainContainer,
-        offset: ["start start", "end end"]
-    })
+        // CRITICAL: Cleanup on unmount
+        return () => {
+            cancelAnimationFrame(rafId)
+            lenis.destroy()
+            lenisRef.current = null
+        }
+    }, [pathname])
 
     return (
-        <div className="flex flex-col scroll-smooth w-screen">
-            <main className={'relative h-[200vh]'} ref={mainContainer}>
-                <HeroSection scrollYProgress={mainYProgress}/>
-                <SkillsSection scrollYProgress={mainYProgress}/>
-            </main>
-
-            <section className={'relative w-full flex flex-col bg-[#FBF7ED]'}
-                     id={'worksSection'}
-            >
-                <ScrollingWorks/>
-                {/*<InteractiveInfiniteScroll/>*/}
-                <div className="mx-auto container space-y-8 mt-32 md:mt-0 mb-16" ref={container}>
-                    {caseStudies.map((work, index) => {
-                        const targetScale = 1 - ((caseStudies.length - index) * 0.05);
-                        return (
-                            <CaseStudyCard key={work.number} index={index} caseStudy={work}
-                                           progress={scrollYProgress} range={[index / caseStudies.length, 1]}
-                                           targetScale={targetScale}
-                            />
-                        )
-                    })
-                    }
-                </div>
-            </section>
+        <main className="flex flex-col scroll-smooth w-full">
+            <HeroSection/>
+            <SkillsSection/>
+            <ScrollingWorks text={'Project Highlights'}/>
+            <WorksSection/>
             <AboutSection/>
             <Footer/>
-        </div>
+        </main>
     );
 }

@@ -3,6 +3,7 @@ import Image from "next/image";
 import {useRef} from "react";
 import {useScroll, useTransform, motion} from "framer-motion";
 import seanImage from '../../../public/SeanViewCompressed.jpg'
+import testImage from '../../../public/TestImage.webp'
 const AboutSection = () => {
     const container = useRef(null);
 
@@ -19,18 +20,26 @@ const AboutSection = () => {
                  style={{clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)"}}
                  id={'aboutSection'}
         >
-            <div className='relative flex justify-center my-40 z-10'>
+            <div className='relative flex justify-center my-40 z-20'>
                 <p className='text-[4vw] uppercase text-center max-w-[80vw] leading-none text-white'>
                     Developer, designer, and cellist.
-                    Coding for 7+ years.
-                    Startup and solo project enthusiast.
+                    Coding for 8+ years.
+                    Project enthusiast.
                 </p>
             </div>
             <div className={'fixed top-[-10vh] left-0 h-[120vh] w-full'}>
                 <motion.div className="relative h-full w-full" style={{y}}>
+                    {/*<Image*/}
+                    {/*    src={seanImage}*/}
+                    {/*    alt={'Watching the sea at Sassnitz, GER'}*/}
+                    {/*    fill*/}
+                    {/*    objectFit="cover"*/}
+                    {/*    placeholder='blur'*/}
+                    {/*    loading={'lazy'}*/}
+                    {/*/>*/}
                     <Image
-                        src={seanImage}
-                        alt={'Watching the sea at Sassnitz, GER'}
+                        src={testImage}
+                        alt={'Switzerland'}
                         fill
                         objectFit="cover"
                         placeholder='blur'

@@ -1,4 +1,9 @@
-import React, {useState} from 'react'
+import React, {useRef} from 'react'
+import { gsap } from 'gsap';
+import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
+
+
+gsap.registerPlugin(ScrambleTextPlugin);
 
 export default function FooterContent() {
     return (
@@ -18,58 +23,64 @@ const Section1 = () => {
 }
 
 const Section2 = () => {
-    const [shuffledText, setShuffledText] = useState('Get in touch');
+    const textRef = useRef(null);
     const originalText = 'Get in touch';
-    const velocity = 75;
+    const hoverText = 'send an email →'; // Text to show on hover
 
-    const shuffle = (arr: string[]) => {
-        let j, x, i = arr.length;
-        while (i) {
-            j = Math.floor(Math.random() * i);
-            x = arr[--i];
-            arr[i] = arr[j];
-            arr[j] = x;
-        }
-        return arr;
+    // --- Define handlers in the component's render scope ---
+
+    // Animation for mouse enter
+    const scrambleOnEnter = () => {
+        // Check if the ref is attached
+        if (!textRef.current) return;
+
+        gsap.to(textRef.current, { // Use textRef.current directly
+            duration: 0.8,
+            scrambleText: {
+                text: hoverText,
+                chars: 'abcdefghijklmnopqrstuvwxyz',
+                speed: 0.3,
+            },
+            ease: 'power1.inOut',
+            overwrite: true,
+        });
     };
 
-    const shuffleText = (element: string) => {
-        const elementTextArray = element.split('');
-        let randomText = [];
+    // Animation for mouse leave
+    const scrambleOnLeave = () => {
+        if (!textRef.current) return;
 
-        const repeatShuffle = (times: number, index: number) => {
-            if (index === times) {
-                setShuffledText(originalText);
-                return;
-            }
-
-            setTimeout(() => {
-                randomText = shuffle([...elementTextArray]);
-                for (let i = 0; i < index; i++) {
-                    randomText[i] = originalText[i];
-                }
-                setShuffledText(randomText.join(''));
-                index++;
-                repeatShuffle(times, index);
-            }, velocity);
-        };
-
-        repeatShuffle(element.length, 0);
+        gsap.to(textRef.current, { // Use textRef.current directly
+            duration: 0.8,
+            scrambleText: {
+                text: originalText,
+                chars: 'abcdefghijklmnopqrstuvwxyz',
+                speed: 0.3,
+            },
+            ease: 'power1.inOut',
+            overwrite: true,
+        });
     };
+
+    // The useEffect is no longer needed
 
     return (
         <div className='flex justify-between items-end'>
             <a href="mailto:vcsean3@gmail.com">
-                <h1 className='text-[10vw] leading-[0.8] mt-10'
-                    onMouseEnter={()=>shuffleText(originalText)}
+                <h1
+                    ref={textRef}
+                    className='text-[10vw] leading-[0.8] mt-10'
+                    // --- Add the event handlers directly to the element ---
+                    onMouseEnter={scrambleOnEnter}
+                    onMouseLeave={scrambleOnLeave}
                 >
-                    {shuffledText}
+                    {originalText}
                 </h1>
             </a>
             <p>©Sean Yoshihara 2025</p>
         </div>
-    )
-}
+    );
+};
 
 const Nav = () => {
     return (
