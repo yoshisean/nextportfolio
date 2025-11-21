@@ -1,3 +1,4 @@
+'use client'
 import {useRef, useState} from "react";
 import {Image, Scroll, useIntersect} from "@react-three/drei";
 import {Mesh} from "three";

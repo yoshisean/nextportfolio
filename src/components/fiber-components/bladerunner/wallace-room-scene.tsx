@@ -1,6 +1,6 @@
 'use client'
 import {Canvas, useThree} from "@react-three/fiber";
-import {AdaptiveDpr, AdaptiveEvents, Bvh, Environment} from "@react-three/drei";
+import {AdaptiveDpr, AdaptiveEvents, Bvh, Environment, PerspectiveCamera} from "@react-three/drei";
 import {
     EffectComposer,
     ToneMapping
@@ -58,19 +58,21 @@ function ResponsiveCamera() {
 export default function WallaceRoomScene() {
 
     return (
-        <Canvas
-            //animate from 4 to 8, along with letterbox?
-            camera={{position: [0, 1.35, 8], rotation: [-0.1, 0, 0], fov: 51.52}}
-            shadows
-            gl={{
-                alpha: false,
-                antialias: true,
-                powerPreference: 'high-performance',
-                outputColorSpace: SRGBColorSpace,
-                toneMapping: AgXToneMapping,
-                toneMappingExposure: 0.9
-            }}
-        >
+        // <Canvas
+        //     //animate from 4 to 8, along with letterbox?
+        //     camera={{position: [0, 1.35, 8], rotation: [-0.1, 0, 0], fov: 51.52}}
+        //     shadows
+        //     gl={{
+        //         alpha: false,
+        //         antialias: true,
+        //         powerPreference: 'high-performance',
+        //         outputColorSpace: SRGBColorSpace,
+        //         toneMapping: AgXToneMapping,
+        //         toneMappingExposure: 0.9
+        //     }}
+        // >
+        <>
+            <PerspectiveCamera makeDefault position={[0, 1.35, 8]} rotation={[-0.1, 0, 0]} fov={51.52}/>
             <AdaptiveDpr pixelated />
             <AdaptiveEvents />
             <ResponsiveCamera />
@@ -138,6 +140,6 @@ export default function WallaceRoomScene() {
                 <ToneMapping/>
                 <LetterboxEffect targetAspect={2.39} />
             </EffectComposer>
-        </Canvas>
+        </>
     )
 }

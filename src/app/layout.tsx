@@ -10,6 +10,7 @@ const questrial = Questrial({
 })
 
 import { Analytics } from "@vercel/analytics/react"
+import CanvasWrapper from "@/components/fiber-components/layout/canvas-layout";
 
 export const metadata: Metadata = {
     title: "Sean Yoshihara - Software Engineer & Designer",
@@ -46,6 +47,7 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
         <html lang="en" className={'antialiased [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'}>
             <body className={`${questrial.className} h-screen w-screen text-white bg-black overflow-x-hidden`}>
                 <Navbar/>
+                <CanvasWrapper />
                 {children}
                 <Analytics/>
             </body>
