@@ -3,6 +3,7 @@ import {Canvas, useThree} from '@react-three/fiber'
 import {ScrollControls, Scroll, Preload} from '@react-three/drei'
 import Link from 'next/link'
 import ImageItems from "@/components/fiber-components/ImageItems";
+import {Suspense} from "react";
 
 function Content() {
     return (
@@ -94,6 +95,7 @@ export default function AboutPage() {
                 camera={{zoom: 80}}
                 gl={{alpha: false, antialias: false, stencil: false, depth: false}}
                 dpr={[1, 1.5]}>
+
                 <color attach="background" args={['#000000']}/>
                 <ScrollControls damping={0.2} pages={5}>
                     <ImageItems/>
@@ -102,6 +104,7 @@ export default function AboutPage() {
                     </Scroll>
                 </ScrollControls>
                 <Preload all/>
+
             </Canvas>
 
         </section>

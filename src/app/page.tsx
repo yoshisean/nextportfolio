@@ -1,6 +1,6 @@
 'use client'
 import ScrollingWorks from "@/components/ui/ScrollingText";
-import {useEffect, useRef} from "react";
+import {Suspense, useEffect, useRef} from "react";
 import Lenis from "lenis";
 import Footer from "@/components/ui/Footer";
 import HeroSection from "@/components/Sections/HeroSection";
