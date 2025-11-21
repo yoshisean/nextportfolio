@@ -36,9 +36,9 @@ export default function ImageItems() {
             <Item url="/fiber/about/Berlin-1.webp" scale={[w / 5, w / 5]} position={[w / 4, -h * 1.2, 0]} alt={'Berlin city'}/>
             <Item url="/fiber/about/Music-1.webp" scale={[w / 5, w / 5]} position={[w / 10, -h * 1.75, 0]} alt={'Sleeping'}/>
             <Item url="/fiber/about/Music-2.webp" scale={[w / 3, w / 3]} position={[-w / 4, -h * 2, 0]} alt={'EUSO'}/>
-            <Item url="/fiber/about/placeholder.png" scale={[w / 3, w / 5]} position={[-w / 4, -h * 2.7, 0]} alt={'placeholder'}/>
+            <Item url="/fiber/about/Current-1.png" scale={[w / 3, w / 5]} position={[-w / 4, -h * 2.7, 0]} alt={'placeholder'}/>
             <Item url="/fiber/about/Current-2.webp" scale={[w / 2, w / 2]} position={[w / 4, -h * 3.1, 0]} alt={'Bladerunner calculations'}/>
-            <Item url="/fiber/about/placeholder.png" scale={[w / 2.5, w / 2]} position={[-w / 6, -h * 4.1, 0]} alt={'placeholder'}/>
+            <Item url="/fiber/about/Final.webp" scale={[w / 2.5, w / 2]} position={[-w / 6, -h * 4.1, 0]} alt={'End image'}/>
         </Scroll>
     )
 }

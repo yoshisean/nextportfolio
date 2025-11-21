@@ -85,7 +85,7 @@ export default function Modal({ modal, projects }: ModalProps) {
 
             <motion.div ref={cursorLabel} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"} className="absolute z-[2] flex items-center justify-center w-[80px] h-[80px]
             rounded-full text-white text-[14px] font-light pointer-events-none bg-transparent">
-                View
+                Visit
             </motion.div>
         </>
     );

@@ -16,7 +16,7 @@ function Content() {
 
             {/* Background - RIGHT SIDE */}
             <div className="absolute top-[180vh] left-8 w-full max-w-3xl px-8">
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-6 p-2">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-light">
                         Background
                     </h2>
@@ -40,7 +40,7 @@ function Content() {
 
             {/* Music - LEFT SIDE */}
             <div className="absolute top-[260vh] right-8 w-full max-w-3xl px-8">
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-6 p-2">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-light">
                         Music
                     </h2>
@@ -57,7 +57,7 @@ function Content() {
 
             {/* Current Focus - RIGHT SIDE */}
             <div className="absolute top-[350vh] left-8 w-full max-w-3xl px-8">
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-6 p-2">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-light">
                         Current Focus
                     </h2>

@@ -1,6 +1,7 @@
 'use client'
 import Link from "next/link";
 import Image from "next/image";
+import SheetNav from "@/components/ui/sheet-nav";
 
 const Navbar = () => {
     return (
@@ -10,25 +11,24 @@ const Navbar = () => {
                     <Link href={"/"}>
                         <Image src={'/logov2.svg'} width={72} height={72} alt={'site logo'}/>
                     </Link>
-                    <div className={`flex space-x-4 md:space-x-8 lg:space-x-12 text-sm md:text-md lg:text-lg`}>
-                        {/*<Link href="/works">*/}
-                        <Link href={"/works"}>
-                            <h1 className="font-light tracking-wide hover:underline underline-offset-4">
-                                Works
-                            </h1>
-                        </Link>
+                    <div className={`hidden sm:block`}>
+                        <div className="flex space-x-4 md:space-x-8 lg:space-x-12 text-sm md:text-md lg:text-lg">
 
-                        <Link href={"/about"}>
-                            <h1 className="font-light tracking-wide hover:underline underline-offset-4">
-                                About
-                            </h1>
-                        </Link>
+                            <Link href={"/about"}>
+                                <h1 className="font-light tracking-wide hover:underline underline-offset-4">
+                                    About
+                                </h1>
+                            </Link>
 
-                        <Link href={"/contact"}>
-                            <h1 className="font-light tracking-wide hover:underline underline-offset-4">
-                                Contact
-                            </h1>
-                        </Link>
+                            <Link href={"/contact"}>
+                                <h1 className="font-light tracking-wide hover:underline underline-offset-4">
+                                    Contact
+                                </h1>
+                            </Link>
+                        </div>
+                    </div>
+                    <div className={`block sm:hidden`}>
+                        <SheetNav/>
                     </div>
                 </div>
             </div>
