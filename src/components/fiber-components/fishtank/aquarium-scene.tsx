@@ -14,7 +14,6 @@ import {
     EffectComposer,
     Noise,
 } from '@react-three/postprocessing'
-import {Mesh} from "three";
 
 const isCoarsePointer = typeof window !== 'undefined' && matchMedia('(pointer: coarse)').matches
 

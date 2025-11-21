@@ -1,7 +1,6 @@
 'use client'
-import {useEffect, useRef, useState} from 'react'
-import {Canvas, useFrame, useThree} from '@react-three/fiber'
-import {useIntersect, Image, ScrollControls, Scroll, Preload, useScroll} from '@react-three/drei'
+import {Canvas, useThree} from '@react-three/fiber'
+import {ScrollControls, Scroll, Preload} from '@react-three/drei'
 import Link from 'next/link'
 import ImageItems from "@/components/fiber-components/ImageItems";
 
